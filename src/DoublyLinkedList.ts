@@ -21,7 +21,19 @@ export class DoublyLinkedList {
 
   // Public Array-like methods
 
-  public at(index: number) {}
+  public at(index: number): unknown {
+    if (this.length === 0 || Math.abs(index) >= this.length) {
+      return undefined;
+    }
+    index = this._toAbsoluteIndex(index, this.length);
+    const targetNode = this._getNode(index);
+    if (targetNode === null) {
+      return undefined;
+    }
+    targetNode.count += 1;
+    this._rearrange(targetNode);
+    return targetNode.value;
+  }
 
   public concat(...values: any[]) {}
 
@@ -227,5 +239,15 @@ export class DoublyLinkedList {
 
   private _sameValue(x: any, y: any): boolean {
     return Object.is(x, y);
+  }
+
+  private _toAbsoluteIndex(index: number, length: number): number {
+    const integer = this._toIntegerOrInfinity(index);
+    return integer < 0 ? Math.max(integer + length, 0) : Math.min(integer, length);
+  }
+
+  private _toIntegerOrInfinity(argument: number): number {
+    const number = +argument;
+    return number !== number || number === 0 ? 0 : Math.trunc(number);
   }
 }
