@@ -22,6 +22,7 @@ describe('Test SoLists', function() {
   describe('Test DoublyLinkedList Search & Creation', function() {
 
     // Array-like methods tests
+    doublyLinkedListTest.testAt(DoublyLinkedList);
     doublyLinkedListTest.testPush(DoublyLinkedList);
   });
 });
