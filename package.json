@@ -1,0 +1,27 @@
+{
+  "name": "solists",
+  "version": "0.1.0",
+  "description": "Implementation of self-organizing lists",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emmanuel-ferdman/solists.git"
+  },
+  "keywords": [
+    "data-structure",
+    "self-organizing-list"
+  ],
+  "author": "Emmanuel Ferdman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/emmanuel-ferdman/solists/issues"
+  },
+  "homepage": "https://github.com/emmanuel-ferdman/solists#readme",
+  "devDependencies": {
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.4"
+  }
+}
