@@ -1,0 +1,15 @@
+# Build output directories
+dist/
+
+# Dependency directories
+node_modules/
+
+# Coverage directories
+coverage/
+.nyc_output/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
