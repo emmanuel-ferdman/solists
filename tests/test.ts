@@ -9,6 +9,9 @@ describe('Test SoLists', function() {
   dsClasses.forEach(function(dsClass) {
     describe('Test Base ' + dsClass.name, function() {
 
+      // Constructor tests
+      doublyLinkedListTest.testConstructor(dsClass);
+
       // Custom methods tests
       doublyLinkedListTest.testIsEqual(dsClass);
     });
