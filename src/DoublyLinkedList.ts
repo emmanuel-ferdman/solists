@@ -113,7 +113,23 @@ export class DoublyLinkedList {
 
   public toString() {}
 
-  public unshift(...values: any) {}
+  public unshift(...values: any): number {
+    const { length: valuesLength } = values;
+    for (let index = valuesLength - 1; index >= 0; index -= 1) {
+      const newNode = new Node(values[index]);
+      if (this.length === 0) {
+        this._insertFirst(newNode);
+      } else if (this.head !== null) {
+        this._insertBefore(this.head, newNode);
+      } else {
+        continue;
+      }
+      if (this.rearrangeOnCreation) {
+        this._rearrange(newNode);
+      }
+    }
+    return this.length;
+  }
 
   public values() {}
 
