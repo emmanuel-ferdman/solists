@@ -101,7 +101,18 @@ export class DoublyLinkedList {
 
   public shift() {}
 
-  public slice(startIndex: any, endIndex: any) {}
+  public slice(startIndex: any, endIndex: any): DoublyLinkedList {
+    const result = new DoublyLinkedList();
+    if (startIndex === undefined) {
+      startIndex = 0;
+    }
+    startIndex = this._toAbsoluteIndex(startIndex, this.length);
+    endIndex = this._toAbsoluteIndex(endIndex === undefined ? this.length : endIndex, this.length);
+    for (const [/* index */, node] of this._nodes(startIndex, endIndex)) {
+      result.push(node.value);
+    }
+    return result;
+  }
 
   public some(callbackFn: any) {}
 
