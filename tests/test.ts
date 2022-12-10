@@ -19,6 +19,7 @@ describe('Test SoLists', function() {
       doublyLinkedListTest.testConcat(dsClass);
       doublyLinkedListTest.testCopyWithin(dsClass);
       doublyLinkedListTest.testEntries(dsClass);
+      doublyLinkedListTest.testEvery(dsClass);
       doublyLinkedListTest.testSlice(dsClass);
       doublyLinkedListTest.testValues(dsClass);
     });
