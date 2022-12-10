@@ -84,7 +84,22 @@ export class DoublyLinkedList {
     return true;
   }
 
-  public fill(value: any, /* , startIndex = 0, endIndex = @length */ ) {}
+  public fill(value: any, /* , startIndex = 0, endIndex = @length */ ): DoublyLinkedList {
+    let startIndex = undefined;
+    if (arguments.length > 1) {
+      startIndex = arguments[1];
+    }
+    startIndex = this._toAbsoluteIndex(startIndex, this.length);
+    let endIndex = undefined;
+    if (arguments.length > 2) {
+      endIndex = arguments[2];
+    }
+    endIndex = (endIndex === undefined) ? this.length : this._toAbsoluteIndex(endIndex, this.length);
+    for (const [/* index */, node] of this._nodes(startIndex,endIndex)) {
+      node.value = value;
+    }
+    return this;
+  }
 
   public filter(callbackFn: any) {}
 
