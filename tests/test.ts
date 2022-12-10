@@ -18,6 +18,7 @@ describe('Test SoLists', function() {
       // Array-like methods tests
       doublyLinkedListTest.testConcat(dsClass);
       doublyLinkedListTest.testCopyWithin(dsClass);
+      doublyLinkedListTest.testEntries(dsClass);
       doublyLinkedListTest.testSlice(dsClass);
       doublyLinkedListTest.testValues(dsClass);
     });
