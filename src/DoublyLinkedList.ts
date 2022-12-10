@@ -51,7 +51,24 @@ export class DoublyLinkedList {
     return result;
   }
 
-  public copyWithin(target: any /* = 0 */ , start: any /* = 0, end = @length */ ) {}
+  public copyWithin(target: any /* = 0 */ , start: any /* = 0, end = @length */ ): DoublyLinkedList {
+    const sourceStart = this._toAbsoluteIndex(start, this.length);
+    const sourceEnd = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : this.length;
+    const targetStart = this._toAbsoluteIndex(target, this.length);
+    let count = Math.min((sourceEnd === this.length ? this.length : this._toAbsoluteIndex(sourceEnd, this.length)) - sourceStart, this.length - targetStart);
+    const tempSrcLst = this.slice(0, this.length);
+    const targetNodes = this._nodes(targetStart, targetStart + count);
+    const sourceNodes = tempSrcLst._nodes(sourceStart, sourceStart + count);
+    while (count > 0) {
+      const targetCurrentNode = targetNodes.next();
+      const sourceCurrentNode = sourceNodes.next();
+      const targetCurrentValue = targetCurrentNode.value;
+      const sourceCurrentValue = sourceCurrentNode.value;
+      targetCurrentValue[1].value = sourceCurrentValue[1].value;
+      count -= 1;
+    }
+    return this;
+  }
 
   public entries() {}
 
