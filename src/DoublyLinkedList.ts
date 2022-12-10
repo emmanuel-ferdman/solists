@@ -142,7 +142,9 @@ export class DoublyLinkedList {
     return this.length;
   }
 
-  public values() {}
+  public values() {
+    return this._values();
+  }
 
   // Public custom methods
 
@@ -276,5 +278,13 @@ export class DoublyLinkedList {
   private _toIntegerOrInfinity(argument: number): number {
     const number = +argument;
     return number !== number || number === 0 ? 0 : Math.trunc(number);
+  }
+
+  private * _values(): Generator<any> {
+    let node = this.head;
+    while (node) {
+      yield node.value;
+      node = node.next;
+    }
   }
 }
