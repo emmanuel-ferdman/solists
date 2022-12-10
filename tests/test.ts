@@ -14,6 +14,9 @@ describe('Test SoLists', function() {
 
       // Custom methods tests
       doublyLinkedListTest.testIsEqual(dsClass);
+
+      // Array-like methods tests
+      doublyLinkedListTest.testSlice(dsClass);
     });
   });
 
