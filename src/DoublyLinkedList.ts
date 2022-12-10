@@ -70,7 +70,9 @@ export class DoublyLinkedList {
     return this;
   }
 
-  public entries() {}
+  public entries() {
+    return this._entries();
+  }
 
   public every(callbackFn: any) {}
 
@@ -268,6 +270,16 @@ export class DoublyLinkedList {
   }
 
   // Private helping methods
+
+  private * _entries(): Generator<any> {
+    let node = this.head;
+    let counter = 0;
+    while (node) {
+      yield [counter, node.value];
+      node = node.next;
+      counter += 1;
+    }
+  }
 
   private _extend(iterable: any): void {
     if (!(this._isIterable(iterable))) {
