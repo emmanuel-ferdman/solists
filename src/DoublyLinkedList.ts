@@ -40,7 +40,7 @@ export class DoublyLinkedList {
     const result = this.slice(0, this.length);
     for (let index = 0; index < valuesLength; index += 1) {
       const value = values[index];
-      if (this._isIterable(value)) {
+      if (value instanceof DoublyLinkedList || Array.isArray(value)) {
         for (const currentValue of value.values()) {
           result.push(currentValue);
         }
