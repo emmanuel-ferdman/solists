@@ -16,6 +16,7 @@ describe('Test SoLists', function() {
       doublyLinkedListTest.testIsEqual(dsClass);
 
       // Array-like methods tests
+      doublyLinkedListTest.testConcat(dsClass);
       doublyLinkedListTest.testSlice(dsClass);
       doublyLinkedListTest.testValues(dsClass);
     });
