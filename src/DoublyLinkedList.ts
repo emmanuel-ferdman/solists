@@ -101,7 +101,16 @@ export class DoublyLinkedList {
     return this;
   }
 
-  public filter(callbackFn: any) {}
+  // TODO: Support "thisArg" argument
+  public filter(callbackFn: any): DoublyLinkedList {
+    const result = new DoublyLinkedList();
+    for (const [index, node] of this._nodes(0,this.length)) {
+      if (callbackFn(node.value, index, this)) {
+        result.push(node.value);
+      }
+    }
+    return result;
+  }
 
   public find(callbackFn: any) {}
 
