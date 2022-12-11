@@ -112,7 +112,17 @@ export class DoublyLinkedList {
     return result;
   }
 
-  public find(callbackFn: any) {}
+  // TODO: Support "thisArg" argument
+  public find(callbackFn: any): unknown {
+    for (const [index, node] of this._nodes(0,this.length)) {
+      if (callbackFn(node.value, index, this)) {
+        node.count += 1;
+        this._rearrange(node);
+        return node.value;
+      }
+    }
+    return undefined;
+  }
 
   public findIndex(callbackFn: any) {}
 
