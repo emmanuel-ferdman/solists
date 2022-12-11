@@ -148,7 +148,17 @@ export class DoublyLinkedList {
     return undefined;
   }
 
-  public findLastIndex(callbackFn: any) {}
+  // TODO: Support "thisArg" argument
+  public findLastIndex(callbackFn: any) {
+    for (const [index, node] of this._nodesReverse(0,this.length)) {
+      if (callbackFn(node.value, index, this)) {
+        node.count += 1;
+        const result = this._rearrange(node);
+        return (result === undefined) ? index : result;
+      }
+    }
+    return -1;
+  }
 
   public flat(depth=1) {}
 
