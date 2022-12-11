@@ -33,6 +33,7 @@ describe('Test SoLists', function() {
 
     // Array-like methods tests
     doublyLinkedListTest.testAt(DoublyLinkedList);
+    doublyLinkedListTest.testFind(DoublyLinkedList);
     doublyLinkedListTest.testPush(DoublyLinkedList);
     doublyLinkedListTest.testUnshift(DoublyLinkedList);
   });
