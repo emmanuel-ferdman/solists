@@ -35,6 +35,7 @@ describe('Test SoLists', function() {
     doublyLinkedListTest.testAt(DoublyLinkedList);
     doublyLinkedListTest.testFind(DoublyLinkedList);
     doublyLinkedListTest.testFindIndex(DoublyLinkedList);
+    doublyLinkedListTest.testFindLast(DoublyLinkedList);
     doublyLinkedListTest.testPush(DoublyLinkedList);
     doublyLinkedListTest.testUnshift(DoublyLinkedList);
   });
