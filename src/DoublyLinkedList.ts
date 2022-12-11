@@ -136,7 +136,17 @@ export class DoublyLinkedList {
     return -1;
   }
 
-  public findLast(callbackFn: any) {}
+  // TODO: Support "thisArg" argument
+  public findLast(callbackFn: any): unknown {
+    for (const [index, node] of this._nodesReverse(0,this.length)) {
+      if (callbackFn(node.value, index, this)) {
+        node.count += 1;
+        this._rearrange(node);
+        return node.value;
+      }
+    }
+    return undefined;
+  }
 
   public findLastIndex(callbackFn: any) {}
 
@@ -358,6 +368,18 @@ export class DoublyLinkedList {
       }
       node = node.next;
       counter = counter + 1;
+    }
+  }
+
+  private * _nodesReverse(startIndex: number, endIndex: number): Generator<any> {
+    let node = this.tail;
+    let counter = this.length - 1;
+    while (node) {
+      if (startIndex <= counter && counter < endIndex) {
+        yield [counter, node];
+      }
+      node = node.prev;
+      counter = counter - 1;
     }
   }
 
