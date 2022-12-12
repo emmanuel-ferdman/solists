@@ -214,7 +214,21 @@ export class DoublyLinkedList {
     return accumulator;
   }
 
-  public reduceRight(callbackFn: any, initialValue: any) {}
+  public reduceRight(callbackFn: any, initialValue: any): any {
+    if (!(this._isCallable(callbackFn))) {
+      throw TypeError(this._tryToString(callbackFn) + ' is not a function');
+    }
+    if (this.length === 0 && arguments.length < 2) {
+      throw TypeError('Reduce of empty list with no initial value');
+    }
+    let accumulator = arguments.length > 1 ? initialValue : this.tail!.value;
+    for (const [index, node] of this._nodesReverse(0,this.length)) {
+      if (index < this.length - 1) {
+        accumulator = callbackFn(accumulator, node.value, index, this);
+      }
+    }
+    return accumulator;
+  }
 
   public reverse() {}
 
