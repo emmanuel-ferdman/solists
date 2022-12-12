@@ -198,7 +198,21 @@ export class DoublyLinkedList {
     return this.length;
   }
 
-  public reduce(callbackFn: any, initialValue: any) {}
+  public reduce(callbackFn: any, initialValue: any): any {
+    if (!(this._isCallable(callbackFn))) {
+      throw TypeError(this._tryToString(callbackFn) + ' is not a function');
+    }
+    if (this.length === 0 && arguments.length < 2) {
+      throw TypeError('Reduce of empty list with no initial value');
+    }
+    let accumulator = arguments.length > 1 ? initialValue : this.head!.value;
+    for (const [index, node] of this._nodes(0,this.length)) {
+      if (arguments.length > 1 || index > 0) {
+        accumulator = callbackFn(accumulator, node.value, index, this);
+      }
+    }
+    return accumulator;
+  }
 
   public reduceRight(callbackFn: any, initialValue: any) {}
 
@@ -362,6 +376,10 @@ export class DoublyLinkedList {
     }
   }
 
+  private _isCallable(fn: any): boolean {
+    return (typeof fn === 'function');
+  }
+
   private _isIterable(obj: any): boolean {
     if (obj == null) {
       return false;
@@ -405,6 +423,14 @@ export class DoublyLinkedList {
   private _toIntegerOrInfinity(argument: number): number {
     const number = +argument;
     return number !== number || number === 0 ? 0 : Math.trunc(number);
+  }
+
+  private _tryToString(argument: any): string {
+    try {
+      return String(argument);
+    } catch (error) {
+      return 'Object';
+    }
   }
 
   private * _values(): Generator<any> {
