@@ -160,7 +160,15 @@ export class DoublyLinkedList {
     return -1;
   }
 
-  public flat(depth=1) {}
+  public flat(depth=1): DoublyLinkedList {
+    depth = this._toIntegerOrInfinity(depth);
+    if (depth < 1) {
+      return this.slice(0, this.length);
+    }
+    return this.reduce(function(flat: any, toFlatten: any) {
+      return flat.concat(((toFlatten instanceof DoublyLinkedList) && (depth > 1)) ? toFlatten.flat(depth - 1) : toFlatten);
+    }, new DoublyLinkedList());
+  }
 
   public flatMap(callbackFn: any) {}
 
