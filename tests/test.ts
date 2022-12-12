@@ -23,6 +23,7 @@ describe('Test SoLists', function() {
       doublyLinkedListTest.testFill(dsClass);
       doublyLinkedListTest.testFilter(dsClass);
       doublyLinkedListTest.testReduce(dsClass);
+      doublyLinkedListTest.testReduceRight(dsClass);
       doublyLinkedListTest.testSlice(dsClass);
       doublyLinkedListTest.testValues(dsClass);
     });
