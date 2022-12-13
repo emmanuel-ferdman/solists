@@ -184,7 +184,13 @@ export class DoublyLinkedList {
 
   public lastIndexOf(searchElement: any /* , fromIndex = @[*-1] */ ) {}
 
-  public map(callbackFn: any) {}
+  public map(callbackFn: any): DoublyLinkedList {
+    const result = new DoublyLinkedList();
+    for (const [index, node] of this._nodes(0,this.length)) {
+      result.push(callbackFn(node.value, index, this));
+    }
+    return result;
+  }
 
   public pop() {}
 
