@@ -170,7 +170,10 @@ export class DoublyLinkedList {
     }, new DoublyLinkedList());
   }
 
-  public flatMap(callbackFn: any) {}
+  // TODO: Support "thisArg" argument
+  public flatMap(callbackFn: any): DoublyLinkedList {
+    return this.map(callbackFn).flat();
+  }
 
   public forEach(callbackFn: any) {}
 
