@@ -43,6 +43,7 @@ describe('Test SoLists', function() {
     doublyLinkedListTest.testFindIndex(DoublyLinkedList);
     doublyLinkedListTest.testFindLast(DoublyLinkedList);
     doublyLinkedListTest.testFindLastIndex(DoublyLinkedList);
+    doublyLinkedListTest.testIncludes(DoublyLinkedList);
     doublyLinkedListTest.testPush(DoublyLinkedList);
     doublyLinkedListTest.testUnshift(DoublyLinkedList);
   });
