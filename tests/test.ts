@@ -24,6 +24,7 @@ describe('Test SoLists', function() {
       doublyLinkedListTest.testFilter(dsClass);
       doublyLinkedListTest.testFlat(dsClass);
       doublyLinkedListTest.testFlatMap(dsClass);
+      doublyLinkedListTest.testForEach(dsClass);
       doublyLinkedListTest.testMap(dsClass);
       doublyLinkedListTest.testReduce(dsClass);
       doublyLinkedListTest.testReduceRight(dsClass);
