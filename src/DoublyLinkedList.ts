@@ -182,7 +182,20 @@ export class DoublyLinkedList {
     return undefined;
   }
 
-  public includes(searchedValue: any, fromIndex: any) {}
+  public includes(searchedValue: any, fromIndex: any): boolean {
+    if (this.length === 0) {
+      return false;
+    }
+    fromIndex = this._toAbsoluteIndex(fromIndex, this.length);
+    for (const [/* index */, node] of this._nodes(fromIndex,this.length)) {
+      if (this._sameValueZero(node.value, searchedValue)) {
+        node.count += 1;
+        this._rearrange(node);
+        return true;
+      }
+    }
+    return false;
+  }
 
   public indexOf(searchedValue: any, fromIndex=0) {}
 
@@ -449,6 +462,10 @@ export class DoublyLinkedList {
 
   private _sameValue(x: any, y: any): boolean {
     return Object.is(x, y);
+  }
+
+  private _sameValueZero(x: any, y: any): boolean {
+    return x === y || (Number.isNaN(x) && Number.isNaN(y));
   }
 
   private _toAbsoluteIndex(index: number, length: number): number {
