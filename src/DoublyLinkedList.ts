@@ -175,7 +175,12 @@ export class DoublyLinkedList {
     return this.map(callbackFn).flat();
   }
 
-  public forEach(callbackFn: any) {}
+  public forEach(callbackFn: any): void {
+    for (const [index, node] of this._nodes(0,this.length)) {
+      callbackFn(node.value, index, this);
+    }
+    return undefined;
+  }
 
   public includes(searchedValue: any, fromIndex: any) {}
 
