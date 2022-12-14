@@ -197,7 +197,20 @@ export class DoublyLinkedList {
     return false;
   }
 
-  public indexOf(searchedValue: any, fromIndex=0) {}
+  public indexOf(searchedValue: any, fromIndex=0): number {
+    if (this.length === 0) {
+      return -1;
+    }
+    fromIndex = this._toAbsoluteIndex(fromIndex, this.length);
+    for (const [index, node] of this._nodes(fromIndex,this.length)) {
+      if (this._isStrictlyEqual(node.value, searchedValue)) {
+        node.count += 1;
+        const result = this._rearrange(node);
+        return (result === undefined) ? index : result;
+      }
+    }
+    return -1;
+  }
 
   public join(separator: any) {}
 
@@ -434,6 +447,10 @@ export class DoublyLinkedList {
       return false;
     }
     return typeof obj[Symbol.iterator] === 'function';
+  }
+
+  private _isStrictlyEqual(x: any, y: any): boolean {
+    return x === y;
   }
 
   private * _nodes(startIndex: number, endIndex: number): Generator<any> {
