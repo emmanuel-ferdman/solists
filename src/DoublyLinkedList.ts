@@ -212,7 +212,24 @@ export class DoublyLinkedList {
     return -1;
   }
 
-  public join(separator: any) {}
+  public join(separator: any): string {
+    let result = '';
+    if (this.length === 0) {
+      return result;
+    }
+    if (separator === undefined) {
+      separator = ',';
+    }
+    for (const [index, node] of this._nodes(0,this.length)) {
+      const value = node.value == null ? "" : node.value;
+      if (index !== this.length - 1) {
+        result = result.concat(value) + separator;
+      } else {
+        result = result.concat(value);
+      }
+    }
+    return result;
+  }
 
   public keys() {}
 
