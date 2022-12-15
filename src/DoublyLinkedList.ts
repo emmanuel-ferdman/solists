@@ -231,7 +231,9 @@ export class DoublyLinkedList {
     return result;
   }
 
-  public keys() {}
+  public keys(): Generator<number> {
+    return this._keys();
+  }
 
   public lastIndexOf(searchElement: any /* , fromIndex = @[*-1] */ ) {}
 
@@ -468,6 +470,16 @@ export class DoublyLinkedList {
 
   private _isStrictlyEqual(x: any, y: any): boolean {
     return x === y;
+  }
+
+  private * _keys(): Generator<number> {
+    let node = this.head;
+    let counter = 0;
+    while (node) {
+      yield counter;
+      node = node.next;
+      counter += 1;
+    }
   }
 
   private * _nodes(startIndex: number, endIndex: number): Generator<any> {
