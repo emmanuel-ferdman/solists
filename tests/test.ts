@@ -28,6 +28,7 @@ describe('Test SoLists', function() {
       doublyLinkedListTest.testJoin(dsClass);
       doublyLinkedListTest.testKeys(dsClass);
       doublyLinkedListTest.testMap(dsClass);
+      doublyLinkedListTest.testPop(dsClass);
       doublyLinkedListTest.testReduce(dsClass);
       doublyLinkedListTest.testReduceRight(dsClass);
       doublyLinkedListTest.testSlice(dsClass);
