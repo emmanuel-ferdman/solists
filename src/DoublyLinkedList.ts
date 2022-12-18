@@ -264,7 +264,20 @@ export class DoublyLinkedList {
     return result;
   }
 
-  public pop() {}
+  public pop(): unknown {
+    if (this.length === 0) {
+      return undefined;
+    }
+    const value = this.tail!.value;
+    if (this.length === 1) {
+      this._removeLast();
+    } else {
+      this.tail = this.tail!.prev;
+      this.tail!.next = null;
+      this.length -= 1;
+    }
+    return value;
+  }
 
   public push(...values: any): number {
     const { length: valuesLength } = values;
@@ -453,6 +466,12 @@ export class DoublyLinkedList {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   protected _rearrange(node: Node): number | undefined {
     return undefined;
+  }
+
+  protected _removeLast(): void {
+    this.head = null;
+    this.tail = null;
+    this.length = 0;
   }
 
   // Private helping methods
