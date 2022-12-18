@@ -235,7 +235,26 @@ export class DoublyLinkedList {
     return this._keys();
   }
 
-  public lastIndexOf(searchElement: any /* , fromIndex = @[*-1] */ ) {}
+  public lastIndexOf(searchElement: any /* , fromIndex = @[*-1] */ ): number {
+    if (this.length === 0) {
+      return -1;
+    }
+    let fromIndex = this.length - 1;
+    if (arguments.length > 1) {
+      fromIndex = Math.min(fromIndex, this._toIntegerOrInfinity(arguments[1]));
+    }
+    if (fromIndex < 0) {
+      fromIndex = this.length + fromIndex;
+    }
+    for (const [index, node] of this._nodesReverse(0, fromIndex + 1)) {
+      if (this._isStrictlyEqual(node.value, searchElement)) {
+        node.count += 1;
+        const result = this._rearrange(node);
+        return (result === undefined) ? index : result;
+      }
+    }
+    return -1;
+  }
 
   public map(callbackFn: any): DoublyLinkedList {
     const result = new DoublyLinkedList();
