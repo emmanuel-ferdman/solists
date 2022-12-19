@@ -347,7 +347,20 @@ export class DoublyLinkedList {
     return this;
   }
 
-  public shift() {}
+  public shift(): unknown {
+    if (this.length === 0) {
+      return undefined;
+    }
+    const value = this.head!.value;
+    if (this.length === 1) {
+      this._removeLast();
+    } else {
+      this.head = this.head!.next;
+      this.head!.prev = null;
+      this.length -= 1;
+    }
+    return value;
+  }
 
   public slice(startIndex: any, endIndex: any): DoublyLinkedList {
     const result = new DoublyLinkedList();
