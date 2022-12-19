@@ -31,6 +31,7 @@ describe('Test SoLists', function() {
       doublyLinkedListTest.testPop(dsClass);
       doublyLinkedListTest.testReduce(dsClass);
       doublyLinkedListTest.testReduceRight(dsClass);
+      doublyLinkedListTest.testReverse(dsClass);
       doublyLinkedListTest.testSlice(dsClass);
       doublyLinkedListTest.testValues(dsClass);
     });
