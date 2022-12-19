@@ -329,7 +329,23 @@ export class DoublyLinkedList {
     return accumulator;
   }
 
-  public reverse() {}
+  public reverse(): DoublyLinkedList {
+    if (this.length > 1) {
+      let curr = this.head;
+      while (curr) {
+        const next = curr.next;
+        curr.next = curr.prev;
+        curr.prev = next;
+        if (curr.next === null) {
+          this.tail = curr;
+        } else if (curr.prev === null) {
+          this.head = curr;
+        }
+        curr = next;
+      }
+    }
+    return this;
+  }
 
   public shift() {}
 
