@@ -385,7 +385,12 @@ export class DoublyLinkedList {
     return false;
   }
 
-  public sort(comparefn: any) {}
+  public sort(comparefn: any): DoublyLinkedList {
+    if (this.length > 1) {
+      this._mergeSort(this._getSortCompare(comparefn));
+    }
+    return this;
+  }
 
   public splice(start: any, deleteCount: any /* , ...items */ ) {}
 
@@ -532,6 +537,15 @@ export class DoublyLinkedList {
     }
   }
 
+  private _getSortCompare(comparefn: any) {
+    return function(x: any, y: any) {
+      if (y === undefined) return -1;
+      if (x === undefined) return 1;
+      if (comparefn !== undefined) return +comparefn(x, y) || 0;
+      return String(x) > String(y) ? 1 : -1;
+    };
+  }
+
   private _isCallable(fn: any): boolean {
     return (typeof fn === 'function');
   }
@@ -554,6 +568,78 @@ export class DoublyLinkedList {
       yield counter;
       node = node.next;
       counter += 1;
+    }
+  }
+
+  private _merge(head1: any, head2: any, comparefn: any): any {
+    if (head1 == null) {
+      return head2;
+    } else if (head2 == null) {
+      return head1;
+    }
+
+    let node, head;
+    if (comparefn(head1.value, head2.value) <= 0) {
+      head = node = head1;
+      head1 = head1.next;
+    } else {
+      head = node = head2;
+      head2 = head2.next;
+    }
+
+    while (head1 !== null && head2 !== null) {
+      if (comparefn(head1.value, head2.value) <= 0) {
+        node.next = head1;
+        head1.prev = node;
+        node = head1;
+        head1 = head1.next;
+      } else {
+        node.next = head2;
+        head2.prev = node;
+        node = head2;
+        head2 = head2.next;
+      }
+    }
+
+    if (head1 !== null) {
+      node.next = head1;
+      head1.prev = node;
+    } else if (head2 !== null) {
+      node.next = head2;
+      head2.prev = node;
+    }
+
+    return head;
+  }
+
+  private _mergeSort(comparefn: any): void {
+    const lists = [];
+    let start = this.head;
+    let end;
+    while (start !== null) {
+      end = start;
+      while (end.next !== null && comparefn(end.value, end.next.value) <= 0) {
+        end = end.next;
+      }
+      const next = end.next;
+      start.prev = null;
+      end.next = null;
+      lists.push(start);
+      start = next;
+    }
+
+    while (lists.length > 1) {
+      const first = lists.shift();
+      const second = lists.shift();
+      if (first !== undefined && second !== undefined) {
+        lists.push(this._merge(first, second, comparefn));
+      }
+    }
+
+    this.tail = lists[0];
+    this.head = lists[0];
+    while (this.tail && this.tail.next) {
+      this.tail = this.tail.next;
     }
   }
 
