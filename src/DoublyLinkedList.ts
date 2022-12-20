@@ -375,7 +375,15 @@ export class DoublyLinkedList {
     return result;
   }
 
-  public some(callbackFn: any) {}
+  // TODO: Support "thisArg" argument
+  public some(callbackFn: any): boolean {
+    for (const [index, node] of this._nodes(0,this.length)) {
+      if (callbackFn(node.value, index, this)) {
+        return true;
+      }
+    }
+    return false;
+  }
 
   public sort(comparefn: any) {}
 
