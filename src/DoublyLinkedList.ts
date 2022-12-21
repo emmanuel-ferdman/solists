@@ -392,7 +392,74 @@ export class DoublyLinkedList {
     return this;
   }
 
-  public splice(start: any, deleteCount: any /* , ...items */ ) {}
+  public splice(start: any, deleteCount: any /* , ...items */ ): DoublyLinkedList {
+    if (arguments.length === 0) {
+      deleteCount = 0;
+    } else if (arguments.length === 1) {
+      start = this._toAbsoluteIndex(start, this.length);
+      deleteCount = this.length - start;
+    } else {
+      start = this._toAbsoluteIndex(start, this.length);
+      deleteCount = Math.min(Math.max(this._toIntegerOrInfinity(deleteCount), 0), this.length - start);
+    }
+
+    const deleted = new DoublyLinkedList();
+    if (this.length > 0 && deleteCount > 0) {
+      let prev = this._getNode(start - 1);
+      let current = prev ? prev.next : this.head;
+
+      for (let index = 0; index < deleteCount; index += 1) {
+        deleted.push(current!.value);
+        current = current!.next;
+        this.length -= 1;
+      }
+
+      if (prev === null) {
+        this.head = current;
+        prev = current;
+        if (current) {
+          current.prev = null;
+        }
+      } else {
+        prev.next = current;
+        if (current) {
+          current.prev = prev;
+        } else {
+          this.tail = prev;
+        }
+      }
+    }
+
+    const items = Array.prototype.slice.call(arguments, 2, arguments.length);
+    if (items.length > 0) {
+      let current, next;
+      if (start === 0) {
+        next = this.head;
+        this.head = new Node(items.shift());
+        current = this.head;
+        this.length += 1;
+      } else {
+        current = this._getNode(start - 1);
+        next = current!.next;
+      }
+
+      for (const item of items) {
+        current!.next = new Node(item);
+        current!.next.prev = current;
+        current = current!.next;
+        this.length += 1;
+      }
+
+      current!.next = next;
+      if (next) {
+        next.prev = current;
+      } else {
+        this.tail = current;
+      }
+    }
+
+    return deleted;
+  }
 
   public toLocaleString(locales: any, options: any) {}
 
