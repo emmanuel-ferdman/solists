@@ -37,6 +37,7 @@ describe('Test SoLists', function() {
       doublyLinkedListTest.testSome(dsClass);
       doublyLinkedListTest.testSort(dsClass);
       doublyLinkedListTest.testSplice(dsClass);
+      doublyLinkedListTest.testToLocaleString(dsClass);
       doublyLinkedListTest.testValues(dsClass);
     });
   });
