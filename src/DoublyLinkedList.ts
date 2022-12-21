@@ -486,7 +486,9 @@ export class DoublyLinkedList {
     return result;
   }
 
-  public toString() {}
+  public toString(): string {
+    return this.join(",");
+  }
 
   public unshift(...values: any): number {
     const { length: valuesLength } = values;
