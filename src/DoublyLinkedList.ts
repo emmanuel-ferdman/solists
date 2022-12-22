@@ -516,7 +516,9 @@ export class DoublyLinkedList {
 
   public insert(index: any, value: any) {}
 
-  public isEmpty() {}
+  public isEmpty(): boolean {
+    return this.length === 0;
+  }
 
   public isEqual(value: any): boolean {
     if (!(this._isIterable(value))) {
