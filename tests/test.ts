@@ -13,6 +13,7 @@ describe('Test SoLists', function() {
       doublyLinkedListTest.testConstructor(dsClass);
 
       // Custom methods tests
+      doublyLinkedListTest.testIsEmpty(dsClass);
       doublyLinkedListTest.testIsEqual(dsClass);
 
       // Array-like methods tests
