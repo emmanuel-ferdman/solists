@@ -514,7 +514,28 @@ export class DoublyLinkedList {
 
   // Public custom methods
 
-  public insert(index: any, value: any) {}
+  public insert(index: any, value: any): number | undefined {
+    if (index === undefined || arguments.length < 2) {
+      return undefined;
+    }
+    index = this._toAbsoluteIndex(index, this.length);
+    if (index === 0) {
+      return this.unshift(value);
+    }
+    if (index === this.length) {
+      return this.push(value);
+    }
+    const prev = this._getNode(index - 1);
+    if (prev === null) {
+      return undefined;
+    }
+    const newNode = new Node(value);
+    this._insertAfter(prev, newNode);
+    if (this.rearrangeOnCreation) {
+      this._rearrange(newNode);
+    }
+    return this.length;
+  }
 
   public isEmpty(): boolean {
     return this.length === 0;
