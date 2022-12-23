@@ -558,7 +558,22 @@ export class DoublyLinkedList {
     return true;
   }
 
-  public remove(index: any) {}
+  public remove(index: any): any {
+    if (this.length === 0 || index === undefined) {
+      return undefined;
+    }
+    index = this._toAbsoluteIndex(index, this.length);
+    if (index >= this.length) {
+      return undefined;
+    }
+    const node = this._getNode(index);
+    if (node === null) {
+      return undefined;
+    }
+    const value = node.value;
+    this._remove(node);
+    return value;
+  }
 
   // Protected helping methods
 
@@ -623,6 +638,18 @@ export class DoublyLinkedList {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   protected _rearrange(node: Node): number | undefined {
     return undefined;
+  }
+
+  protected _remove(node: Node): void {
+    if (node.isEqual(this.head)) {
+      this.shift();
+    } else if (node.isEqual(this.tail)) {
+      this.pop();
+    } else if (node.next !== null && node.prev !== null) {
+      node.next.prev = node.prev;
+      node.prev.next = node.next;
+      this.length -= 1;
+    }
   }
 
   protected _removeLast(): void {
