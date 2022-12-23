@@ -15,6 +15,7 @@ describe('Test SoLists', function() {
       // Custom methods tests
       doublyLinkedListTest.testIsEmpty(dsClass);
       doublyLinkedListTest.testIsEqual(dsClass);
+      doublyLinkedListTest.testRemove(dsClass);
 
       // Array-like methods tests
       doublyLinkedListTest.testConcat(dsClass);
