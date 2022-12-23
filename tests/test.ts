@@ -48,6 +48,9 @@ describe('Test SoLists', function() {
 
   describe('Test DoublyLinkedList Search & Creation', function() {
 
+    // Custom methods tests
+    doublyLinkedListTest.testInsert(DoublyLinkedList);
+
     // Array-like methods tests
     doublyLinkedListTest.testAt(DoublyLinkedList);
     doublyLinkedListTest.testFind(DoublyLinkedList);
