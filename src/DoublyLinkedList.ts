@@ -17,7 +17,9 @@ export class DoublyLinkedList {
     }
   }
 
-  public [Symbol.iterator]() {}
+  public [Symbol.iterator]() {
+    return this._values();
+  }
 
   // Public Array-like methods
 
