@@ -42,6 +42,9 @@ describe('Test SoLists', function() {
       doublyLinkedListTest.testToLocaleString(dsClass);
       doublyLinkedListTest.testToString(dsClass);
       doublyLinkedListTest.testValues(dsClass);
+
+      // Operators tests
+      doublyLinkedListTest.testOfOperator(dsClass);
     });
   });
 
