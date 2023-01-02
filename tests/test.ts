@@ -1,13 +1,15 @@
 import { DoublyLinkedList } from '../src/DoublyLinkedList';
 import { MoveToFrontSoList } from '../src/MoveToFrontSoList';
+import { TransposeSoList } from '../src/TransposeSoList';
 import { doublyLinkedListTest } from './DoublyLinkedListTest';
 import { moveToFrontSoListTest } from './MoveToFrontSoListTest';
+import { transposeSoListTest } from './TransposeSoListTest';
 
 describe('Test SoLists', function() {
 
   /** General Tests **/
 
-  const dsClasses = [DoublyLinkedList,MoveToFrontSoList];
+  const dsClasses = [DoublyLinkedList,MoveToFrontSoList,TransposeSoList];
   dsClasses.forEach(function(dsClass) {
     describe('Test Base ' + dsClass.name, function() {
 
@@ -90,5 +92,27 @@ describe('Test SoLists', function() {
     moveToFrontSoListTest.testLastIndexOf();
     moveToFrontSoListTest.testPush();
     moveToFrontSoListTest.testUnshift();
+  });
+
+  /** TransposeSoList Search & Creation Tests **/
+
+  describe('Test transposeSoListTest Search & Creation', function() {
+    // Constructor tests
+    transposeSoListTest.testConstructor();
+
+    // Custom methods tests
+    transposeSoListTest.testInsert();
+
+    // Array-like methods tests
+    transposeSoListTest.testAt();
+    transposeSoListTest.testFind();
+    transposeSoListTest.testFindIndex();
+    transposeSoListTest.testFindLast();
+    transposeSoListTest.testFindLastIndex();
+    transposeSoListTest.testIncludes();
+    transposeSoListTest.testIndexOf();
+    transposeSoListTest.testLastIndexOf();
+    transposeSoListTest.testPush();
+    transposeSoListTest.testUnshift();
   });
 });
