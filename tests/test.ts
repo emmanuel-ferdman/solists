@@ -1,7 +1,9 @@
 import { DoublyLinkedList } from '../src/DoublyLinkedList';
+import { FrequencyCountSoList } from '../src/FrequencyCountSoList';
 import { MoveToFrontSoList } from '../src/MoveToFrontSoList';
 import { TransposeSoList } from '../src/TransposeSoList';
 import { doublyLinkedListTest } from './DoublyLinkedListTest';
+import { frequencyCountSoListTest } from './FrequencyCountSoListTest';
 import { moveToFrontSoListTest } from './MoveToFrontSoListTest';
 import { transposeSoListTest } from './TransposeSoListTest';
 
@@ -9,7 +11,7 @@ describe('Test SoLists', function() {
 
   /** General Tests **/
 
-  const dsClasses = [DoublyLinkedList,MoveToFrontSoList,TransposeSoList];
+  const dsClasses = [DoublyLinkedList,FrequencyCountSoList,MoveToFrontSoList,TransposeSoList];
   dsClasses.forEach(function(dsClass) {
     describe('Test Base ' + dsClass.name, function() {
 
@@ -70,6 +72,28 @@ describe('Test SoLists', function() {
     doublyLinkedListTest.testLastIndexOf(DoublyLinkedList);
     doublyLinkedListTest.testPush(DoublyLinkedList);
     doublyLinkedListTest.testUnshift(DoublyLinkedList);
+  });
+
+  /** FrequencyCountSoList Search & Creation Tests **/
+
+  describe('Test FrequencyCountSoList Search & Creation', function() {
+    // Constructor tests
+    frequencyCountSoListTest.testConstructor();
+
+    // Custom methods tests
+    frequencyCountSoListTest.testInsert();
+
+    // Array-like methods tests
+    frequencyCountSoListTest.testAt();
+    frequencyCountSoListTest.testFind();
+    frequencyCountSoListTest.testFindIndex();
+    frequencyCountSoListTest.testFindLast();
+    frequencyCountSoListTest.testFindLastIndex();
+    frequencyCountSoListTest.testIncludes();
+    frequencyCountSoListTest.testIndexOf();
+    frequencyCountSoListTest.testLastIndexOf();
+    frequencyCountSoListTest.testPush();
+    frequencyCountSoListTest.testUnshift();
   });
 
   /** MoveToFrontSoList Search & Creation Tests **/
