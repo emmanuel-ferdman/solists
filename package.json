@@ -4,7 +4,11 @@
   "description": "Implementation of self-organizing lists",
   "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npm run clean && tsc",
+    "clean": "rimraf ./dist",
+    "coverage": "nyc --reporter=html ts-mocha tests/test.ts",
+    "lint": "eslint ./src ./tests",
+    "test": "ts-mocha tests/test.ts"
   },
   "repository": {
     "type": "git",
