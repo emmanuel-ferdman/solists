@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "Implementation of self-organizing lists",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "npm run clean && tsc",
     "clean": "rimraf ./dist",
