@@ -20,7 +20,7 @@
     "self-organizing-list"
   ],
   "author": "Emmanuel Ferdman",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/emmanuel-ferdman/solists/issues"
   },
