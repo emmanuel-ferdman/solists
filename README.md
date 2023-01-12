@@ -139,8 +139,8 @@ List of methods of SoList:
 |`includes()`|Determines whether a SoList includes a certain value among its entries|
 |`indexOf()`|Returns the first index at which a given element can be found in a SoList|
 |`insert()`|Adds an element into a specific index of a SoList|
-|`isEqual()`|Checks if the SoList is equal to a given iterable|
 |`isEmpty()`|Checks if the SoList does not contain any elements|
+|`isEqual()`|Checks if the SoList is equal to a given iterable|
 |`join()`|Joins all elements of SoList into a string separated by commas or a specified separator string|
 |`keys()`|Returns a SoList iterator object of keys|
 |`lastIndexOf()`|Returns the last index at which a given element can be found in a SoList|
@@ -166,7 +166,7 @@ Although SoList implements most of the methods of JS-Array (with identical behav
 - Unlike JS-Array, SoList does not support empty items (for example `[1,,3]`).
 - Currently, the `every()`, `filter()`, `find()`, `findIndex()`, `findLast()`, `findLastIndex()`, `flatMap()` and `some()` don't support the `thisArg` argument.
 - Unsupported JS-Array methods: `group()` and `groupToMap()`.
-- Additional custom methods of SoList: `insert()`, `isEqual()`, `isEmpty()` and `remove()`.
+- Additional custom methods of SoList: `insert()`, `isEmpty()`, `isEqual()` and `remove()`.
 
 ## Contributing
 
