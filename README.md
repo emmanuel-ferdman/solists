@@ -180,4 +180,4 @@ npm run test
 
 ## License
 
-The library is freely distributable under the terms of the [MIT license][LICENSE].
+The library is freely distributable under the terms of the [MIT license](LICENSE).
