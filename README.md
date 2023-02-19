@@ -47,10 +47,10 @@ At the t-th item selection:
 ### Rearrange upon creation
 In literature, some self-organizing list implementations activate a heuristic after every creation operation (like `insert()`, `push()`, `unshift()`, etc.). This means that immediately after a new node is added to the list, the relevant heuristic is triggered and the list is rearranged.
 
-This library supports both of these approaches. By default, the list is only rearranged when searched. To activate the option for rearranging the list upon creation, use `rearrange_on_creation=true` when creating a new SoList instance. See the example below for more details.
+This library supports both of these approaches. By default, the list is only rearranged when searched. To activate the option for rearranging the list upon creation, use `rearrangeOnCreation=true` when creating a new SoList instance. See the example below for more details.
 
 Methods which perform rearrange of the list:
-- Rearrange upon search: `at()`, `find()`, `findIndex()`, `findLast()`, `findLastIndex()`, `includes()`, `indexOf()` and `lastIndexOf`.
+- Rearrange upon search: `at()`, `find()`, `findIndex()`, `findLast()`, `findLastIndex()`, `includes()`, `indexOf()` and `lastIndexOf()`.
 - Rearrange upon creation: `constructor` (initialization from an iterable), `insert()`, `push()` and `unshift()`.
 
 ## Installation
