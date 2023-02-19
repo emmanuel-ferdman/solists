@@ -7,7 +7,7 @@ const frequencyCountSoListTest = {
 
   testConstructor: function() {
     describe('FrequencyCountSoList: Test the "constructor"', function() {
-      it('should check "constructor" from [1,2,3] with rearrange_on_creation=true', function() {
+      it('should check "constructor" from [1,2,3] with rearrangeOnCreation=true', function() {
         const array = [1,2,3];
         const expectedArray = [1,2,3];
         const ds = new FrequencyCountSoList(true,array);
@@ -15,7 +15,7 @@ const frequencyCountSoListTest = {
         assert(ds.isEqual(expectedArray));
       });
 
-      it('should check "constructor" from [0,-1,2,-3,4,-5] with rearrange_on_creation=true', function() {
+      it('should check "constructor" from [0,-1,2,-3,4,-5] with rearrangeOnCreation=true', function() {
         const array = [0,-1,2,-3,4,-5];
         const expectedArray = [0,-1,2,-3,4,-5];
         const ds = new FrequencyCountSoList(true,array);
@@ -653,7 +653,7 @@ const frequencyCountSoListTest = {
 
   testPush: function() {
     describe('FrequencyCountSoList: Test the "push" method', function() {
-      it('should check "push" of values [1,2,3] to list [] with rearrange_on_creation=true', function() {
+      it('should check "push" of values [1,2,3] to list [] with rearrangeOnCreation=true', function() {
         const array = [];
         const inputs = [
           {"expectedArray": [1], "expectedValue": 1, "value": 1},
@@ -669,7 +669,7 @@ const frequencyCountSoListTest = {
         });
       });
 
-      it('should check "push" of values [1,5,2,3,6] to list [] with rearrange_on_creation=true', function() {
+      it('should check "push" of values [1,5,2,3,6] to list [] with rearrangeOnCreation=true', function() {
         const array = [];
         const inputs = [
           {"expectedArray": [1], "expectedValue": 1, "value": 1},
@@ -687,7 +687,7 @@ const frequencyCountSoListTest = {
         });
       });
 
-      it('should check "push" of values [6,5,4] to list [1,2,3] with rearrange_on_creation=true after "includes" [3]', function() {
+      it('should check "push" of values [6,5,4] to list [1,2,3] with rearrangeOnCreation=true after "includes" [3]', function() {
         const array = [1,2,3];
         const expectedInitArray = [1,2,3];
         const findInputs = [3];
@@ -708,7 +708,7 @@ const frequencyCountSoListTest = {
         });
       });
 
-      it('should check "push" of values [6,5,4] to list [1,2,3] with rearrange_on_creation=true after "includes" [3,2,3]', function() {
+      it('should check "push" of values [6,5,4] to list [1,2,3] with rearrangeOnCreation=true after "includes" [3,2,3]', function() {
         const array = [1,2,3];
         const expectedInitArray = [1,2,3];
         const findInputs = [3,2,3];
@@ -735,7 +735,7 @@ const frequencyCountSoListTest = {
 
   testUnshift: function() {
     describe('FrequencyCountSoList: Test the "unshift" method', function() {
-      it('should check "unshift" of values [1,2,3] to list [] with rearrange_on_creation=true', function() {
+      it('should check "unshift" of values [1,2,3] to list [] with rearrangeOnCreation=true', function() {
         const array = [];
         const inputs = [
           {"expectedArray": [1], "expectedValue": 1, "value": 1},
@@ -751,7 +751,7 @@ const frequencyCountSoListTest = {
         });
       });
 
-      it('should check "unshift" of values [1,5,2,3,6] to list [] with rearrange_on_creation=true', function() {
+      it('should check "unshift" of values [1,5,2,3,6] to list [] with rearrangeOnCreation=true', function() {
         const array = [];
         const inputs = [
           {"expectedArray": [1], "expectedValue": 1, "value": 1},
@@ -769,7 +769,7 @@ const frequencyCountSoListTest = {
         });
       });
 
-      it('should check "unshift" of values [6,5,4] to list [1,2,3] with rearrange_on_creation=true', function() {
+      it('should check "unshift" of values [6,5,4] to list [1,2,3] with rearrangeOnCreation=true', function() {
         const array = [1,2,3];
         const expectedInitArray = [1,2,3];
         const inputs = [
@@ -786,7 +786,7 @@ const frequencyCountSoListTest = {
         });
       });
 
-      it('should check "unshift" of values [6,5,4] to list [1,2,3] with rearrange_on_creation=true after "includes" [3]', function() {
+      it('should check "unshift" of values [6,5,4] to list [1,2,3] with rearrangeOnCreation=true after "includes" [3]', function() {
         const array = [1,2,3];
         const expectedInitArray = [1,2,3];
         const findInputs = [3];
@@ -807,7 +807,7 @@ const frequencyCountSoListTest = {
         });
       });
 
-      it('should check "unshift" of values [6,5,4] to list [1,2,3] with rearrange_on_creation=true after "includes" [3,2,3]', function() {
+      it('should check "unshift" of values [6,5,4] to list [1,2,3] with rearrangeOnCreation=true after "includes" [3,2,3]', function() {
         const array = [1,2,3];
         const expectedInitArray = [1,2,3];
         const findInputs = [3,2,3];
@@ -836,7 +836,7 @@ const frequencyCountSoListTest = {
 
   testInsert: function() {
     describe('FrequencyCountSoList: Test the "insert" method', function() {
-      it('should check "insert" of values [1,2,3] with indices [0,1,2] to list [] with rearrange_on_creation=true', function() {
+      it('should check "insert" of values [1,2,3] with indices [0,1,2] to list [] with rearrangeOnCreation=true', function() {
         const array = [];
         const inputs = [
           {"expectedArray": [1], "expectedValue": 1, "value": 1, "index": 0},
@@ -852,7 +852,7 @@ const frequencyCountSoListTest = {
         });
       });
 
-      it('should check "insert" of values [1,5,2,3,6] with indices [0,1,-1,1,2] to list [] with rearrange_on_creation=true', function() {
+      it('should check "insert" of values [1,5,2,3,6] with indices [0,1,-1,1,2] to list [] with rearrangeOnCreation=true', function() {
         const array = [];
         const inputs = [
           {"expectedArray": [1], "expectedValue": 1, "value": 1, "index": 0},
@@ -870,7 +870,7 @@ const frequencyCountSoListTest = {
         });
       });
 
-      it('should check "insert" of values [6,7,8] with indices [0,2,-1] to list [1,2,3,4,5] with rearrange_on_creation=true after "includes" [3]', function() {
+      it('should check "insert" of values [6,7,8] with indices [0,2,-1] to list [1,2,3,4,5] with rearrangeOnCreation=true after "includes" [3]', function() {
         const array = [1,2,3,4,5];
         const expectedInitArray = [1,2,3,4,5];
         const findInputs = [3];
@@ -891,7 +891,7 @@ const frequencyCountSoListTest = {
         });
       });
 
-      it('should check "insert" of values [6,7,8] with indices [0,2,-1] to list [1,2,3,4,5] with rearrange_on_creation=true after "includes" [3,2,3]', function() {
+      it('should check "insert" of values [6,7,8] with indices [0,2,-1] to list [1,2,3,4,5] with rearrangeOnCreation=true after "includes" [3,2,3]', function() {
         const array = [1,2,3,4,5];
         const expectedInitArray = [1,2,3,4,5];
         const findInputs = [3,2,3];
