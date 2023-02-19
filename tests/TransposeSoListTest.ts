@@ -7,7 +7,7 @@ const transposeSoListTest = {
 
   testConstructor: function() {
     describe('TransposeSoList: Test the "constructor"', function() {
-      it('should check "constructor" from [1,2,3] with rearrange_on_creation=true', function() {
+      it('should check "constructor" from [1,2,3] with rearrangeOnCreation=true', function() {
         const array = [1,2,3];
         const expectedArray = [2,3,1];
         const ds = new TransposeSoList(true,array);
@@ -15,7 +15,7 @@ const transposeSoListTest = {
         assert(ds.isEqual(expectedArray));
       });
 
-      it('should check "constructor" from [0,-1,2,-3,4,-5] with rearrange_on_creation=true', function() {
+      it('should check "constructor" from [0,-1,2,-3,4,-5] with rearrangeOnCreation=true', function() {
         const array = [0,-1,2,-3,4,-5];
         const expectedArray = [-1,2,-3,4,-5,0];
         const ds = new TransposeSoList(true,array);
@@ -653,7 +653,7 @@ const transposeSoListTest = {
 
   testPush: function() {
     describe('TransposeSoList: Test the "push" method', function() {
-      it('should check "push" of values [1,2,3] to list [] with rearrange_on_creation=true', function() {
+      it('should check "push" of values [1,2,3] to list [] with rearrangeOnCreation=true', function() {
         const array = [];
         const inputs = [
           {"expectedArray": [1], "expectedValue": 1, "value": 1},
@@ -669,7 +669,7 @@ const transposeSoListTest = {
         });
       });
 
-      it('should check "push" of values [1,5,2,3,6] to list [] with rearrange_on_creation=true', function() {
+      it('should check "push" of values [1,5,2,3,6] to list [] with rearrangeOnCreation=true', function() {
         const array = [];
         const inputs = [
           {"expectedArray": [1], "expectedValue": 1, "value": 1},
@@ -687,7 +687,7 @@ const transposeSoListTest = {
         });
       });
 
-      it('should check "push" of values [6,5,4] to list [1,2,3] with rearrange_on_creation=true after "includes" [3]', function() {
+      it('should check "push" of values [6,5,4] to list [1,2,3] with rearrangeOnCreation=true after "includes" [3]', function() {
         const array = [1,2,3];
         const expectedInitArray = [2,3,1];
         const findInputs = [3];
@@ -708,7 +708,7 @@ const transposeSoListTest = {
         });
       });
 
-      it('should check "push" of values [6,5,4] to list [1,2,3] with rearrange_on_creation=true after "includes" [3,2,3]', function() {
+      it('should check "push" of values [6,5,4] to list [1,2,3] with rearrangeOnCreation=true after "includes" [3,2,3]', function() {
         const array = [1,2,3];
         const expectedInitArray = [2,3,1];
         const findInputs = [3,2,3];
@@ -735,7 +735,7 @@ const transposeSoListTest = {
 
   testUnshift: function() {
     describe('TransposeSoList: Test the "unshift" method', function() {
-      it('should check "unshift" of values [1,2,3] to list [] with rearrange_on_creation=true', function() {
+      it('should check "unshift" of values [1,2,3] to list [] with rearrangeOnCreation=true', function() {
         const array = [];
         const inputs = [
           {"expectedArray": [1], "expectedValue": 1, "value": 1},
@@ -751,7 +751,7 @@ const transposeSoListTest = {
         });
       });
 
-      it('should check "unshift" of values [1,5,2,3,6] to list [] with rearrange_on_creation=true', function() {
+      it('should check "unshift" of values [1,5,2,3,6] to list [] with rearrangeOnCreation=true', function() {
         const array = [];
         const inputs = [
           {"expectedArray": [1], "expectedValue": 1, "value": 1},
@@ -769,7 +769,7 @@ const transposeSoListTest = {
         });
       });
 
-      it('should check "unshift" of values [6,5,4] to list [1,2,3] with rearrange_on_creation=true after "includes" [3]', function() {
+      it('should check "unshift" of values [6,5,4] to list [1,2,3] with rearrangeOnCreation=true after "includes" [3]', function() {
         const array = [1,2,3];
         const expectedInitArray = [2,3,1];
         const findInputs = [3];
@@ -790,7 +790,7 @@ const transposeSoListTest = {
         });
       });
 
-      it('should check "unshift" of values [6,5,4] to list [1,2,3] with rearrange_on_creation=true after "includes" [3,2,3]', function() {
+      it('should check "unshift" of values [6,5,4] to list [1,2,3] with rearrangeOnCreation=true after "includes" [3,2,3]', function() {
         const array = [1,2,3];
         const expectedInitArray = [2,3,1];
         const findInputs = [3,2,3];
@@ -819,7 +819,7 @@ const transposeSoListTest = {
 
   testInsert: function() {
     describe('TransposeSoList: Test the "insert" method', function() {
-      it('should check "insert" of values [1,2,3] with indices [0,1,2] to list [] with rearrange_on_creation=true', function() {
+      it('should check "insert" of values [1,2,3] with indices [0,1,2] to list [] with rearrangeOnCreation=true', function() {
         const array = [];
         const inputs = [
           {"expectedArray": [1], "expectedValue": 1, "value": 1, "index": 0},
@@ -835,7 +835,7 @@ const transposeSoListTest = {
         });
       });
 
-      it('should check "insert" of values [1,5,2,3,6] with indices [0,1,-1,1,2] to list [] with rearrange_on_creation=true', function() {
+      it('should check "insert" of values [1,5,2,3,6] with indices [0,1,-1,1,2] to list [] with rearrangeOnCreation=true', function() {
         const array = [];
         const inputs = [
           {"expectedArray": [1], "expectedValue": 1, "value": 1, "index": 0},
@@ -853,7 +853,7 @@ const transposeSoListTest = {
         });
       });
 
-      it('should check "insert" of values [6,7,8] with indices [0,2,-1] to list [1,2,3,4,5] with rearrange_on_creation=true after "includes" [3]', function() {
+      it('should check "insert" of values [6,7,8] with indices [0,2,-1] to list [1,2,3,4,5] with rearrangeOnCreation=true after "includes" [3]', function() {
         const array = [1,2,3,4,5];
         const expectedInitArray = [2,3,4,5,1];
         const findInputs = [3];
@@ -874,7 +874,7 @@ const transposeSoListTest = {
         });
       });
 
-      it('should check "insert" of values [6,7,8] with indices [0,2,-1] to list [1,2,3,4,5] with rearrange_on_creation=true after "includes" [3,2,3]', function() {
+      it('should check "insert" of values [6,7,8] with indices [0,2,-1] to list [1,2,3,4,5] with rearrangeOnCreation=true after "includes" [3,2,3]', function() {
         const array = [1,2,3,4,5];
         const expectedInitArray = [2,3,4,5,1];
         const findInputs = [3,2,3];
