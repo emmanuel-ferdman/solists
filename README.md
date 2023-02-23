@@ -1,4 +1,4 @@
-# Self-organizing lists in TypeScript
+<h1 align="center" style="text-align: center;">SoLists - Self-organizing lists in TypeScript</h1>
 
 The library provides a powerful and flexible implementation of the [self-organizing list](https://en.wikipedia.org/wiki/Self-organizing_list) data structure written in TypeScript. It offers support for multiple heuristic algorithms such as [Frequency Count](#Frequency-Count), [Move to Front](#Move-to-Front) and [Transpose](#Transpose). In addition to custom methods, the data structure also includes a selection of methods with behavior equivalent to that of JavaScript's built-in [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) data structure.
 
