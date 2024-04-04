@@ -29,6 +29,7 @@
     "@typescript-eslint/eslint-plugin": "^5.46.0",
     "@typescript-eslint/parser": "^5.46.0",
     "eslint": "^8.29.0",
+    "mocha": "^10.4.0",
     "nyc": "^15.1.0",
     "ts-mocha": "^10.0.0",
     "ts-node": "^10.9.1",
