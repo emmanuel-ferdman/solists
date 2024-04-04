@@ -2,10 +2,10 @@ import { DoublyLinkedList } from '../src/DoublyLinkedList';
 import { FrequencyCountSoList } from '../src/FrequencyCountSoList';
 import { MoveToFrontSoList } from '../src/MoveToFrontSoList';
 import { TransposeSoList } from '../src/TransposeSoList';
-import { doublyLinkedListTest } from './DoublyLinkedListTest';
-import { frequencyCountSoListTest } from './FrequencyCountSoListTest';
-import { moveToFrontSoListTest } from './MoveToFrontSoListTest';
-import { transposeSoListTest } from './TransposeSoListTest';
+import { doublyLinkedListTest } from './doublyLinkedListTests';
+import { frequencyCountSoListTest } from './frequencyCountSoListTests';
+import { moveToFrontSoListTest } from './moveToFrontSoListTests';
+import { transposeSoListTest } from './transposeSoListTests';
 
 describe('Test SoLists', function() {
 
