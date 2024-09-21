@@ -79,16 +79,6 @@ function testToLocaleString(dsClass) {
       assert.equal(ds.toLocaleString(locales),array.toLocaleString(locales));
     });
 
-    it('should check "toLocaleString" of list [689,100,4577,56] with locales "en-US" and options "null"', function() {
-      const array = [689,100,4577,56];
-      const locales = 'en-US';
-      const options = null;
-      const ds = new dsClass(false,array);
-      assert.equal(ds.length,array.length);
-      assert(ds.isEqual(array));
-      assert.equal(ds.toLocaleString(locales,options),array.toLocaleString(locales,options));
-    });
-
     it('should check "toLocaleString" of list [689,100,4577,56] with locales "en-US" and options "undefined"', function() {
       const array = [689,100,4577,56];
       const locales = 'en-US';
@@ -133,16 +123,6 @@ function testToLocaleString(dsClass) {
       const array = [689,100,4577,56];
       const locales = 'en-US';
       const options = {};
-      const ds = new dsClass(false,array);
-      assert.equal(ds.length,array.length);
-      assert(ds.isEqual(array));
-      assert.equal(ds.toLocaleString(locales,options),array.toLocaleString(locales,options));
-    });
-
-    it('should check "toLocaleString" of list [689,100,4577,56] with locales "null" and options "{ style: "currency", currency: "USD" }"', function() {
-      const array = [689,100,4577,56];
-      const locales = null;
-      const options = { style: "currency", currency: "USD" };
       const ds = new dsClass(false,array);
       assert.equal(ds.length,array.length);
       assert(ds.isEqual(array));
@@ -207,6 +187,54 @@ function testToLocaleString(dsClass) {
       assert.equal(ds.length,array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.toLocaleString(locales,options),array.toLocaleString(locales,options));
+    });
+
+    it('should check "toLocaleString" of list [689,100,4577,56] with locales "en-US" and options "null"', function() {
+      const array = [689,100,4577,56];
+      const locales = 'en-US';
+      const options = null;
+      const ds = new dsClass(false,array);
+      assert.equal(ds.length,array.length);
+      assert(ds.isEqual(array));
+
+      let dsError, arrayError;
+      try {
+        ds.toLocaleString(locales, options);
+      } catch (error) {
+        dsError = error;
+      }
+
+      try {
+        array.toLocaleString(locales, options);
+      } catch (error) {
+        arrayError = error;
+      }
+
+      assert.equal(dsError.message, arrayError.message);
+    });
+
+    it('should check "toLocaleString" of list [689,100,4577,56] with locales "null" and options "{ style: "currency", currency: "USD" }"', function() {
+      const array = [689,100,4577,56];
+      const locales = null;
+      const options = { style: "currency", currency: "USD" };
+      const ds = new dsClass(false,array);
+      assert.equal(ds.length,array.length);
+      assert(ds.isEqual(array));
+
+      let dsError, arrayError;
+      try {
+        ds.toLocaleString(locales, options);
+      } catch (error) {
+        dsError = error;
+      }
+
+      try {
+        array.toLocaleString(locales, options);
+      } catch (error) {
+        arrayError = error;
+      }
+
+      assert.equal(dsError.message, arrayError.message);
     });
   });
 }
