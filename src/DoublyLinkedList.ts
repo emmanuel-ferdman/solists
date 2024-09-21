@@ -418,7 +418,6 @@ export class DoublyLinkedList {
 
       if (prev === null) {
         this.head = current;
-        prev = current;
         if (current) {
           current.prev = null;
         }
@@ -472,17 +471,9 @@ export class DoublyLinkedList {
     for (const [index, node] of this._nodes(0,this.length)) {
       const value = node.value == null ? "" : node.value;
       if (index !== this.length - 1) {
-        if (locales == null || options == null) {
-          result = result.concat(value.toLocaleString()) + separator;
-        } else {
-          result = result.concat(value.toLocaleString(locales, options)) + separator;
-        }
+        result = result.concat(value.toLocaleString(locales, options)) + separator;
       } else {
-        if (locales == null || options == null) {
-          result = result.concat(value.toLocaleString());
-        } else {
-          result = result.concat(value.toLocaleString(locales, options));
-        }
+        result = result.concat(value.toLocaleString(locales, options));
       }
     }
     return result;
