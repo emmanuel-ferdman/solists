@@ -407,7 +407,7 @@ export class DoublyLinkedList {
 
     const deleted = new DoublyLinkedList();
     if (this.length > 0 && deleteCount > 0) {
-      let prev = this._getNode(start - 1);
+      const prev = this._getNode(start - 1);
       let current = prev ? prev.next : this.head;
 
       for (let index = 0; index < deleteCount; index += 1) {
