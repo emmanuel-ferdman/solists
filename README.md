@@ -155,7 +155,7 @@ List of methods of SoList:
 |`push()`|Adds one or more elements to the end of a SoList and returns the new length of the SoList|
 |`reduce()`|Reduces the values of a SoList to a single value (going left-to-right)|
 |`reduceRight()`|Reduces the values of a SoList to a single value (going right-to-left)|
-|`remove()`|Removes an element by a specific index from a SoList|
+|`remove()`|Removes the element at a specific index from a SoList|
 |`reverse()`|Reverses the order of the elements in a SoList|
 |`shift()`|removes the first element from a SoList and returns that removed element|
 |`slice()`|Returns a shallow copy of a portion of a SoList into a new SoList selected by positions|
