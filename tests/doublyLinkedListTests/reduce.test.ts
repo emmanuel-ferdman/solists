@@ -81,8 +81,8 @@ function testReduce(dsClass) {
       const ds = new dsClass(false,array);
       assert.equal(ds.length,array.length);
       assert(ds.isEqual(array));
-      assert.throws(() => array.reduce(func),TypeError(func + ' is not a function'));
-      assert.throws(() => ds.reduce(func),TypeError(func + ' is not a function'));
+      assert.throws(() => array.reduce(func),TypeError(`${typeof func} ${String(func)} is not a function`));
+      assert.throws(() => ds.reduce(func),TypeError(`${typeof func} ${String(func)} is not a function`));
     });
 
     it('should check "reduce" of "undefined" function on list [1,2,3,4,5]', function() {
@@ -91,8 +91,8 @@ function testReduce(dsClass) {
       const ds = new dsClass(false,array);
       assert.equal(ds.length,array.length);
       assert(ds.isEqual(array));
-      assert.throws(() => array.reduce(func),TypeError(func + ' is not a function'));
-      assert.throws(() => ds.reduce(func),TypeError(func + ' is not a function'));
+      assert.throws(() => array.reduce(),TypeError('undefined is not a function'));
+      assert.throws(() => ds.reduce(),TypeError('undefined is not a function'));
     });
 
     it('should check "reduce" of "NaN" function on list [1,2,3,4,5]', function() {
@@ -101,8 +101,8 @@ function testReduce(dsClass) {
       const ds = new dsClass(false,array);
       assert.equal(ds.length,array.length);
       assert(ds.isEqual(array));
-      assert.throws(() => array.reduce(func),TypeError(func + ' is not a function'));
-      assert.throws(() => ds.reduce(func),TypeError(func + ' is not a function'));
+      assert.throws(() => array.reduce(func),TypeError(`${typeof func} ${String(func)} is not a function`));
+      assert.throws(() => ds.reduce(func),TypeError(`${typeof func} ${String(func)} is not a function`));
     });
 
     it('should check "reduce" of "Infinity" function on list [1,2,3,4,5]', function() {
@@ -111,8 +111,8 @@ function testReduce(dsClass) {
       const ds = new dsClass(false,array);
       assert.equal(ds.length,array.length);
       assert(ds.isEqual(array));
-      assert.throws(() => array.reduce(func),TypeError(func + ' is not a function'));
-      assert.throws(() => ds.reduce(func),TypeError(func + ' is not a function'));
+      assert.throws(() => array.reduce(func),TypeError(`${typeof func} ${String(func)} is not a function`));
+      assert.throws(() => ds.reduce(func),TypeError(`${typeof func} ${String(func)} is not a function`));
     });
 
     it('should check "reduce" of "-0" function on list [1,2,3,4,5]', function() {
@@ -121,8 +121,8 @@ function testReduce(dsClass) {
       const ds = new dsClass(false,array);
       assert.equal(ds.length,array.length);
       assert(ds.isEqual(array));
-      assert.throws(() => array.reduce(func),TypeError(func + ' is not a function'));
-      assert.throws(() => ds.reduce(func),TypeError(func + ' is not a function'));
+      assert.throws(() => array.reduce(func),TypeError(`${typeof func} ${String(func)} is not a function`));
+      assert.throws(() => ds.reduce(func),TypeError(`${typeof func} ${String(func)} is not a function`));
     });
 
     it('should check "reduce" of max value of list [-10,20,100,0,30] from initial value "200"', function() {
