@@ -72,8 +72,8 @@ function testReduceRight(dsClass) {
       const ds = new dsClass(false,array);
       assert.equal(ds.length,array.length);
       assert(ds.isEqual(array));
-      assert.throws(() => array.reduceRight(func),TypeError(func + ' is not a function'));
-      assert.throws(() => ds.reduceRight(func),TypeError(func + ' is not a function'));
+      assert.throws(() => array.reduceRight(func),TypeError(`${typeof func} ${String(func)} is not a function`));
+      assert.throws(() => ds.reduceRight(func),TypeError(`${typeof func} ${String(func)} is not a function`));
     });
 
     it('should check "reduceRight" of "undefined" function on list [1,2,3,4,5]', function() {
@@ -82,8 +82,8 @@ function testReduceRight(dsClass) {
       const ds = new dsClass(false,array);
       assert.equal(ds.length,array.length);
       assert(ds.isEqual(array));
-      assert.throws(() => array.reduceRight(func),TypeError(func + ' is not a function'));
-      assert.throws(() => ds.reduceRight(func),TypeError(func + ' is not a function'));
+      assert.throws(() => array.reduceRight(func),TypeError('undefined is not a function'));
+      assert.throws(() => ds.reduceRight(func),TypeError('undefined is not a function'));
     });
 
     it('should check "reduceRight" of "NaN" function on list [1,2,3,4,5]', function() {
@@ -92,8 +92,8 @@ function testReduceRight(dsClass) {
       const ds = new dsClass(false,array);
       assert.equal(ds.length,array.length);
       assert(ds.isEqual(array));
-      assert.throws(() => array.reduceRight(func),TypeError(func + ' is not a function'));
-      assert.throws(() => ds.reduceRight(func),TypeError(func + ' is not a function'));
+      assert.throws(() => array.reduceRight(func),TypeError(`${typeof func} ${String(func)} is not a function`));
+      assert.throws(() => ds.reduceRight(func),TypeError(`${typeof func} ${String(func)} is not a function`));
     });
 
     it('should check "reduceRight" of "Infinity" function on list [1,2,3,4,5]', function() {
@@ -102,8 +102,8 @@ function testReduceRight(dsClass) {
       const ds = new dsClass(false,array);
       assert.equal(ds.length,array.length);
       assert(ds.isEqual(array));
-      assert.throws(() => array.reduceRight(func),TypeError(func + ' is not a function'));
-      assert.throws(() => ds.reduceRight(func),TypeError(func + ' is not a function'));
+      assert.throws(() => array.reduceRight(func),TypeError(`${typeof func} ${String(func)} is not a function`));
+      assert.throws(() => ds.reduceRight(func),TypeError(`${typeof func} ${String(func)} is not a function`));
     });
 
     it('should check "reduceRight" of "-0" function on list [1,2,3,4,5]', function() {
@@ -112,8 +112,8 @@ function testReduceRight(dsClass) {
       const ds = new dsClass(false,array);
       assert.equal(ds.length,array.length);
       assert(ds.isEqual(array));
-      assert.throws(() => array.reduceRight(func),TypeError(func + ' is not a function'));
-      assert.throws(() => ds.reduceRight(func),TypeError(func + ' is not a function'));
+      assert.throws(() => array.reduceRight(func),TypeError(`${typeof func} ${String(func)} is not a function`));
+      assert.throws(() => ds.reduceRight(func),TypeError(`${typeof func} ${String(func)} is not a function`));
     });
 
     it('should check "reduceRight" of max value of list [-10,20,100,0,30] from initial value "200"', function() {
