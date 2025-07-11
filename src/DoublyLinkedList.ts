@@ -300,8 +300,11 @@ export class DoublyLinkedList {
   }
 
   public reduce(callbackFn: any, initialValue: any): any {
-    if (!(this._isCallable(callbackFn))) {
-      throw TypeError(this._tryToString(callbackFn) + ' is not a function');
+    if (!this._isCallable(callbackFn)) {
+      const type = typeof callbackFn;
+      const value = this._tryToString(callbackFn);
+      const typePrefix = type !== 'undefined' ? type + ' ' : '';
+      throw TypeError(`${typePrefix}${value} is not a function`);
     }
     if (this.length === 0 && arguments.length < 2) {
       throw TypeError('Reduce of empty list with no initial value');
@@ -316,8 +319,11 @@ export class DoublyLinkedList {
   }
 
   public reduceRight(callbackFn: any, initialValue: any): any {
-    if (!(this._isCallable(callbackFn))) {
-      throw TypeError(this._tryToString(callbackFn) + ' is not a function');
+    if (!this._isCallable(callbackFn)) {
+      const type = typeof callbackFn;
+      const value = this._tryToString(callbackFn);
+      const typePrefix = type !== 'undefined' ? type + ' ' : '';
+      throw TypeError(`${typePrefix}${value} is not a function`);
     }
     if (this.length === 0 && arguments.length < 2) {
       throw TypeError('Reduce of empty list with no initial value');
