@@ -1,4 +1,4 @@
-import { Node } from './Node';
+import { Node } from "./Node";
 
 export class DoublyLinkedList {
   public length: number;
@@ -7,7 +7,7 @@ export class DoublyLinkedList {
   protected tail: Node | null;
   protected rearrangeOnCreation: boolean;
 
-  public constructor(rearrangeOnCreation=false,iterable=null) {
+  public constructor(rearrangeOnCreation = false, iterable = null) {
     this.head = null;
     this.tail = null;
     this.length = 0;
@@ -53,11 +53,16 @@ export class DoublyLinkedList {
     return result;
   }
 
-  public copyWithin(target: any /* = 0 */ , start: any /* = 0, end = @length */ ): DoublyLinkedList {
+  public copyWithin(target: any /* = 0 */, start: any /* = 0, end = @length */): DoublyLinkedList {
     const sourceStart = this._toAbsoluteIndex(start, this.length);
-    const sourceEnd = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : this.length;
+    const sourceEnd =
+      arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : this.length;
     const targetStart = this._toAbsoluteIndex(target, this.length);
-    let count = Math.min((sourceEnd === this.length ? this.length : this._toAbsoluteIndex(sourceEnd, this.length)) - sourceStart, this.length - targetStart);
+    let count = Math.min(
+      (sourceEnd === this.length ? this.length : this._toAbsoluteIndex(sourceEnd, this.length)) -
+        sourceStart,
+      this.length - targetStart
+    );
     const tempSrcLst = this.slice(0, this.length);
     const targetNodes = this._nodes(targetStart, targetStart + count);
     const sourceNodes = tempSrcLst._nodes(sourceStart, sourceStart + count);
@@ -78,15 +83,15 @@ export class DoublyLinkedList {
 
   // TODO: Support "thisArg" argument
   public every(callbackFn: any): boolean {
-    for (const [index, node] of this._nodes(0,this.length)) {
-      if (!(callbackFn(node.value, index, this))) {
+    for (const [index, node] of this._nodes(0, this.length)) {
+      if (!callbackFn(node.value, index, this)) {
         return false;
       }
     }
     return true;
   }
 
-  public fill(value: any, /* , startIndex = 0, endIndex = @length */ ): DoublyLinkedList {
+  public fill(value: any /* , startIndex = 0, endIndex = @length */): DoublyLinkedList {
     let startIndex = undefined;
     if (arguments.length > 1) {
       startIndex = arguments[1];
@@ -96,8 +101,8 @@ export class DoublyLinkedList {
     if (arguments.length > 2) {
       endIndex = arguments[2];
     }
-    endIndex = (endIndex === undefined) ? this.length : this._toAbsoluteIndex(endIndex, this.length);
-    for (const [/* index */, node] of this._nodes(startIndex,endIndex)) {
+    endIndex = endIndex === undefined ? this.length : this._toAbsoluteIndex(endIndex, this.length);
+    for (const [, /* index */ node] of this._nodes(startIndex, endIndex)) {
       node.value = value;
     }
     return this;
@@ -106,7 +111,7 @@ export class DoublyLinkedList {
   // TODO: Support "thisArg" argument
   public filter(callbackFn: any): DoublyLinkedList {
     const result = new DoublyLinkedList();
-    for (const [index, node] of this._nodes(0,this.length)) {
+    for (const [index, node] of this._nodes(0, this.length)) {
       if (callbackFn(node.value, index, this)) {
         result.push(node.value);
       }
@@ -116,7 +121,7 @@ export class DoublyLinkedList {
 
   // TODO: Support "thisArg" argument
   public find(callbackFn: any): unknown {
-    for (const [index, node] of this._nodes(0,this.length)) {
+    for (const [index, node] of this._nodes(0, this.length)) {
       if (callbackFn(node.value, index, this)) {
         node.count += 1;
         this._rearrange(node);
@@ -128,11 +133,11 @@ export class DoublyLinkedList {
 
   // TODO: Support "thisArg" argument
   public findIndex(callbackFn: any): number {
-    for (const [index, node] of this._nodes(0,this.length)) {
+    for (const [index, node] of this._nodes(0, this.length)) {
       if (callbackFn(node.value, index, this)) {
         node.count += 1;
         const result = this._rearrange(node);
-        return (result === undefined) ? index : result;
+        return result === undefined ? index : result;
       }
     }
     return -1;
@@ -140,7 +145,7 @@ export class DoublyLinkedList {
 
   // TODO: Support "thisArg" argument
   public findLast(callbackFn: any): unknown {
-    for (const [index, node] of this._nodesReverse(0,this.length)) {
+    for (const [index, node] of this._nodesReverse(0, this.length)) {
       if (callbackFn(node.value, index, this)) {
         node.count += 1;
         this._rearrange(node);
@@ -152,23 +157,25 @@ export class DoublyLinkedList {
 
   // TODO: Support "thisArg" argument
   public findLastIndex(callbackFn: any) {
-    for (const [index, node] of this._nodesReverse(0,this.length)) {
+    for (const [index, node] of this._nodesReverse(0, this.length)) {
       if (callbackFn(node.value, index, this)) {
         node.count += 1;
         const result = this._rearrange(node);
-        return (result === undefined) ? index : result;
+        return result === undefined ? index : result;
       }
     }
     return -1;
   }
 
-  public flat(depth=1): DoublyLinkedList {
+  public flat(depth = 1): DoublyLinkedList {
     depth = this._toIntegerOrInfinity(depth);
     if (depth < 1) {
       return this.slice(0, this.length);
     }
-    return this.reduce(function(flat: any, toFlatten: any) {
-      return flat.concat(((toFlatten instanceof DoublyLinkedList) && (depth > 1)) ? toFlatten.flat(depth - 1) : toFlatten);
+    return this.reduce(function (flat: any, toFlatten: any) {
+      return flat.concat(
+        toFlatten instanceof DoublyLinkedList && depth > 1 ? toFlatten.flat(depth - 1) : toFlatten
+      );
     }, new DoublyLinkedList());
   }
 
@@ -178,7 +185,7 @@ export class DoublyLinkedList {
   }
 
   public forEach(callbackFn: any): void {
-    for (const [index, node] of this._nodes(0,this.length)) {
+    for (const [index, node] of this._nodes(0, this.length)) {
       callbackFn(node.value, index, this);
     }
     return undefined;
@@ -189,7 +196,7 @@ export class DoublyLinkedList {
       return false;
     }
     fromIndex = this._toAbsoluteIndex(fromIndex, this.length);
-    for (const [/* index */, node] of this._nodes(fromIndex,this.length)) {
+    for (const [, /* index */ node] of this._nodes(fromIndex, this.length)) {
       if (this._sameValueZero(node.value, searchedValue)) {
         node.count += 1;
         this._rearrange(node);
@@ -199,30 +206,30 @@ export class DoublyLinkedList {
     return false;
   }
 
-  public indexOf(searchedValue: any, fromIndex=0): number {
+  public indexOf(searchedValue: any, fromIndex = 0): number {
     if (this.length === 0) {
       return -1;
     }
     fromIndex = this._toAbsoluteIndex(fromIndex, this.length);
-    for (const [index, node] of this._nodes(fromIndex,this.length)) {
+    for (const [index, node] of this._nodes(fromIndex, this.length)) {
       if (this._isStrictlyEqual(node.value, searchedValue)) {
         node.count += 1;
         const result = this._rearrange(node);
-        return (result === undefined) ? index : result;
+        return result === undefined ? index : result;
       }
     }
     return -1;
   }
 
   public join(separator: any): string {
-    let result = '';
+    let result = "";
     if (this.length === 0) {
       return result;
     }
     if (separator === undefined) {
-      separator = ',';
+      separator = ",";
     }
-    for (const [index, node] of this._nodes(0,this.length)) {
+    for (const [index, node] of this._nodes(0, this.length)) {
       const value = node.value == null ? "" : node.value;
       if (index !== this.length - 1) {
         result = result.concat(value) + separator;
@@ -237,7 +244,7 @@ export class DoublyLinkedList {
     return this._keys();
   }
 
-  public lastIndexOf(searchElement: any /* , fromIndex = @[*-1] */ ): number {
+  public lastIndexOf(searchElement: any /* , fromIndex = @[*-1] */): number {
     if (this.length === 0) {
       return -1;
     }
@@ -252,7 +259,7 @@ export class DoublyLinkedList {
       if (this._isStrictlyEqual(node.value, searchElement)) {
         node.count += 1;
         const result = this._rearrange(node);
-        return (result === undefined) ? index : result;
+        return result === undefined ? index : result;
       }
     }
     return -1;
@@ -260,7 +267,7 @@ export class DoublyLinkedList {
 
   public map(callbackFn: any): DoublyLinkedList {
     const result = new DoublyLinkedList();
-    for (const [index, node] of this._nodes(0,this.length)) {
+    for (const [index, node] of this._nodes(0, this.length)) {
       result.push(callbackFn(node.value, index, this));
     }
     return result;
@@ -303,14 +310,14 @@ export class DoublyLinkedList {
     if (!this._isCallable(callbackFn)) {
       const type = typeof callbackFn;
       const value = this._tryToString(callbackFn);
-      const typePrefix = type !== 'undefined' ? type + ' ' : '';
+      const typePrefix = type !== "undefined" ? type + " " : "";
       throw TypeError(`${typePrefix}${value} is not a function`);
     }
     if (this.length === 0 && arguments.length < 2) {
-      throw TypeError('Reduce of empty list with no initial value');
+      throw TypeError("Reduce of empty list with no initial value");
     }
     let accumulator = arguments.length > 1 ? initialValue : this.head!.value;
-    for (const [index, node] of this._nodes(0,this.length)) {
+    for (const [index, node] of this._nodes(0, this.length)) {
       if (arguments.length > 1 || index > 0) {
         accumulator = callbackFn(accumulator, node.value, index, this);
       }
@@ -322,14 +329,14 @@ export class DoublyLinkedList {
     if (!this._isCallable(callbackFn)) {
       const type = typeof callbackFn;
       const value = this._tryToString(callbackFn);
-      const typePrefix = type !== 'undefined' ? type + ' ' : '';
+      const typePrefix = type !== "undefined" ? type + " " : "";
       throw TypeError(`${typePrefix}${value} is not a function`);
     }
     if (this.length === 0 && arguments.length < 2) {
-      throw TypeError('Reduce of empty list with no initial value');
+      throw TypeError("Reduce of empty list with no initial value");
     }
     let accumulator = arguments.length > 1 ? initialValue : this.tail!.value;
-    for (const [index, node] of this._nodesReverse(0,this.length)) {
+    for (const [index, node] of this._nodesReverse(0, this.length)) {
       if (index < this.length - 1) {
         accumulator = callbackFn(accumulator, node.value, index, this);
       }
@@ -377,7 +384,7 @@ export class DoublyLinkedList {
     }
     startIndex = this._toAbsoluteIndex(startIndex, this.length);
     endIndex = this._toAbsoluteIndex(endIndex === undefined ? this.length : endIndex, this.length);
-    for (const [/* index */, node] of this._nodes(startIndex, endIndex)) {
+    for (const [, /* index */ node] of this._nodes(startIndex, endIndex)) {
       result.push(node.value);
     }
     return result;
@@ -385,7 +392,7 @@ export class DoublyLinkedList {
 
   // TODO: Support "thisArg" argument
   public some(callbackFn: any): boolean {
-    for (const [index, node] of this._nodes(0,this.length)) {
+    for (const [index, node] of this._nodes(0, this.length)) {
       if (callbackFn(node.value, index, this)) {
         return true;
       }
@@ -400,7 +407,7 @@ export class DoublyLinkedList {
     return this;
   }
 
-  public splice(start: any, deleteCount: any /* , ...items */ ): DoublyLinkedList {
+  public splice(start: any, deleteCount: any /* , ...items */): DoublyLinkedList {
     if (arguments.length === 0) {
       deleteCount = 0;
     } else if (arguments.length === 1) {
@@ -408,7 +415,10 @@ export class DoublyLinkedList {
       deleteCount = this.length - start;
     } else {
       start = this._toAbsoluteIndex(start, this.length);
-      deleteCount = Math.min(Math.max(this._toIntegerOrInfinity(deleteCount), 0), this.length - start);
+      deleteCount = Math.min(
+        Math.max(this._toIntegerOrInfinity(deleteCount), 0),
+        this.length - start
+      );
     }
 
     const deleted = new DoublyLinkedList();
@@ -469,12 +479,12 @@ export class DoublyLinkedList {
   }
 
   public toLocaleString(locales: any, options: any): string {
-    let result = '';
+    let result = "";
     if (this.length === 0) {
       return result;
     }
-    const separator = ',';
-    for (const [index, node] of this._nodes(0,this.length)) {
+    const separator = ",";
+    for (const [index, node] of this._nodes(0, this.length)) {
       const value = node.value == null ? "" : node.value;
       if (index !== this.length - 1) {
         result = result.concat(value.toLocaleString(locales, options)) + separator;
@@ -541,16 +551,16 @@ export class DoublyLinkedList {
   }
 
   public isEqual(value: any): boolean {
-    if (!(this._isIterable(value))) {
+    if (!this._isIterable(value)) {
       throw TypeError("The value should be iterable");
     }
     if (this.length !== value.length) {
       return false;
     }
     const values = value.values();
-    for (const [/* index */, node] of this._nodes(0,this.length)) {
+    for (const [, /* index */ node] of this._nodes(0, this.length)) {
       const currentValue = values.next();
-      if (!(this._sameValue(node.value,currentValue.value))) {
+      if (!this._sameValue(node.value, currentValue.value)) {
         return false;
       }
     }
@@ -659,7 +669,7 @@ export class DoublyLinkedList {
 
   // Private helping methods
 
-  private * _entries(): Generator<any> {
+  private *_entries(): Generator<any> {
     let node = this.head;
     let counter = 0;
     while (node) {
@@ -670,7 +680,7 @@ export class DoublyLinkedList {
   }
 
   private _extend(iterable: any): void {
-    if (!(this._isIterable(iterable))) {
+    if (!this._isIterable(iterable)) {
       throw TypeError("The value should be iterable");
     }
     for (const currentValue of iterable) {
@@ -679,7 +689,7 @@ export class DoublyLinkedList {
   }
 
   private _getSortCompare(comparefn: any) {
-    return function(x: any, y: any) {
+    return function (x: any, y: any) {
       if (y === undefined) return -1;
       if (x === undefined) return 1;
       if (comparefn !== undefined) return +comparefn(x, y) || 0;
@@ -688,21 +698,21 @@ export class DoublyLinkedList {
   }
 
   private _isCallable(fn: any): boolean {
-    return (typeof fn === 'function');
+    return typeof fn === "function";
   }
 
   private _isIterable(obj: any): boolean {
     if (obj == null) {
       return false;
     }
-    return typeof obj[Symbol.iterator] === 'function';
+    return typeof obj[Symbol.iterator] === "function";
   }
 
   private _isStrictlyEqual(x: any, y: any): boolean {
     return x === y;
   }
 
-  private * _keys(): Generator<number> {
+  private *_keys(): Generator<number> {
     let node = this.head;
     let counter = 0;
     while (node) {
@@ -784,7 +794,7 @@ export class DoublyLinkedList {
     }
   }
 
-  private * _nodes(startIndex: number, endIndex: number): Generator<any> {
+  private *_nodes(startIndex: number, endIndex: number): Generator<any> {
     let node = this.head;
     let counter = 0;
     while (node) {
@@ -796,7 +806,7 @@ export class DoublyLinkedList {
     }
   }
 
-  private * _nodesReverse(startIndex: number, endIndex: number): Generator<any> {
+  private *_nodesReverse(startIndex: number, endIndex: number): Generator<any> {
     let node = this.tail;
     let counter = this.length - 1;
     while (node) {
@@ -830,11 +840,11 @@ export class DoublyLinkedList {
     try {
       return String(argument);
     } catch (error) {
-      return 'Object';
+      return "Object";
     }
   }
 
-  private * _values(): Generator<any> {
+  private *_values(): Generator<any> {
     let node = this.head;
     while (node) {
       yield node.value;

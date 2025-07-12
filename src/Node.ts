@@ -4,7 +4,7 @@ export class Node {
   public prev: Node | null;
   public count: number;
 
-  public constructor(value: unknown, next=null, prev=null) {
+  public constructor(value: unknown, next = null, prev = null) {
     this.value = value;
     this.next = next;
     this.prev = prev;
