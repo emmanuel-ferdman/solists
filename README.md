@@ -12,7 +12,7 @@ The library provides a powerful and flexible implementation of the [self-organiz
 
 A _self-organizing list_ (aka _SoList_) is a list that reorders its elements based on some self-organizing heuristic to improve average access time. The aim of a self-organizing list is to improve efficiency of linear search by moving more frequently accessed items towards the head of the list. A self-organizing list achieves near constant time for element access in the best case. A self-organizing list uses a reorganizing algorithm to adapt to various query distributions at runtime.
 
-### Self-organizing techniques
+### Self-organizing Techniques
 
 #### Frequency Count
 
@@ -53,7 +53,7 @@ At the t-th item selection:
             swap item i with item (i - 1)
 ```
 
-### Rearrange upon creation
+### Rearrange Upon Creation
 
 In literature, some self-organizing list implementations activate a heuristic after every creation operation (like `insert()`, `push()`, `unshift()`, etc.). This means that immediately after a new node is added to the list, the relevant heuristic is triggered and the list is rearranged.
 
@@ -122,7 +122,9 @@ tList2.includes(4);
 console.log(tList2.toString()); // 2,4,3,5,1
 ```
 
-## Methods and properties
+## Methods and Properties
+
+Below is a summary of the main properties and methods available in SoList, including both standard array-like operations and custom features:
 
 List of properties of SoList:
 
@@ -185,13 +187,7 @@ Although SoList implements most of the methods of JS-Array (with identical behav
 
 ## Contributing
 
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-Please make sure to update tests as appropriate and run existing ones using:
-
-```
-npm run test
-```
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change. For contribution guidelines, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
 
