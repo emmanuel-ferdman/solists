@@ -1,5 +1,5 @@
-import { DoublyLinkedList } from './DoublyLinkedList';
-import { Node } from './Node';
+import { DoublyLinkedList } from "./DoublyLinkedList";
+import { Node } from "./Node";
 
 export class FrequencyCountSoList extends DoublyLinkedList {
   public constructor(...args: any) {
@@ -10,7 +10,7 @@ export class FrequencyCountSoList extends DoublyLinkedList {
     let prev = node.prev;
     let next = node.next;
     if (prev !== null && prev.count < node.count) {
-      while (!(node.isEqual(this.head))) {
+      while (!node.isEqual(this.head)) {
         if (prev !== null && prev.count < node.count) {
           this._remove(node);
           this._insertBefore(prev, node);
@@ -20,7 +20,7 @@ export class FrequencyCountSoList extends DoublyLinkedList {
         prev = node.prev;
       }
     } else if (next !== null && next.count > node.count) {
-      while (!(node.isEqual(this.tail))) {
+      while (!node.isEqual(this.tail)) {
         if (next !== null && next.count > node.count) {
           this._remove(node);
           this._insertAfter(next, node);
