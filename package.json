@@ -8,7 +8,10 @@
     "build": "npm run clean && tsc",
     "clean": "rimraf ./dist",
     "coverage": "nyc --reporter=html ts-mocha tests/test.ts",
-    "lint": "eslint ./src ./tests",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
     "test": "ts-mocha tests/test.ts"
   },
   "repository": {
@@ -31,6 +34,7 @@
     "eslint": "^8.57.0",
     "mocha": "^10.4.0",
     "nyc": "^15.1.0",
+    "prettier": "^3.6.2",
     "ts-mocha": "^10.0.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.3"
