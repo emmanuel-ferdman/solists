@@ -1,0 +1,20 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    groups:
+      eslint:
+        patterns:
+          - "@typescript-eslint/*"
+          - "eslint"
+      mocha:
+        patterns:
+          - "mocha"
+          - "nyc"
+          - "ts-mocha"
+      typescript:
+        patterns:
+          - "ts-node"
+          - "typescript"
