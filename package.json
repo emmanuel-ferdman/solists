@@ -32,10 +32,10 @@
     "@typescript-eslint/eslint-plugin": "^8.50.0",
     "@typescript-eslint/parser": "^8.50.0",
     "eslint": "^9.39.2",
-    "mocha": "^10.4.0",
-    "nyc": "^15.1.0",
+    "mocha": "^11.7.5",
+    "nyc": "^17.1.0",
     "prettier": "^3.6.2",
-    "ts-mocha": "^10.0.0",
+    "ts-mocha": "^11.1.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.3"
   },
