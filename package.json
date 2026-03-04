@@ -29,6 +29,7 @@
   },
   "homepage": "https://github.com/emmanuel-ferdman/solists#readme",
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@typescript-eslint/eslint-plugin": "^8.50.0",
     "@typescript-eslint/parser": "^8.50.0",
     "eslint": "^10.0.2",
@@ -37,7 +38,8 @@
     "prettier": "^3.6.2",
     "ts-mocha": "^11.1.0",
     "ts-node": "^10.9.2",
-    "typescript": "^5.4.3"
+    "typescript": "^5.4.3",
+    "typescript-eslint": "^8.56.1"
   },
   "files": [
     "dist"
