@@ -50,8 +50,24 @@ function testSort(dsClass) {
       assert(ds.sort().isEqual(array.sort()));
     });
 
-    it('should check "sort" lexicographically of list ["March", "Jan", "Feb", "Dec"]', function () {
-      const array = ["March", "Jan", "Feb", "Dec"];
+    it('should check "sort" lexicographically of list [9,3,7,1,5,8,2,6,4]', function () {
+      const array = [9, 3, 7, 1, 5, 8, 2, 6, 4];
+      const ds = new dsClass(false, array);
+      assert.equal(ds.length, array.length);
+      assert(ds.isEqual(array));
+      assert(ds.sort().isEqual(array.sort()));
+    });
+
+    it('should check "sort" lexicographically of list ["Mar","Jan","Feb","Dec"]', function () {
+      const array = ["Mar", "Jan", "Feb", "Dec"];
+      const ds = new dsClass(false, array);
+      assert.equal(ds.length, array.length);
+      assert(ds.isEqual(array));
+      assert(ds.sort().isEqual(array.sort()));
+    });
+
+    it('should check "sort" lexicographically of list ["Mar","Jan","Feb","Dec","Apr","May","Jun","Jul"]', function () {
+      const array = ["Mar", "Jan", "Feb", "Dec", "Apr", "May", "Jun", "Jul"];
       const ds = new dsClass(false, array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
@@ -60,6 +76,15 @@ function testSort(dsClass) {
 
     it('should check "sort" numerically of list [6,2,-500,4,10000,80,2.5]', function () {
       const array = [6, 2, -500, 4, 10000, 80, 2.5];
+      const func = (a, b) => a - b;
+      const ds = new dsClass(false, array);
+      assert.equal(ds.length, array.length);
+      assert(ds.isEqual(array));
+      assert(ds.sort(func).isEqual(array.sort(func)));
+    });
+
+    it('should check "sort" numerically of list [6,2,-500,4,10000,80,2.5,99,-1]', function () {
+      const array = [6, 2, -500, 4, 10000, 80, 2.5, 99, -1];
       const func = (a, b) => a - b;
       const ds = new dsClass(false, array);
       assert.equal(ds.length, array.length);
@@ -104,6 +129,36 @@ function testSort(dsClass) {
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert(ds.sort(func).isEqual(array.sort(func)));
+    });
+
+    it('should check "sort" for stability of list of objects with 8+ elements', function () {
+      const array = [
+        { name: "Alex", grade: 15 },
+        { name: "Devlin", grade: 15 },
+        { name: "Eagle", grade: 13 },
+        { name: "Sam", grade: 14 },
+        { name: "Edward", grade: 15 },
+        { name: "Sharpe", grade: 13 },
+        { name: "Magnetic", grade: 14 },
+        { name: "Zeros", grade: 15 },
+      ];
+      const func = (a, b) => a.grade - b.grade;
+      const ds = new dsClass(false, array);
+      assert.equal(ds.length, array.length);
+      assert(ds.isEqual(array));
+      assert(ds.sort(func).isEqual(array.sort(func)));
+    });
+
+    it('should check "sort" for stability with default comparison of equal string values', function () {
+      const array = [
+        { toString: () => "Devlin", id: 1 },
+        { toString: () => "Devlin", id: 2 },
+        { toString: () => "Alex", id: 3 },
+      ];
+      const ds = new dsClass(false, array);
+      assert.equal(ds.length, array.length);
+      assert(ds.isEqual(array));
+      assert(ds.sort().isEqual(array.sort()));
     });
 
     it('should check "sort" of list [null,undefined,NaN,{},Infinity,"string",-0,1.5,true,new Date("21 Dec 1997 14:12:00 UTC")]', function () {

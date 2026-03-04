@@ -402,7 +402,12 @@ export class DoublyLinkedList {
 
   public sort(comparefn: any): DoublyLinkedList {
     if (this.length > 1) {
-      this._mergeSort(this._getSortCompare(comparefn));
+      const compare = this._getSortCompare(comparefn);
+      if (this.length < 8) {
+        this._insertionSort(compare);
+      } else {
+        this._mergeSort(compare);
+      }
     }
     return this;
   }
@@ -693,7 +698,7 @@ export class DoublyLinkedList {
       if (y === undefined) return -1;
       if (x === undefined) return 1;
       if (comparefn !== undefined) return +comparefn(x, y) || 0;
-      return String(x) > String(y) ? 1 : -1;
+      return String(x) > String(y) ? 1 : String(x) < String(y) ? -1 : 0;
     };
   }
 
@@ -723,12 +728,6 @@ export class DoublyLinkedList {
   }
 
   private _merge(head1: any, head2: any, comparefn: any): any {
-    if (head1 == null) {
-      return head2;
-    } else if (head2 == null) {
-      return head1;
-    }
-
     let node, head;
     if (comparefn(head1.value, head2.value) <= 0) {
       head = node = head1;
@@ -764,7 +763,7 @@ export class DoublyLinkedList {
   }
 
   private _mergeSort(comparefn: any): void {
-    const lists = [];
+    let lists: any[] = [];
     let start = this.head;
     let end;
     while (start !== null) {
@@ -780,17 +779,60 @@ export class DoublyLinkedList {
     }
 
     while (lists.length > 1) {
-      const first = lists.shift();
-      const second = lists.shift();
-      if (first !== undefined && second !== undefined) {
-        lists.push(this._merge(first, second, comparefn));
+      const merged: any[] = [];
+      for (let i = 0; i < lists.length; i += 2) {
+        if (i + 1 < lists.length) {
+          merged.push(this._merge(lists[i], lists[i + 1], comparefn));
+        } else {
+          merged.push(lists[i]);
+        }
       }
+      lists = merged;
     }
 
     this.tail = lists[0];
     this.head = lists[0];
     while (this.tail && this.tail.next) {
       this.tail = this.tail.next;
+    }
+  }
+
+  private _insertionSort(comparefn: any): void {
+    let current = this.head!.next;
+    while (current !== null) {
+      const next = current.next;
+      let position = current.prev;
+
+      while (position !== null && comparefn(position.value, current.value) > 0) {
+        position = position.prev;
+      }
+
+      if (position !== current.prev) {
+        if (current.prev) {
+          current.prev.next = current.next;
+        }
+        if (current.next) {
+          current.next.prev = current.prev;
+        } else {
+          this.tail = current.prev;
+        }
+
+        if (position === null) {
+          current.prev = null;
+          current.next = this.head;
+          this.head!.prev = current;
+          this.head = current;
+        } else {
+          current.prev = position;
+          current.next = position.next;
+          if (position.next) {
+            position.next.prev = current;
+          }
+          position.next = current;
+        }
+      }
+
+      current = next;
     }
   }
 
