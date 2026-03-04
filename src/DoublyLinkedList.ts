@@ -839,7 +839,7 @@ export class DoublyLinkedList {
   private _tryToString(argument: any): string {
     try {
       return String(argument);
-    } catch (error) {
+    } catch {
       return "Object";
     }
   }
