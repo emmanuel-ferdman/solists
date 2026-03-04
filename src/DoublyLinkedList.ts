@@ -337,7 +337,7 @@ export class DoublyLinkedList {
     }
     let accumulator = arguments.length > 1 ? initialValue : this.tail!.value;
     for (const [index, node] of this._nodesReverse(0, this.length)) {
-      if (index < this.length - 1) {
+      if (arguments.length > 1 || index < this.length - 1) {
         accumulator = callbackFn(accumulator, node.value, index, this);
       }
     }

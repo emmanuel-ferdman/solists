@@ -72,6 +72,15 @@ function testReduceRight(dsClass) {
       assert.equal(ds.reduceRight(func), array.reduceRight(func));
     });
 
+    it('should check "reduceRight" of without function on list [1,2,3,4,5]', function () {
+      const array = [1, 2, 3, 4, 5];
+      const ds = new dsClass(false, array);
+      assert.equal(ds.length, array.length);
+      assert(ds.isEqual(array));
+      assert.throws(() => array.reduceRight(), TypeError("undefined is not a function"));
+      assert.throws(() => ds.reduceRight(), TypeError("undefined is not a function"));
+    });
+
     it('should check "reduceRight" of "null" function on list [1,2,3,4,5]', function () {
       const array = [1, 2, 3, 4, 5];
       const func = null;
@@ -144,6 +153,26 @@ function testReduceRight(dsClass) {
         () => ds.reduceRight(func),
         TypeError(`${typeof func} ${String(func)} is not a function`)
       );
+    });
+
+    it('should check "reduceRight" of sum values of list [1,2,3,4,5] from initial value "10"', function () {
+      const array = [1, 2, 3, 4, 5];
+      const func = (acc, v) => acc + v;
+      const initial = 10;
+      const ds = new dsClass(false, array);
+      assert.equal(ds.length, array.length);
+      assert(ds.isEqual(array));
+      assert.equal(ds.reduceRight(func, initial), array.reduceRight(func, initial));
+    });
+
+    it('should check "reduceRight" of sum values of list [1] from initial value "10"', function () {
+      const array = [1];
+      const func = (acc, v) => acc + v;
+      const initial = 10;
+      const ds = new dsClass(false, array);
+      assert.equal(ds.length, array.length);
+      assert(ds.isEqual(array));
+      assert.equal(ds.reduceRight(func, initial), array.reduceRight(func, initial));
     });
 
     it('should check "reduceRight" of max value of list [-10,20,100,0,30] from initial value "200"', function () {

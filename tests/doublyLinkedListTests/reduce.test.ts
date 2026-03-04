@@ -151,6 +151,26 @@ function testReduce(dsClass) {
       );
     });
 
+    it('should check "reduce" of sum values of list [1,2,3,4,5] from initial value "10"', function () {
+      const array = [1, 2, 3, 4, 5];
+      const func = (acc, v) => acc + v;
+      const initial = 10;
+      const ds = new dsClass(false, array);
+      assert.equal(ds.length, array.length);
+      assert(ds.isEqual(array));
+      assert.equal(ds.reduce(func, initial), array.reduce(func, initial));
+    });
+
+    it('should check "reduce" of sum values of list [1] from initial value "10"', function () {
+      const array = [1];
+      const func = (acc, v) => acc + v;
+      const initial = 10;
+      const ds = new dsClass(false, array);
+      assert.equal(ds.length, array.length);
+      assert(ds.isEqual(array));
+      assert.equal(ds.reduce(func, initial), array.reduce(func, initial));
+    });
+
     it('should check "reduce" of max value of list [-10,20,100,0,30] from initial value "200"', function () {
       const array = [-10, 20, 100, 0, 30];
       const func = (acc, v) => Math.max(acc, v);
