@@ -7,7 +7,7 @@
   "scripts": {
     "build": "npm run clean && tsc",
     "clean": "rimraf ./dist",
-    "coverage": "nyc --reporter=html ts-mocha tests/test.ts",
+    "coverage": "nyc --reporter=html --reporter=lcov ts-mocha tests/test.ts",
     "format": "prettier --check .",
     "format:fix": "prettier --write .",
     "lint": "eslint .",
