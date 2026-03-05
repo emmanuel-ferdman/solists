@@ -166,7 +166,7 @@ List of methods of SoList:
 | `reduceRight()`             | Reduces the values of a SoList to a single value (going right-to-left)                                       |
 | `remove()`                  | Removes the element at a specific index from a SoList                                                        |
 | `reverse()`                 | Reverses the order of the elements in a SoList                                                               |
-| `shift()`                   | removes the first element from a SoList and returns that removed element                                     |
+| `shift()`                   | Removes the first element from a SoList and returns that removed element                                     |
 | `slice()`                   | Returns a shallow copy of a portion of a SoList into a new SoList selected by positions                      |
 | `some()`                    | Checks if any of the elements in a SoList satisfy a predicate function                                       |
 | `sort()`                    | Sorts the elements of a SoList and returns the reference to the same SoList, now sorted                      |
