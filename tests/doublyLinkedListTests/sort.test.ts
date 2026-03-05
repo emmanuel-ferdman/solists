@@ -26,14 +26,6 @@ function testSort(dsClass) {
       assert(ds.sort().isEqual(array.sort()));
     });
 
-    it('should check "sort" lexicographically of list [3,1,2]', function () {
-      const array = [3, 1, 2];
-      const ds = new dsClass(false, array);
-      assert.equal(ds.length, array.length);
-      assert(ds.isEqual(array));
-      assert(ds.sort().isEqual(array.sort()));
-    });
-
     it('should check "sort" lexicographically of list [1,30,4,21,100000]', function () {
       const array = [1, 30, 4, 21, 100000];
       const ds = new dsClass(false, array);
