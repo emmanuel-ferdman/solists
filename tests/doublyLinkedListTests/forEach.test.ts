@@ -111,6 +111,26 @@ function testForEach(dsClass) {
       array.forEach(func, thisArg2);
       assert.deepEqual(thisArg1.indices, thisArg2.indices);
     });
+
+    it('should check "forEach" throws TypeError for undefined callback', function () {
+      const func = undefined;
+      const array = [1, 2, 3];
+      const ds = new dsClass(array);
+      assert.equal(ds.length, array.length);
+      assert(ds.isEqual(array));
+      assert.throws(() => array.forEach(func), TypeError("undefined is not a function"));
+      assert.throws(() => ds.forEach(func), TypeError("undefined is not a function"));
+    });
+
+    it('should check "forEach" throws TypeError for null callback', function () {
+      const func = null;
+      const array = [1, 2, 3];
+      const ds = new dsClass(array);
+      assert.equal(ds.length, array.length);
+      assert(ds.isEqual(array));
+      assert.throws(() => array.forEach(func), TypeError("object null is not a function"));
+      assert.throws(() => ds.forEach(func), TypeError("object null is not a function"));
+    });
   });
 }
 

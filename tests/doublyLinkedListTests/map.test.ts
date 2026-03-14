@@ -134,7 +134,7 @@ function testMap(dsClass) {
       assert(ds.map(func).isEqual(array.map(func)));
     });
 
-    it('should check "map" with upading a variable by appending (value,index)', function () {
+    it('should check "map" with updating a variable by appending (value,index)', function () {
       const array = [0, 1, -2, 3, -4, -5];
       let result1 = "";
       let result2 = "";

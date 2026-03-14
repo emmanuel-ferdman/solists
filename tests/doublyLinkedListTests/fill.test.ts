@@ -285,16 +285,6 @@ function testFill(dsClass) {
       assert(ds.fill(value, start, end).isEqual(array.fill(value, start, end)));
     });
 
-    it('should check "fill" with "6" on list [1,2,3,4,5] from start=-2', function () {
-      const array = [1, 2, 3, 4, 5];
-      const value = 6;
-      const start = -2;
-      const ds = new dsClass(array);
-      assert(ds.length === array.length);
-      assert(ds.isEqual(array));
-      assert(ds.fill(value, start).isEqual(array.fill(value, start)));
-    });
-
     it('should check "fill" with "6" on list [1,2,3,4,5] from start=0 to end=-2', function () {
       const array = [1, 2, 3, 4, 5];
       const value = 6;

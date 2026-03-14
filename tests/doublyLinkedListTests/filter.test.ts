@@ -137,7 +137,7 @@ function testFilter(dsClass) {
       assert(ds.filter(func).isEqual(array.filter(func)));
     });
 
-    it('should check "filter" with upading a variable by appending (value,index)', function () {
+    it('should check "filter" with updating a variable by appending (value,index)', function () {
       const array = [0, 1, -2, 3, -4, -5];
       let result1 = "";
       let result2 = "";

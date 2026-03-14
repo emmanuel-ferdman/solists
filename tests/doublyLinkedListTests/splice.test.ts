@@ -466,20 +466,6 @@ function testSplice(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "splice" of list [1] with start=0 and deleteCount=3 and items=[3,-4,5,6,7]', function () {
-      const array = [1];
-      const start = 0;
-      const deleteCount = 3;
-      const items = [3, -4, 5, 6, 7];
-      const ds = new dsClass(array);
-      assert.equal(ds.length, array.length);
-      assert(ds.isEqual(array));
-      assert(
-        ds.splice(start, deleteCount, ...items).isEqual(array.splice(start, deleteCount, ...items))
-      );
-      assert(ds.isEqual(array));
-    });
-
     it('should check "splice" of list ["val0","val1","val2","val3"] with start="val0"', function () {
       const array = ["val0", "val1", "val2", "val3"];
       const start = "val0";

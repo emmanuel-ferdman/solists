@@ -137,7 +137,7 @@ function testFindLastIndex(dsClass) {
       assert.equal(ds.findLastIndex(func), array.findLastIndex(func));
     });
 
-    it('should check "findLastIndex" with upading a variable by appending (value,index)', function () {
+    it('should check "findLastIndex" with updating a variable by appending (value,index)', function () {
       const array = [0, 1, -2, 3, -4, -5];
       let result1 = "";
       let result2 = "";

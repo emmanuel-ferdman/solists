@@ -128,6 +128,26 @@ function testFlatMap(dsClass) {
       array.flatMap(func, thisArg2);
       assert.equal(thisArg.count, thisArg2.count);
     });
+
+    it('should check "flatMap" throws TypeError for undefined callback', function () {
+      const func = undefined;
+      const array = [1, 2, 3];
+      const ds = new dsClass(array);
+      assert.equal(ds.length, array.length);
+      assert(ds.isEqual(array));
+      assert.throws(() => array.flatMap(func), TypeError("undefined is not a function"));
+      assert.throws(() => ds.flatMap(func), TypeError("undefined is not a function"));
+    });
+
+    it('should check "flatMap" throws TypeError for null callback', function () {
+      const func = null;
+      const array = [1, 2, 3];
+      const ds = new dsClass(array);
+      assert.equal(ds.length, array.length);
+      assert(ds.isEqual(array));
+      assert.throws(() => array.flatMap(func), TypeError("object null is not a function"));
+      assert.throws(() => ds.flatMap(func), TypeError("object null is not a function"));
+    });
   });
 }
 
