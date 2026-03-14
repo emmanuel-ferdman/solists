@@ -84,16 +84,17 @@ function testReduceRight(dsClass) {
     it('should check "reduceRight" of "null" function on list [1,2,3,4,5]', function () {
       const array = [1, 2, 3, 4, 5];
       const func = null;
+      const funcType = typeof func;
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.throws(
         () => array.reduceRight(func),
-        TypeError(`${typeof func} ${String(func)} is not a function`)
+        TypeError(`${funcType} ${String(func)} is not a function`)
       );
       assert.throws(
         () => ds.reduceRight(func),
-        TypeError(`${typeof func} ${String(func)} is not a function`)
+        TypeError(`${funcType} ${String(func)} is not a function`)
       );
     });
 
@@ -110,48 +111,51 @@ function testReduceRight(dsClass) {
     it('should check "reduceRight" of "NaN" function on list [1,2,3,4,5]', function () {
       const array = [1, 2, 3, 4, 5];
       const func = NaN;
+      const funcType = typeof func;
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.throws(
         () => array.reduceRight(func),
-        TypeError(`${typeof func} ${String(func)} is not a function`)
+        TypeError(`${funcType} ${String(func)} is not a function`)
       );
       assert.throws(
         () => ds.reduceRight(func),
-        TypeError(`${typeof func} ${String(func)} is not a function`)
+        TypeError(`${funcType} ${String(func)} is not a function`)
       );
     });
 
     it('should check "reduceRight" of "Infinity" function on list [1,2,3,4,5]', function () {
       const array = [1, 2, 3, 4, 5];
       const func = Infinity;
+      const funcType = typeof func;
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.throws(
         () => array.reduceRight(func),
-        TypeError(`${typeof func} ${String(func)} is not a function`)
+        TypeError(`${funcType} ${String(func)} is not a function`)
       );
       assert.throws(
         () => ds.reduceRight(func),
-        TypeError(`${typeof func} ${String(func)} is not a function`)
+        TypeError(`${funcType} ${String(func)} is not a function`)
       );
     });
 
     it('should check "reduceRight" of "-0" function on list [1,2,3,4,5]', function () {
       const array = [1, 2, 3, 4, 5];
       const func = -0;
+      const funcType = typeof func;
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.throws(
         () => array.reduceRight(func),
-        TypeError(`${typeof func} ${String(func)} is not a function`)
+        TypeError(`${funcType} ${String(func)} is not a function`)
       );
       assert.throws(
         () => ds.reduceRight(func),
-        TypeError(`${typeof func} ${String(func)} is not a function`)
+        TypeError(`${funcType} ${String(func)} is not a function`)
       );
     });
 

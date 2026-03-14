@@ -86,10 +86,18 @@ function testSome(dsClass) {
     it('should check "some" with "null" function', function () {
       const array = [0, 1, 2, 3, 4, 5];
       const func = null;
+      const funcType = typeof func;
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
-      assert.throws(() => ds.some(func), TypeError("callbackFn is not a function"));
+      assert.throws(
+        () => array.some(func),
+        TypeError(`${funcType} ${String(func)} is not a function`)
+      );
+      assert.throws(
+        () => ds.some(func),
+        TypeError(`${funcType} ${String(func)} is not a function`)
+      );
     });
 
     it('should check "some" with "undefined" function', function () {
@@ -98,7 +106,8 @@ function testSome(dsClass) {
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
-      assert.throws(() => ds.some(func), TypeError("callbackFn is not a function"));
+      assert.throws(() => array.some(func), TypeError("undefined is not a function"));
+      assert.throws(() => ds.some(func), TypeError("undefined is not a function"));
     });
 
     it('should check "some" of negative value and index bigger than 2 in list [0,1,-2,3,-4,-5]', function () {

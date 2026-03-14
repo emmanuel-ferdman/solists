@@ -86,10 +86,18 @@ function testFind(dsClass) {
     it('should check "find" with "null" function', function () {
       const array = [0, 1, 2, 3, 4, 5];
       const func = null;
+      const funcType = typeof func;
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
-      assert.throws(() => ds.find(func), TypeError("callbackFn is not a function"));
+      assert.throws(
+        () => array.find(func),
+        TypeError(`${funcType} ${String(func)} is not a function`)
+      );
+      assert.throws(
+        () => ds.find(func),
+        TypeError(`${funcType} ${String(func)} is not a function`)
+      );
     });
 
     it('should check "find" with "undefined" function', function () {
@@ -98,7 +106,8 @@ function testFind(dsClass) {
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
-      assert.throws(() => ds.find(func), TypeError("callbackFn is not a function"));
+      assert.throws(() => array.find(func), TypeError("undefined is not a function"));
+      assert.throws(() => ds.find(func), TypeError("undefined is not a function"));
     });
 
     it('should check "find" of negative value and index bigger than 2 in list [0,-4,2,3,-4,5]', function () {

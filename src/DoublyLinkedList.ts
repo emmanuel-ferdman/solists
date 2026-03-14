@@ -87,6 +87,7 @@ export class DoublyLinkedList {
 
   // TODO: Support "thisArg" argument
   public every(callbackFn: any): boolean {
+    this._aCallable(callbackFn);
     for (const [index, node] of this._nodes(0, this.length)) {
       if (!callbackFn(node.value, index, this)) {
         return false;
@@ -114,6 +115,7 @@ export class DoublyLinkedList {
 
   // TODO: Support "thisArg" argument
   public filter(callbackFn: any): DoublyLinkedList {
+    this._aCallable(callbackFn);
     const result = new DoublyLinkedList();
     for (const [index, node] of this._nodes(0, this.length)) {
       if (callbackFn(node.value, index, this)) {
@@ -125,6 +127,7 @@ export class DoublyLinkedList {
 
   // TODO: Support "thisArg" argument
   public find(callbackFn: any): unknown {
+    this._aCallable(callbackFn);
     for (const [index, node] of this._nodes(0, this.length)) {
       if (callbackFn(node.value, index, this)) {
         node.count += 1;
@@ -137,6 +140,7 @@ export class DoublyLinkedList {
 
   // TODO: Support "thisArg" argument
   public findIndex(callbackFn: any): number {
+    this._aCallable(callbackFn);
     for (const [index, node] of this._nodes(0, this.length)) {
       if (callbackFn(node.value, index, this)) {
         node.count += 1;
@@ -149,6 +153,7 @@ export class DoublyLinkedList {
 
   // TODO: Support "thisArg" argument
   public findLast(callbackFn: any): unknown {
+    this._aCallable(callbackFn);
     for (const [index, node] of this._nodesReverse(0, this.length)) {
       if (callbackFn(node.value, index, this)) {
         node.count += 1;
@@ -161,6 +166,7 @@ export class DoublyLinkedList {
 
   // TODO: Support "thisArg" argument
   public findLastIndex(callbackFn: any) {
+    this._aCallable(callbackFn);
     for (const [index, node] of this._nodesReverse(0, this.length)) {
       if (callbackFn(node.value, index, this)) {
         node.count += 1;
@@ -185,10 +191,12 @@ export class DoublyLinkedList {
 
   // TODO: Support "thisArg" argument
   public flatMap(callbackFn: any): DoublyLinkedList {
+    this._aCallable(callbackFn);
     return this.map(callbackFn).flat();
   }
 
   public forEach(callbackFn: any): void {
+    this._aCallable(callbackFn);
     for (const [index, node] of this._nodes(0, this.length)) {
       callbackFn(node.value, index, this);
     }
@@ -270,6 +278,7 @@ export class DoublyLinkedList {
   }
 
   public map(callbackFn: any): DoublyLinkedList {
+    this._aCallable(callbackFn);
     const result = new DoublyLinkedList();
     for (const [index, node] of this._nodes(0, this.length)) {
       result.push(callbackFn(node.value, index, this));
@@ -311,12 +320,7 @@ export class DoublyLinkedList {
   }
 
   public reduce(callbackFn: any, initialValue: any): any {
-    if (!this._isCallable(callbackFn)) {
-      const type = typeof callbackFn;
-      const value = this._tryToString(callbackFn);
-      const typePrefix = type !== "undefined" ? type + " " : "";
-      throw TypeError(`${typePrefix}${value} is not a function`);
-    }
+    this._aCallable(callbackFn);
     if (this.length === 0 && arguments.length < 2) {
       throw TypeError("Reduce of empty list with no initial value");
     }
@@ -330,12 +334,7 @@ export class DoublyLinkedList {
   }
 
   public reduceRight(callbackFn: any, initialValue: any): any {
-    if (!this._isCallable(callbackFn)) {
-      const type = typeof callbackFn;
-      const value = this._tryToString(callbackFn);
-      const typePrefix = type !== "undefined" ? type + " " : "";
-      throw TypeError(`${typePrefix}${value} is not a function`);
-    }
+    this._aCallable(callbackFn);
     if (this.length === 0 && arguments.length < 2) {
       throw TypeError("Reduce of empty list with no initial value");
     }
@@ -396,6 +395,7 @@ export class DoublyLinkedList {
 
   // TODO: Support "thisArg" argument
   public some(callbackFn: any): boolean {
+    this._aCallable(callbackFn);
     for (const [index, node] of this._nodes(0, this.length)) {
       if (callbackFn(node.value, index, this)) {
         return true;
@@ -708,6 +708,14 @@ export class DoublyLinkedList {
 
   private _isCallable(fn: any): boolean {
     return typeof fn === "function";
+  }
+
+  private _aCallable(argument: any): any {
+    if (this._isCallable(argument)) return argument;
+    const type = typeof argument;
+    const value = this._tryToString(argument);
+    const typePrefix = type !== "undefined" ? type + " " : "";
+    throw TypeError(`${typePrefix}${value} is not a function`);
   }
 
   private _isIterable(obj: any): boolean {
