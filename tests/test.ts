@@ -46,6 +46,7 @@ describe("Test SoLists", function () {
       doublyLinkedListTest.testToLocaleString(dsClass);
       doublyLinkedListTest.testToReversed(dsClass);
       doublyLinkedListTest.testToSorted(dsClass);
+      doublyLinkedListTest.testToSpliced(dsClass);
       doublyLinkedListTest.testToString(dsClass);
       doublyLinkedListTest.testValues(dsClass);
 
