@@ -1,17 +1,17 @@
-export class Node {
-  public value: unknown;
-  public next: Node | null;
-  public prev: Node | null;
+export class Node<T> {
+  public value: T;
+  public next: Node<T> | null;
+  public prev: Node<T> | null;
   public count: number;
 
-  public constructor(value: unknown, next = null, prev = null) {
+  public constructor(value: T, next: Node<T> | null = null, prev: Node<T> | null = null) {
     this.value = value;
     this.next = next;
     this.prev = prev;
     this.count = 0;
   }
 
-  public isEqual(other: Node | null): boolean {
+  public isEqual(other: Node<T> | null): boolean {
     return this === other;
   }
 }

@@ -1,12 +1,8 @@
 import { DoublyLinkedList } from "./DoublyLinkedList";
 import { Node } from "./Node";
 
-export class FrequencyCountSoList extends DoublyLinkedList {
-  public constructor(...args: any) {
-    super(...args);
-  }
-
-  protected _rearrange(node: Node): number {
+export class FrequencyCountSoList<T> extends DoublyLinkedList<T> {
+  protected _rearrange(node: Node<T>): number {
     let prev = node.prev;
     let next = node.next;
     if (prev !== null && prev.count < node.count) {
