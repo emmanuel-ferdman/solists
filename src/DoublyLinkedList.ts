@@ -5,17 +5,17 @@ interface SoListOptions {
 }
 
 export class DoublyLinkedList {
-  public length: number;
+  protected _head: Node | null;
+  protected _tail: Node | null;
+  protected _accessOnly: boolean;
 
-  protected head: Node | null;
-  protected tail: Node | null;
-  protected accessOnly: boolean;
+  private _length: number;
 
   public constructor(iterable: Iterable<unknown> | null = null, options: SoListOptions = {}) {
-    this.head = null;
-    this.tail = null;
-    this.length = 0;
-    this.accessOnly = options.accessOnly ?? true;
+    this._head = null;
+    this._tail = null;
+    this._length = 0;
+    this._accessOnly = options.accessOnly ?? true;
     if (iterable !== null) {
       this._extend(iterable);
     }
@@ -25,17 +25,14 @@ export class DoublyLinkedList {
     return this._values();
   }
 
-  // Public Array-like methods
+  // Public native Array methods
 
   public at(index: number): unknown {
     if (this.length === 0 || Math.abs(index) >= this.length) {
       return undefined;
     }
     index = this._toAbsoluteIndex(index, this.length);
-    const targetNode = this._getNode(index);
-    if (targetNode === null) {
-      return undefined;
-    }
+    const targetNode = this._getNode(index)!;
     targetNode.count += 1;
     this._rearrange(targetNode);
     return targetNode.value;
@@ -249,6 +246,10 @@ export class DoublyLinkedList {
     return this._keys();
   }
 
+  public get length(): number {
+    return this._length;
+  }
+
   public lastIndexOf(searchElement: any /* , fromIndex = @[*-1] */): number {
     if (this.length === 0) {
       return -1;
@@ -283,13 +284,13 @@ export class DoublyLinkedList {
     if (this.length === 0) {
       return undefined;
     }
-    const value = this.tail!.value;
+    const value = this._tail!.value;
     if (this.length === 1) {
       this._removeLast();
     } else {
-      this.tail = this.tail!.prev;
-      this.tail!.next = null;
-      this.length -= 1;
+      this._tail = this._tail!.prev;
+      this._tail!.next = null;
+      this._length -= 1;
     }
     return value;
   }
@@ -300,12 +301,10 @@ export class DoublyLinkedList {
       const newNode = new Node(values[index]);
       if (this.length === 0) {
         this._insertFirst(newNode);
-      } else if (this.tail !== null) {
-        this._insertAfter(this.tail, newNode);
       } else {
-        continue;
+        this._insertAfter(this._tail!, newNode);
       }
-      if (!this.accessOnly) {
+      if (!this._accessOnly) {
         this._rearrange(newNode);
       }
     }
@@ -317,7 +316,7 @@ export class DoublyLinkedList {
     if (this.length === 0 && arguments.length < 2) {
       throw TypeError("Reduce of empty list with no initial value");
     }
-    let accumulator = arguments.length > 1 ? initialValue : this.head!.value;
+    let accumulator = arguments.length > 1 ? initialValue : this._head!.value;
     for (const [index, node] of this._nodes(0, this.length)) {
       if (arguments.length > 1 || index > 0) {
         accumulator = callbackFn(accumulator, node.value, index, this);
@@ -331,7 +330,7 @@ export class DoublyLinkedList {
     if (this.length === 0 && arguments.length < 2) {
       throw TypeError("Reduce of empty list with no initial value");
     }
-    let accumulator = arguments.length > 1 ? initialValue : this.tail!.value;
+    let accumulator = arguments.length > 1 ? initialValue : this._tail!.value;
     for (const [index, node] of this._nodesReverse(0, this.length)) {
       if (arguments.length > 1 || index < this.length - 1) {
         accumulator = callbackFn(accumulator, node.value, index, this);
@@ -342,15 +341,15 @@ export class DoublyLinkedList {
 
   public reverse(): DoublyLinkedList {
     if (this.length > 1) {
-      let curr = this.head;
+      let curr = this._head;
       while (curr) {
         const next = curr.next;
         curr.next = curr.prev;
         curr.prev = next;
         if (curr.next === null) {
-          this.tail = curr;
+          this._tail = curr;
         } else if (curr.prev === null) {
-          this.head = curr;
+          this._head = curr;
         }
         curr = next;
       }
@@ -362,13 +361,13 @@ export class DoublyLinkedList {
     if (this.length === 0) {
       return undefined;
     }
-    const value = this.head!.value;
+    const value = this._head!.value;
     if (this.length === 1) {
       this._removeLast();
     } else {
-      this.head = this.head!.next;
-      this.head!.prev = null;
-      this.length -= 1;
+      this._head = this._head!.next;
+      this._head!.prev = null;
+      this._length -= 1;
     }
     return value;
   }
@@ -425,16 +424,16 @@ export class DoublyLinkedList {
     const deleted = new DoublyLinkedList();
     if (this.length > 0 && deleteCount > 0) {
       const prev = this._getNode(start - 1);
-      let current = prev ? prev.next : this.head;
+      let current = prev ? prev.next : this._head;
 
       for (let index = 0; index < deleteCount; index += 1) {
         deleted.push(current!.value);
         current = current!.next;
-        this.length -= 1;
+        this._length -= 1;
       }
 
       if (prev === null) {
-        this.head = current;
+        this._head = current;
         if (current) {
           current.prev = null;
         }
@@ -443,7 +442,7 @@ export class DoublyLinkedList {
         if (current) {
           current.prev = prev;
         } else {
-          this.tail = prev;
+          this._tail = prev;
         }
       }
     }
@@ -451,10 +450,10 @@ export class DoublyLinkedList {
     if (items.length > 0) {
       let current, next;
       if (start === 0) {
-        next = this.head;
-        this.head = new Node(items.shift());
-        current = this.head;
-        this.length += 1;
+        next = this._head;
+        this._head = new Node(items.shift());
+        current = this._head;
+        this._length += 1;
       } else {
         current = this._getNode(start - 1);
         next = current!.next;
@@ -464,14 +463,14 @@ export class DoublyLinkedList {
         current!.next = new Node(item);
         current!.next.prev = current;
         current = current!.next;
-        this.length += 1;
+        this._length += 1;
       }
 
       current!.next = next;
       if (next) {
         next.prev = current;
       } else {
-        this.tail = current;
+        this._tail = current;
       }
     }
 
@@ -537,12 +536,10 @@ export class DoublyLinkedList {
       const newNode = new Node(values[index]);
       if (this.length === 0) {
         this._insertFirst(newNode);
-      } else if (this.head !== null) {
-        this._insertBefore(this.head, newNode);
       } else {
-        continue;
+        this._insertBefore(this._head!, newNode);
       }
-      if (!this.accessOnly) {
+      if (!this._accessOnly) {
         this._rearrange(newNode);
       }
     }
@@ -581,13 +578,10 @@ export class DoublyLinkedList {
     if (index === this.length) {
       return this.push(value);
     }
-    const prev = this._getNode(index - 1);
-    if (prev === null) {
-      return undefined;
-    }
+    const prev = this._getNode(index - 1)!;
     const newNode = new Node(value);
     this._insertAfter(prev, newNode);
-    if (!this.accessOnly) {
+    if (!this._accessOnly) {
       this._rearrange(newNode);
     }
     return this.length;
@@ -622,10 +616,7 @@ export class DoublyLinkedList {
     if (index >= this.length) {
       return undefined;
     }
-    const node = this._getNode(index);
-    if (node === null) {
-      return undefined;
-    }
+    const node = this._getNode(index)!;
     const value = node.value;
     this._remove(node);
     return value;
@@ -646,7 +637,7 @@ export class DoublyLinkedList {
     if (index < 0 || index >= this.length) {
       return null;
     }
-    let node = this.head;
+    let node = this._head;
     let counter = 0;
     while (node) {
       if (counter === index) {
@@ -659,36 +650,36 @@ export class DoublyLinkedList {
   }
 
   protected _insertFirst(newNode: Node): void {
-    this.head = newNode;
-    this.tail = newNode;
-    this.length += 1;
+    this._head = newNode;
+    this._tail = newNode;
+    this._length += 1;
   }
 
   protected _insertBefore(existingNode: Node, newNode: Node): void {
-    if (existingNode.isEqual(this.head)) {
+    if (existingNode.isEqual(this._head)) {
       newNode.next = existingNode;
       newNode.prev = null;
-      this.head = newNode;
+      this._head = newNode;
     } else if (existingNode.prev !== null) {
       newNode.next = existingNode;
       newNode.prev = existingNode.prev;
       existingNode.prev.next = newNode;
     }
     existingNode.prev = newNode;
-    this.length += 1;
+    this._length += 1;
   }
 
   protected _insertAfter(existingNode: Node, newNode: Node): void {
     newNode.prev = existingNode;
-    if (existingNode.isEqual(this.tail)) {
+    if (existingNode.isEqual(this._tail)) {
       newNode.next = null;
-      this.tail = newNode;
+      this._tail = newNode;
     } else if (existingNode.next !== null) {
       newNode.next = existingNode.next;
       existingNode.next.prev = newNode;
     }
     existingNode.next = newNode;
-    this.length += 1;
+    this._length += 1;
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -697,27 +688,27 @@ export class DoublyLinkedList {
   }
 
   protected _remove(node: Node): void {
-    if (node.isEqual(this.head)) {
+    if (node.isEqual(this._head)) {
       this.shift();
-    } else if (node.isEqual(this.tail)) {
+    } else if (node.isEqual(this._tail)) {
       this.pop();
     } else if (node.next !== null && node.prev !== null) {
       node.next.prev = node.prev;
       node.prev.next = node.next;
-      this.length -= 1;
+      this._length -= 1;
     }
   }
 
   protected _removeLast(): void {
-    this.head = null;
-    this.tail = null;
-    this.length = 0;
+    this._head = null;
+    this._tail = null;
+    this._length = 0;
   }
 
   // Private helping methods
 
   private *_entries(): Generator<any> {
-    let node = this.head;
+    let node = this._head;
     let counter = 0;
     while (node) {
       yield [counter, node.value];
@@ -768,7 +759,7 @@ export class DoublyLinkedList {
   }
 
   private *_keys(): Generator<number> {
-    let node = this.head;
+    let node = this._head;
     let counter = 0;
     while (node) {
       yield counter;
@@ -814,7 +805,7 @@ export class DoublyLinkedList {
 
   private _mergeSort(comparefn: any): void {
     let lists: any[] = [];
-    let start = this.head;
+    let start = this._head;
     let end;
     while (start !== null) {
       end = start;
@@ -840,15 +831,15 @@ export class DoublyLinkedList {
       lists = merged;
     }
 
-    this.tail = lists[0];
-    this.head = lists[0];
-    while (this.tail && this.tail.next) {
-      this.tail = this.tail.next;
+    this._tail = lists[0];
+    this._head = lists[0];
+    while (this._tail && this._tail.next) {
+      this._tail = this._tail.next;
     }
   }
 
   private _insertionSort(comparefn: any): void {
-    let current = this.head!.next;
+    let current = this._head!.next;
     while (current !== null) {
       const next = current.next;
       let position = current.prev;
@@ -864,14 +855,14 @@ export class DoublyLinkedList {
         if (current.next) {
           current.next.prev = current.prev;
         } else {
-          this.tail = current.prev;
+          this._tail = current.prev;
         }
 
         if (position === null) {
           current.prev = null;
-          current.next = this.head;
-          this.head!.prev = current;
-          this.head = current;
+          current.next = this._head;
+          this._head!.prev = current;
+          this._head = current;
         } else {
           current.prev = position;
           current.next = position.next;
@@ -887,7 +878,7 @@ export class DoublyLinkedList {
   }
 
   private *_nodes(startIndex: number, endIndex: number): Generator<any> {
-    let node = this.head;
+    let node = this._head;
     let counter = 0;
     while (node) {
       if (startIndex <= counter && counter < endIndex) {
@@ -899,7 +890,7 @@ export class DoublyLinkedList {
   }
 
   private *_nodesReverse(startIndex: number, endIndex: number): Generator<any> {
-    let node = this.tail;
+    let node = this._tail;
     let counter = this.length - 1;
     while (node) {
       if (startIndex <= counter && counter < endIndex) {
@@ -937,7 +928,7 @@ export class DoublyLinkedList {
   }
 
   private *_values(): Generator<any> {
-    let node = this.head;
+    let node = this._head;
     while (node) {
       yield node.value;
       node = node.next;

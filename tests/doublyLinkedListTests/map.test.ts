@@ -107,6 +107,19 @@ function testMap(dsClass) {
       assert.throws(() => ds.map(func), TypeError("undefined is not a function"));
     });
 
+    it('should check "map" with object that has throwing toString', function () {
+      const array = [0, 1, 2, 3, 4, 5];
+      const func = {
+        toString() {
+          throw new Error("cannot convert to string");
+        },
+      };
+      const ds = new dsClass(array);
+      assert.equal(ds.length, array.length);
+      assert(ds.isEqual(array));
+      assert.throws(() => ds.map(func), TypeError("object Object is not a function"));
+    });
+
     it('should check "map" of negative value and index bigger than 2 in list [0,-4,2,3,-4,5]', function () {
       const array = [0, -4, 2, 3, -4, 5];
       const func = (v, i) => v < 0 && i > 2;
