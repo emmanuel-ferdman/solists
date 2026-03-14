@@ -14,8 +14,8 @@
   <a href="https://www.npmjs.com/package/solists"><img src="https://img.shields.io/npm/v/solists.svg" alt="npm version"></a>
   <a href="https://www.npmjs.com/package/solists"><img src="https://img.shields.io/npm/dm/solists.svg" alt="npm downloads"></a>
   <a href="https://github.com/emmanuel-ferdman/solists/actions"><img src="https://github.com/emmanuel-ferdman/solists/workflows/CI/badge.svg" alt="CI"></a>
-  <a href="https://codecov.io/gh/emmanuel-ferdman/solists"><img src="https://codecov.io/gh/emmanuel-ferdman/solists/branch/develop/graph/badge.svg" alt="Coverage"></a>
-  <a href="https://github.com/emmanuel-ferdman/solists/blob/develop/LICENSE"><img src="https://img.shields.io/npm/l/solists.svg" alt="License"></a>
+  <a href="https://codecov.io/gh/emmanuel-ferdman/solists"><img src="https://codecov.io/gh/emmanuel-ferdman/solists/branch/main/graph/badge.svg" alt="Coverage"></a>
+  <a href="https://github.com/emmanuel-ferdman/solists/blob/main/LICENSE"><img src="https://img.shields.io/npm/l/solists.svg" alt="License"></a>
 </p>
 
 ## Installation
