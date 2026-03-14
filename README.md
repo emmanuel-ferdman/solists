@@ -53,6 +53,24 @@ l.includes("B"); // B(2) overtakes D
 <td>
 
 ```javascript
+const { KInARowSoList } = require("solists");
+
+const l = new KInARowSoList(["A", "B", "C", "D", "E"], { k: 2 });
+l.includes("D"); // D: 1st access, no move
+l.includes("D"); // D: 2nd access, -> front
+l.includes("B"); // B: 1st access, no move
+// Result: ["D", "A", "B", "C", "E"]
+```
+
+</td>
+<td align="center" valign="middle">
+<img src="img/k-in-a-row.gif" width="400">
+</td>
+</tr>
+<tr>
+<td>
+
+```javascript
 const { MoveAheadKSoList } = require("solists");
 
 const l = new MoveAheadKSoList(["A", "B", "C", "D", "E"], { k: 2 });
@@ -111,7 +129,8 @@ A self-organizing list (or _SoList_) reorders elements based on access patterns 
 
 **Supported heuristics:**
 
-- **Frequency Count** - Elements ordered by access count
+- **Frequency Count** - Accessed elements ordered by access count
+- **k-in-a-Row** - Accessed element moves to front after k consecutive accesses
 - **Move-Ahead-k** - Accessed element moves k positions toward the head
 - **Move to Front** - Accessed element moves directly to the head
 - **Transpose** - Accessed element swaps with its predecessor

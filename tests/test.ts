@@ -1,10 +1,12 @@
 import { DoublyLinkedList } from "../src/DoublyLinkedList";
 import { FrequencyCountSoList } from "../src/FrequencyCountSoList";
+import { KInARowSoList } from "../src/KInARowSoList";
 import { MoveAheadKSoList } from "../src/MoveAheadKSoList";
 import { MoveToFrontSoList } from "../src/MoveToFrontSoList";
 import { TransposeSoList } from "../src/TransposeSoList";
 import { doublyLinkedListTest } from "./doublyLinkedListTests";
 import { frequencyCountSoListTest } from "./frequencyCountSoListTests";
+import { kInARowSoListTest } from "./kInARowSoListTests";
 import { moveAheadKSoListTest } from "./moveAheadKSoListTests";
 import { moveToFrontSoListTest } from "./moveToFrontSoListTests";
 import { transposeSoListTest } from "./transposeSoListTests";
@@ -15,6 +17,7 @@ describe("Test SoLists", function () {
   const dsClasses = [
     DoublyLinkedList,
     FrequencyCountSoList,
+    KInARowSoList,
     MoveAheadKSoList,
     MoveToFrontSoList,
     TransposeSoList,
@@ -160,5 +163,24 @@ describe("Test SoLists", function () {
     moveAheadKSoListTest.testLastIndexOf();
     moveAheadKSoListTest.testPush();
     moveAheadKSoListTest.testUnshift();
+  });
+
+  /** KInARowSoList Search & Creation Tests **/
+
+  describe("Test KInARowSoList Search & Creation", function () {
+    // Custom methods tests
+    kInARowSoListTest.testInsert();
+
+    // Native Array methods tests
+    kInARowSoListTest.testAt();
+    kInARowSoListTest.testFind();
+    kInARowSoListTest.testFindIndex();
+    kInARowSoListTest.testFindLast();
+    kInARowSoListTest.testFindLastIndex();
+    kInARowSoListTest.testIncludes();
+    kInARowSoListTest.testIndexOf();
+    kInARowSoListTest.testLastIndexOf();
+    kInARowSoListTest.testPush();
+    kInARowSoListTest.testUnshift();
   });
 });
