@@ -25,12 +25,6 @@ git clone https://github.com/<your-username>/solists.git
 cd solists
 ```
 
-Switch to the `develop` branch:
-
-```sh
-git checkout develop
-```
-
 Install dependencies:
 
 ```sh
