@@ -504,6 +504,21 @@ export class DoublyLinkedList {
     return result;
   }
 
+  public toSorted(comparefn?: any): DoublyLinkedList {
+    if (comparefn !== undefined) {
+      if (!this._isCallable(comparefn)) {
+        let value;
+        if (comparefn === null) value = "null";
+        else if (Array.isArray(comparefn)) value = Object.prototype.toString.call(comparefn);
+        else if (typeof comparefn === "object") value = "#<Object>";
+        else value = String(comparefn);
+        throw TypeError(`The comparison function must be either a function or undefined: ${value}`);
+      }
+    }
+    const copy = this.slice(0, this.length);
+    return copy.sort(comparefn);
+  }
+
   public toString(): string {
     return this.join(",");
   }
