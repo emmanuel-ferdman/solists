@@ -163,6 +163,41 @@ function testFind(dsClass) {
       assert(ds.isEqual(array));
       assert.equal(ds.find(func), array.find(func));
     });
+
+    it('should check "find" with thisArg', function () {
+      const array = [1, 2, 3, 4];
+      const thisArg = { target: 3 };
+      const func = function (v) {
+        return v === this.target;
+      };
+      const ds = new dsClass(array);
+      assert.equal(ds.length, array.length);
+      assert(ds.isEqual(array));
+      assert.equal(ds.find(func, thisArg), array.find(func, thisArg));
+    });
+
+    it('should check "find" with thisArg as undefined', function () {
+      const array = [1, 2, 3];
+      const func = function (v) {
+        return v > 0 && this === undefined;
+      };
+      const ds = new dsClass(array);
+      assert.equal(ds.find(func, undefined), array.find(func, undefined));
+    });
+
+    it('should check "find" with thisArg tracking calls', function () {
+      const array = [1, 2, 3, 4];
+      const thisArg = { calls: 0, target: 3 };
+      const func = function (v) {
+        this.calls += 1;
+        return v === this.target;
+      };
+      const thisArg2 = { calls: 0, target: 3 };
+      const ds = new dsClass(array);
+      ds.find(func, thisArg);
+      array.find(func, thisArg2);
+      assert.equal(thisArg.calls, thisArg2.calls);
+    });
   });
 }
 

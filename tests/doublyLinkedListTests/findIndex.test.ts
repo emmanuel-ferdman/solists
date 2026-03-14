@@ -163,6 +163,41 @@ function testFindIndex(dsClass) {
       assert(ds.isEqual(array));
       assert.equal(ds.findIndex(func), array.findIndex(func));
     });
+
+    it('should check "findIndex" with thisArg', function () {
+      const array = [1, 2, 3, 4];
+      const thisArg = { target: 3 };
+      const func = function (v) {
+        return v === this.target;
+      };
+      const ds = new dsClass(array);
+      assert.equal(ds.length, array.length);
+      assert(ds.isEqual(array));
+      assert.equal(ds.findIndex(func, thisArg), array.findIndex(func, thisArg));
+    });
+
+    it('should check "findIndex" with thisArg as undefined', function () {
+      const array = [1, 2, 3];
+      const func = function (v) {
+        return v > 0 && this === undefined;
+      };
+      const ds = new dsClass(array);
+      assert.equal(ds.findIndex(func, undefined), array.findIndex(func, undefined));
+    });
+
+    it('should check "findIndex" with thisArg tracking calls', function () {
+      const array = [1, 2, 3, 4];
+      const thisArg = { calls: 0, target: 3 };
+      const func = function (v) {
+        this.calls += 1;
+        return v === this.target;
+      };
+      const thisArg2 = { calls: 0, target: 3 };
+      const ds = new dsClass(array);
+      ds.findIndex(func, thisArg);
+      array.findIndex(func, thisArg2);
+      assert.equal(thisArg.calls, thisArg2.calls);
+    });
   });
 }
 
