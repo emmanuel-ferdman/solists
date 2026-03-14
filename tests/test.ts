@@ -1,16 +1,24 @@
 import { DoublyLinkedList } from "../src/DoublyLinkedList";
 import { FrequencyCountSoList } from "../src/FrequencyCountSoList";
+import { MoveAheadKSoList } from "../src/MoveAheadKSoList";
 import { MoveToFrontSoList } from "../src/MoveToFrontSoList";
 import { TransposeSoList } from "../src/TransposeSoList";
 import { doublyLinkedListTest } from "./doublyLinkedListTests";
 import { frequencyCountSoListTest } from "./frequencyCountSoListTests";
+import { moveAheadKSoListTest } from "./moveAheadKSoListTests";
 import { moveToFrontSoListTest } from "./moveToFrontSoListTests";
 import { transposeSoListTest } from "./transposeSoListTests";
 
 describe("Test SoLists", function () {
   /** General Tests **/
 
-  const dsClasses = [DoublyLinkedList, FrequencyCountSoList, MoveToFrontSoList, TransposeSoList];
+  const dsClasses = [
+    DoublyLinkedList,
+    FrequencyCountSoList,
+    MoveAheadKSoList,
+    MoveToFrontSoList,
+    TransposeSoList,
+  ];
   dsClasses.forEach(function (dsClass) {
     describe("Test Base " + dsClass.name, function () {
       // Constructor tests
@@ -133,5 +141,24 @@ describe("Test SoLists", function () {
     transposeSoListTest.testLastIndexOf();
     transposeSoListTest.testPush();
     transposeSoListTest.testUnshift();
+  });
+
+  /** MoveAheadKSoList Search & Creation Tests **/
+
+  describe("Test MoveAheadKSoList Search & Creation", function () {
+    // Custom methods tests
+    moveAheadKSoListTest.testInsert();
+
+    // Native Array methods tests
+    moveAheadKSoListTest.testAt();
+    moveAheadKSoListTest.testFind();
+    moveAheadKSoListTest.testFindIndex();
+    moveAheadKSoListTest.testFindLast();
+    moveAheadKSoListTest.testFindLastIndex();
+    moveAheadKSoListTest.testIncludes();
+    moveAheadKSoListTest.testIndexOf();
+    moveAheadKSoListTest.testLastIndexOf();
+    moveAheadKSoListTest.testPush();
+    moveAheadKSoListTest.testUnshift();
   });
 });

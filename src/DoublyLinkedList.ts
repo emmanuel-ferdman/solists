@@ -4,14 +4,16 @@ export interface SoListOptions {
   accessOnly?: boolean;
 }
 
-export class DoublyLinkedList<T> {
-  protected _head: Node<T> | null;
-  protected _tail: Node<T> | null;
+export class DoublyLinkedList<T, O extends SoListOptions = SoListOptions> {
   protected _accessOnly: boolean;
+  protected _head: Node<T> | null;
+  protected _options: O;
+  protected _tail: Node<T> | null;
 
   private _length: number;
 
-  public constructor(iterable: Iterable<T> | null = null, options: SoListOptions = {}) {
+  public constructor(iterable: Iterable<T> | null = null, options: O = {} as O) {
+    this._options = options;
     this._head = null;
     this._tail = null;
     this._length = 0;
