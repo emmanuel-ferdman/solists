@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  A TypeScript implementation of <a href="https://en.wikipedia.org/wiki/Self-organizing_list">self-organizing lists</a> with Array-like methods.
+  A TypeScript implementation of <a href="https://en.wikipedia.org/wiki/Self-organizing_list">self-organizing lists</a> with native Array methods.
 </p>
 
 <p align="center">

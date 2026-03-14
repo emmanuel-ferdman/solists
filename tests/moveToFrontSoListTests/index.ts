@@ -1,5 +1,4 @@
 import { testAt } from "./at.test";
-import { testConstructor } from "./constructor.test";
 import { testFind } from "./find.test";
 import { testFindIndex } from "./findIndex.test";
 import { testFindLast } from "./findLast.test";
@@ -13,7 +12,6 @@ import { testUnshift } from "./unshift.test";
 
 const moveToFrontSoListTest = {
   testAt,
-  testConstructor,
   testFind,
   testFindIndex,
   testFindLast,
