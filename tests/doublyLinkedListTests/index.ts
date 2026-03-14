@@ -41,6 +41,7 @@ import { testToSpliced } from "./toSpliced.test";
 import { testToString } from "./toString.test";
 import { testUnshift } from "./unshift.test";
 import { testValues } from "./values.test";
+import { testWith } from "./with.test";
 
 const doublyLinkedListTest = {
   testAt,
@@ -86,6 +87,7 @@ const doublyLinkedListTest = {
   testToString,
   testUnshift,
   testValues,
+  testWith,
 };
 
 export { doublyLinkedListTest };

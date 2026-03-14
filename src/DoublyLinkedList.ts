@@ -553,6 +553,21 @@ export class DoublyLinkedList {
     return this._values();
   }
 
+  public with(index: any, value: any): DoublyLinkedList {
+    const len = this.length;
+    const relativeIndex = this._toIntegerOrInfinity(index);
+    const actualIndex = relativeIndex < 0 ? len + relativeIndex : relativeIndex;
+    if (actualIndex >= len || actualIndex < 0) {
+      throw new RangeError("Invalid index : " + index);
+    }
+    const copy = this.slice(0, len);
+    const node = copy._getNode(actualIndex);
+    if (node !== null) {
+      node.value = value;
+    }
+    return copy;
+  }
+
   // Public custom methods
 
   public insert(index: any, value: any): number | undefined {
