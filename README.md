@@ -35,6 +35,42 @@ npm install solists
 <td>
 
 ```javascript
+const { FrequencyCountSoList } = require("solists");
+
+const l = new FrequencyCountSoList(["A", "B", "C", "D", "E"]);
+l.includes("D"); // D(1) -> front
+l.includes("B"); // B(1) -> #2
+l.includes("B"); // B(2) overtakes D
+// Result: ["B", "D", "A", "C", "E"]
+```
+
+</td>
+<td align="center" valign="middle">
+<img src="img/frequency-count.gif" width="400">
+</td>
+</tr>
+<tr>
+<td>
+
+```javascript
+const { MoveAheadKSoList } = require("solists");
+
+const l = new MoveAheadKSoList(["A", "B", "C", "D", "E"], { k: 2 });
+l.includes("D"); // D moves 2 ahead
+l.includes("E"); // E moves 2 ahead
+l.includes("B"); // B moves 2 ahead
+// Result: ["A", "B", "D", "E", "C"]
+```
+
+</td>
+<td align="center" valign="middle">
+<img src="img/move-ahead-k.gif" width="400">
+</td>
+</tr>
+<tr>
+<td>
+
+```javascript
 const { MoveToFrontSoList } = require("solists");
 
 const l = new MoveToFrontSoList(["A", "B", "C", "D", "E"]);
@@ -67,24 +103,6 @@ l.includes("B"); // B swaps with A
 <img src="img/transpose.gif" width="400">
 </td>
 </tr>
-<tr>
-<td>
-
-```javascript
-const { FrequencyCountSoList } = require("solists");
-
-const l = new FrequencyCountSoList(["A", "B", "C", "D", "E"]);
-l.includes("D"); // D(1) -> front
-l.includes("B"); // B(1) -> #2
-l.includes("B"); // B(2) overtakes D
-// Result: ["B", "D", "A", "C", "E"]
-```
-
-</td>
-<td align="center" valign="middle">
-<img src="img/frequency-count.gif" width="400">
-</td>
-</tr>
 </table>
 
 ## How It Works
@@ -93,9 +111,10 @@ A self-organizing list (or _SoList_) reorders elements based on access patterns 
 
 **Supported heuristics:**
 
+- **Frequency Count** - Elements ordered by access count
+- **Move-Ahead-k** - Accessed element moves k positions toward the head
 - **Move to Front** - Accessed element moves directly to the head
-- **Transpose** - Accessed element swaps with its predecessor (gradual movement)
-- **Frequency Count** - Elements ordered by access count (most accessed first)
+- **Transpose** - Accessed element swaps with its predecessor
 
 ### Access Only Mode
 
