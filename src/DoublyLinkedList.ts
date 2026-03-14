@@ -53,20 +53,29 @@ export class DoublyLinkedList<T> {
   }
 
   public copyWithin(target: number, start: number, end?: number): this {
+    const targetIndex = this._toAbsoluteIndex(target, this.length);
     const sourceStart = this._toAbsoluteIndex(start, this.length);
     const sourceEnd = end === undefined ? this.length : this._toAbsoluteIndex(end, this.length);
-    const targetStart = this._toAbsoluteIndex(target, this.length);
-    let count = Math.min(sourceEnd - sourceStart, this.length - targetStart);
-    const tempSrcLst = this.slice();
-    const targetNodes = this._nodes(targetStart, targetStart + count);
-    const sourceNodes = tempSrcLst._nodes(sourceStart, sourceStart + count);
-    while (count > 0) {
-      const targetCurrentNode = targetNodes.next();
-      const sourceCurrentNode = sourceNodes.next();
-      const targetCurrentValue = targetCurrentNode.value;
-      const sourceCurrentValue = sourceCurrentNode.value;
-      targetCurrentValue[1].value = sourceCurrentValue[1].value;
-      count -= 1;
+    let count = Math.min(sourceEnd - sourceStart, this.length - targetIndex);
+    if (count <= 0 || sourceStart === targetIndex) return this;
+    if (sourceStart < targetIndex && targetIndex < sourceStart + count) {
+      let sourceNode = this._getNode(sourceStart + count - 1);
+      let targetNode = this._getNode(targetIndex + count - 1);
+      while (count > 0) {
+        targetNode!.value = sourceNode!.value;
+        sourceNode = sourceNode!.prev;
+        targetNode = targetNode!.prev;
+        count -= 1;
+      }
+    } else {
+      let sourceNode = this._getNode(sourceStart);
+      let targetNode = this._getNode(targetIndex);
+      while (count > 0) {
+        targetNode!.value = sourceNode!.value;
+        sourceNode = sourceNode!.next;
+        targetNode = targetNode!.next;
+        count -= 1;
+      }
     }
     return this;
   }
