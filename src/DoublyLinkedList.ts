@@ -504,6 +504,11 @@ export class DoublyLinkedList {
     return result;
   }
 
+  public toReversed(): DoublyLinkedList {
+    const copy = this.slice(0, this.length);
+    return copy.reverse();
+  }
+
   public toSorted(comparefn?: any): DoublyLinkedList {
     if (comparefn !== undefined) {
       if (!this._isCallable(comparefn)) {

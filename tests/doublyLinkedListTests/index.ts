@@ -35,6 +35,7 @@ import { testSome } from "./some.test";
 import { testSort } from "./sort.test";
 import { testSplice } from "./splice.test";
 import { testToLocaleString } from "./toLocaleString.test";
+import { testToReversed } from "./toReversed.test";
 import { testToSorted } from "./toSorted.test";
 import { testToString } from "./toString.test";
 import { testUnshift } from "./unshift.test";
@@ -78,6 +79,7 @@ const doublyLinkedListTest = {
   testSort,
   testSplice,
   testToLocaleString,
+  testToReversed,
   testToSorted,
   testToString,
   testUnshift,

@@ -157,6 +157,7 @@ const l = new MoveToFrontSoList([1, 2, 3], { accessOnly: false });
 | `sort()`              | Sorts the elements                                            |
 | `splice()`            | Adds/removes elements                                         |
 | `toLocaleString()`    | Returns a localized string representation                     |
+| `toReversed()`        | Returns a reversed copy                                       |
 | `toSorted()`          | Returns a sorted copy                                         |
 | `toString()`          | Returns a string representation                               |
 | `unshift()`           | Adds elements to the beginning                                |
