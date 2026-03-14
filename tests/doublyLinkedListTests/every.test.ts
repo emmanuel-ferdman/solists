@@ -86,10 +86,18 @@ function testEvery(dsClass) {
     it('should check "every" with "null" function', function () {
       const array = [0, 1, 2, 3, 4, 5];
       const func = null;
+      const funcType = typeof func;
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
-      assert.throws(() => ds.every(func), TypeError("callbackFn is not a function"));
+      assert.throws(
+        () => array.every(func),
+        TypeError(`${funcType} ${String(func)} is not a function`)
+      );
+      assert.throws(
+        () => ds.every(func),
+        TypeError(`${funcType} ${String(func)} is not a function`)
+      );
     });
 
     it('should check "every" with "undefined" function', function () {
@@ -98,7 +106,8 @@ function testEvery(dsClass) {
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
-      assert.throws(() => ds.every(func), TypeError("callbackFn is not a function"));
+      assert.throws(() => array.every(func), TypeError("undefined is not a function"));
+      assert.throws(() => ds.every(func), TypeError("undefined is not a function"));
     });
 
     it('should check "every" of negative value and index bigger than 2 in list [0,1,-2,3,-4,-5]', function () {

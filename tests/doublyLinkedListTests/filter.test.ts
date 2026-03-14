@@ -86,10 +86,18 @@ function testFilter(dsClass) {
     it('should check "filter" with "null" function', function () {
       const array = [0, 1, 2, 3, 4, 5];
       const func = null;
+      const funcType = typeof func;
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
-      assert.throws(() => ds.filter(func), TypeError("callbackFn is not a function"));
+      assert.throws(
+        () => array.filter(func),
+        TypeError(`${funcType} ${String(func)} is not a function`)
+      );
+      assert.throws(
+        () => ds.filter(func),
+        TypeError(`${funcType} ${String(func)} is not a function`)
+      );
     });
 
     it('should check "filter" with "undefined" function', function () {
@@ -98,7 +106,8 @@ function testFilter(dsClass) {
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
-      assert.throws(() => ds.filter(func), TypeError("callbackFn is not a function"));
+      assert.throws(() => array.filter(func), TypeError("undefined is not a function"));
+      assert.throws(() => ds.filter(func), TypeError("undefined is not a function"));
     });
 
     it('should check "filter" of negative value and index bigger than 2 in list [0,-4,2,3,-4,5]', function () {
