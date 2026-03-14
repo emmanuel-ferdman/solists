@@ -6,7 +6,7 @@ function testIncludes() {
     it('should check "includes" of values [2] in list [0,1,2,3,4,5]', function () {
       const array = [0, 1, 2, 3, 4, 5];
       const inputs = [{ expectedArray: [2, 0, 1, 3, 4, 5], expectedValue: true, value: 2 }];
-      const ds = new FrequencyCountSoList(false, array);
+      const ds = new FrequencyCountSoList(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       inputs.forEach((input) => {
@@ -23,7 +23,7 @@ function testIncludes() {
         { expectedArray: [3, 2, 4, 0, 1, 5], expectedValue: true, value: 4 },
         { expectedArray: [2, 3, 4, 0, 1, 5], expectedValue: true, value: 2 },
       ];
-      const ds = new FrequencyCountSoList(false, array);
+      const ds = new FrequencyCountSoList(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       inputs.forEach((input) => {
@@ -39,7 +39,7 @@ function testIncludes() {
         { expectedArray: [0, 1, 2, 3, 4, 5], expectedValue: false, value: 6 },
         { expectedArray: [3, 0, 1, 2, 4, 5], expectedValue: true, value: 3 },
       ];
-      const ds = new FrequencyCountSoList(false, array);
+      const ds = new FrequencyCountSoList(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       inputs.forEach((input) => {
@@ -55,7 +55,7 @@ function testIncludes() {
         { expectedArray: [1, 0, 2, 5, 4, 5], expectedValue: true, value: 0 },
         { expectedArray: [1, 0, 5, 2, 4, 5], expectedValue: true, value: 5 },
       ];
-      const ds = new FrequencyCountSoList(false, array);
+      const ds = new FrequencyCountSoList(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       inputs.forEach((input) => {

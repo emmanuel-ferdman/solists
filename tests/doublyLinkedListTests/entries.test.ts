@@ -4,7 +4,7 @@ function testEntries(dsClass) {
   describe(dsClass.name + ' Base: Test the "entries" method', function () {
     it('should check "entries" on []', function () {
       const array = [];
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       const arrayIter = array.entries();
@@ -24,7 +24,7 @@ function testEntries(dsClass) {
 
     it('should check "entries" on [1]', function () {
       const array = [1];
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       const arrayIter = array.entries();
@@ -44,7 +44,7 @@ function testEntries(dsClass) {
 
     it('should check "entries" on [1,2,3]', function () {
       const array = [1, 2, 3];
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       const arrayIter = array.entries();
@@ -75,7 +75,7 @@ function testEntries(dsClass) {
         true,
         new Date("21 Dec 1997 14:12:00 UTC"),
       ];
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       const arrayIter = array.entries();

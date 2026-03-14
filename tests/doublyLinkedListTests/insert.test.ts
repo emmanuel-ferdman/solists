@@ -8,7 +8,7 @@ function testInsert(dsClass) {
       const expectedValue = 1;
       const index = 0;
       const value = 5;
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.insert(index, value), expectedValue);
@@ -21,7 +21,7 @@ function testInsert(dsClass) {
       const expectedValue = 1;
       const index = 1;
       const value = 5;
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.insert(index, value), expectedValue);
@@ -34,7 +34,7 @@ function testInsert(dsClass) {
       const expectedValue = 2;
       const index = 0;
       const value = 5;
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.insert(index, value), expectedValue);
@@ -47,7 +47,7 @@ function testInsert(dsClass) {
       const expectedValue = 2;
       const index = 1;
       const value = 5;
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.insert(index, value), expectedValue);
@@ -60,7 +60,7 @@ function testInsert(dsClass) {
       const expectedValue = 2;
       const index = 10;
       const value = 5;
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.insert(index, value), expectedValue);
@@ -73,7 +73,7 @@ function testInsert(dsClass) {
       const expectedValue = 6;
       const index = 2;
       const value = 10;
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.insert(index, value), expectedValue);
@@ -86,7 +86,7 @@ function testInsert(dsClass) {
       const expectedValue = 6;
       const index = 4;
       const value = 10;
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.insert(index, value), expectedValue);
@@ -99,7 +99,7 @@ function testInsert(dsClass) {
       const expectedValue = 6;
       const index = -2;
       const value = 10;
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.insert(index, value), expectedValue);
@@ -112,7 +112,7 @@ function testInsert(dsClass) {
       const expectedValue = 6;
       const index = -4;
       const value = 10;
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.insert(index, value), expectedValue);
@@ -125,7 +125,7 @@ function testInsert(dsClass) {
       const expectedValue = 6;
       const index = 1.5;
       const value = 10;
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.insert(index, value), expectedValue);
@@ -138,7 +138,7 @@ function testInsert(dsClass) {
       const expectedValue = 6;
       const index = -2.5;
       const value = 10;
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.insert(index, value), expectedValue);
@@ -149,7 +149,7 @@ function testInsert(dsClass) {
       const array = [1, 2, 3, 4, 5];
       const expectedArray = [1, 2, 3, 4, 5];
       const expectedValue = undefined;
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.insert(), expectedValue);
@@ -161,7 +161,7 @@ function testInsert(dsClass) {
       const expectedArray = [1, 2, 3, 4, 5];
       const expectedValue = undefined;
       const index = 0;
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.insert(index), expectedValue);
@@ -174,7 +174,7 @@ function testInsert(dsClass) {
       const expectedValue = 6;
       const index = null;
       const value = 10;
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.insert(index, value), expectedValue);
@@ -187,7 +187,7 @@ function testInsert(dsClass) {
       const expectedValue = undefined;
       const index = undefined;
       const value = 10;
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.insert(index, value), expectedValue);
@@ -200,7 +200,7 @@ function testInsert(dsClass) {
       const expectedValue = 6;
       const index = NaN;
       const value = 10;
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.insert(index, value), expectedValue);
@@ -213,7 +213,7 @@ function testInsert(dsClass) {
       const expectedValue = 6;
       const index = Infinity;
       const value = 10;
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.insert(index, value), expectedValue);
@@ -226,7 +226,7 @@ function testInsert(dsClass) {
       const expectedValue = 6;
       const index = -Infinity;
       const value = 10;
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.insert(index, value), expectedValue);
@@ -239,7 +239,7 @@ function testInsert(dsClass) {
       const expectedValue = 6;
       const index = -0;
       const value = 10;
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.insert(index, value), expectedValue);
@@ -252,7 +252,7 @@ function testInsert(dsClass) {
       const expectedValue = 6;
       const index = {};
       const value = 10;
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.insert(index, value), expectedValue);
@@ -265,7 +265,7 @@ function testInsert(dsClass) {
       const expectedValue = 6;
       const index = 1;
       const value = null;
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.insert(index, value), expectedValue);
@@ -278,7 +278,7 @@ function testInsert(dsClass) {
       const expectedValue = 6;
       const index = 1;
       const value = undefined;
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.insert(index, value), expectedValue);
@@ -291,7 +291,7 @@ function testInsert(dsClass) {
       const expectedValue = 6;
       const index = 1;
       const value = NaN;
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.insert(index, value), expectedValue);
@@ -304,7 +304,7 @@ function testInsert(dsClass) {
       const expectedValue = 6;
       const index = 1;
       const value = Infinity;
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.insert(index, value), expectedValue);
@@ -317,7 +317,7 @@ function testInsert(dsClass) {
       const expectedValue = 6;
       const index = 1;
       const value = -0;
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.insert(index, value), expectedValue);

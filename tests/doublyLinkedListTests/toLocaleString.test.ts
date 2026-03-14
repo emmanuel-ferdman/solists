@@ -4,7 +4,7 @@ function testToLocaleString(dsClass) {
   describe(dsClass.name + ' Base: Test the "toLocaleString" method', function () {
     it('should check "toLocaleString" of list []', function () {
       const array = [];
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.toLocaleString(), array.toLocaleString());
@@ -12,7 +12,7 @@ function testToLocaleString(dsClass) {
 
     it('should check "toLocaleString" of list [1]', function () {
       const array = [1];
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.toLocaleString(), array.toLocaleString());
@@ -20,7 +20,7 @@ function testToLocaleString(dsClass) {
 
     it('should check "toLocaleString" of list [1,2,3]', function () {
       const array = [1, 2, 3];
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.toLocaleString(), array.toLocaleString());
@@ -28,7 +28,7 @@ function testToLocaleString(dsClass) {
 
     it('should check "toLocaleString" of list [1,2,3]', function () {
       const array = [1, 2, 3];
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.toLocaleString(), array.toLocaleString());
@@ -36,7 +36,7 @@ function testToLocaleString(dsClass) {
 
     it('should check "toLocaleString" of list [1,-2,3]', function () {
       const array = [1, -2, 3];
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.toLocaleString(), array.toLocaleString());
@@ -55,7 +55,7 @@ function testToLocaleString(dsClass) {
         true,
         new Date("21 Dec 1997 14:12:00 UTC"),
       ];
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.toLocaleString(), array.toLocaleString());
@@ -65,7 +65,7 @@ function testToLocaleString(dsClass) {
       const array = [1, "a", new Date("21 Dec 1997 14:12:00 UTC")];
       const locales = "en";
       const options = { timeZone: "UTC" };
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.toLocaleString(locales, options), array.toLocaleString(locales, options));
@@ -75,7 +75,7 @@ function testToLocaleString(dsClass) {
       const array = [689, 100, 4577, 56];
       const locales = "en-US";
       const options = { style: "currency", currency: "USD" };
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.toLocaleString(locales, options), array.toLocaleString(locales, options));
@@ -84,7 +84,7 @@ function testToLocaleString(dsClass) {
     it('should check "toLocaleString" of list [689,100,4577,56] with locales "en-US"', function () {
       const array = [689, 100, 4577, 56];
       const locales = "en-US";
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.toLocaleString(locales), array.toLocaleString(locales));
@@ -94,7 +94,7 @@ function testToLocaleString(dsClass) {
       const array = [689, 100, 4577, 56];
       const locales = "en-US";
       const options = undefined;
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.toLocaleString(locales, options), array.toLocaleString(locales, options));
@@ -104,7 +104,7 @@ function testToLocaleString(dsClass) {
       const array = [689, 100, 4577, 56];
       const locales = "en-US";
       const options = NaN;
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.toLocaleString(locales, options), array.toLocaleString(locales, options));
@@ -114,7 +114,7 @@ function testToLocaleString(dsClass) {
       const array = [689, 100, 4577, 56];
       const locales = "en-US";
       const options = Infinity;
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.toLocaleString(locales, options), array.toLocaleString(locales, options));
@@ -124,7 +124,7 @@ function testToLocaleString(dsClass) {
       const array = [689, 100, 4577, 56];
       const locales = "en-US";
       const options = -0;
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.toLocaleString(locales, options), array.toLocaleString(locales, options));
@@ -134,7 +134,7 @@ function testToLocaleString(dsClass) {
       const array = [689, 100, 4577, 56];
       const locales = "en-US";
       const options = {};
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.toLocaleString(locales, options), array.toLocaleString(locales, options));
@@ -144,7 +144,7 @@ function testToLocaleString(dsClass) {
       const array = [689, 100, 4577, 56];
       const locales = undefined;
       const options = { style: "currency", currency: "USD" };
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.toLocaleString(locales, options), array.toLocaleString(locales, options));
@@ -154,7 +154,7 @@ function testToLocaleString(dsClass) {
       const array = [689, 100, 4577, 56];
       const locales = NaN;
       const options = { style: "currency", currency: "USD" };
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.toLocaleString(locales, options), array.toLocaleString(locales, options));
@@ -164,7 +164,7 @@ function testToLocaleString(dsClass) {
       const array = [689, 100, 4577, 56];
       const locales = Infinity;
       const options = { style: "currency", currency: "USD" };
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.toLocaleString(locales, options), array.toLocaleString(locales, options));
@@ -174,7 +174,7 @@ function testToLocaleString(dsClass) {
       const array = [689, 100, 4577, 56];
       const locales = -0;
       const options = { style: "currency", currency: "USD" };
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.toLocaleString(locales, options), array.toLocaleString(locales, options));
@@ -184,7 +184,7 @@ function testToLocaleString(dsClass) {
       const array = [689, 100, 4577, 56];
       const locales = {};
       const options = { style: "currency", currency: "USD" };
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.toLocaleString(locales, options), array.toLocaleString(locales, options));
@@ -194,7 +194,7 @@ function testToLocaleString(dsClass) {
       const array = [{}, {}];
       const locales = "en-US";
       const options = { style: "currency", currency: "USD" };
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.toLocaleString(locales, options), array.toLocaleString(locales, options));
@@ -204,7 +204,7 @@ function testToLocaleString(dsClass) {
       const array = [689, 100, 4577, 56];
       const locales = "en-US";
       const options = null;
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
 
@@ -228,7 +228,7 @@ function testToLocaleString(dsClass) {
       const array = [689, 100, 4577, 56];
       const locales = null;
       const options = { style: "currency", currency: "USD" };
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
 

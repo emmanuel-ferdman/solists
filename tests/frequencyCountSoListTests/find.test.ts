@@ -6,7 +6,7 @@ function testFind() {
     it('should check "find" of funcs [v=>v==2] in list [0,1,2,3,4,5]', function () {
       const array = [0, 1, 2, 3, 4, 5];
       const inputs = [{ expectedArray: [2, 0, 1, 3, 4, 5], expectedValue: 2, func: (v) => v == 2 }];
-      const ds = new FrequencyCountSoList(false, array);
+      const ds = new FrequencyCountSoList(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       inputs.forEach((input) => {
@@ -23,7 +23,7 @@ function testFind() {
         { expectedArray: [3, 2, 4, 0, 1, 5], expectedValue: 4, func: (v) => v == 4 },
         { expectedArray: [2, 3, 4, 0, 1, 5], expectedValue: 2, func: (v) => v == 2 },
       ];
-      const ds = new FrequencyCountSoList(false, array);
+      const ds = new FrequencyCountSoList(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       inputs.forEach((input) => {
@@ -38,7 +38,7 @@ function testFind() {
         { expectedArray: [0, 1, 2, 3, 4, 5], expectedValue: undefined, func: (v) => v < 0 },
         { expectedArray: [0, 1, 2, 3, 4, 5], expectedValue: undefined, func: (v) => v > 6 },
       ];
-      const ds = new FrequencyCountSoList(false, array);
+      const ds = new FrequencyCountSoList(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       inputs.forEach((input) => {
@@ -54,7 +54,7 @@ function testFind() {
         { expectedArray: [1, 0, 2, 5, 4, 5], expectedValue: 0, func: (v) => v % 2 == 0 },
         { expectedArray: [1, 0, 5, 2, 4, 5], expectedValue: 5, func: (v) => v == 5 },
       ];
-      const ds = new FrequencyCountSoList(false, array);
+      const ds = new FrequencyCountSoList(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       inputs.forEach((input) => {
