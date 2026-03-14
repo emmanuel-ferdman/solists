@@ -163,6 +163,7 @@ const l = new MoveToFrontSoList([1, 2, 3], { accessOnly: false });
 | `toString()`          | Returns a string representation                               |
 | `unshift()`           | Adds elements to the beginning                                |
 | `values()`            | Returns an iterator of values                                 |
+| `with()`              | Returns copy with element at index replaced                   |
 
 ## Contributing
 

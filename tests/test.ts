@@ -49,6 +49,7 @@ describe("Test SoLists", function () {
       doublyLinkedListTest.testToSpliced(dsClass);
       doublyLinkedListTest.testToString(dsClass);
       doublyLinkedListTest.testValues(dsClass);
+      doublyLinkedListTest.testWith(dsClass);
 
       // Operators tests
       doublyLinkedListTest.testOfOperator(dsClass);
