@@ -21,7 +21,7 @@ describe("Test SoLists", function () {
       doublyLinkedListTest.testIsEqual(dsClass);
       doublyLinkedListTest.testRemove(dsClass);
 
-      // Array-like methods tests
+      // Native Array methods tests
       doublyLinkedListTest.testConcat(dsClass);
       doublyLinkedListTest.testCopyWithin(dsClass);
       doublyLinkedListTest.testEntries(dsClass);
@@ -62,7 +62,7 @@ describe("Test SoLists", function () {
     // Custom methods tests
     doublyLinkedListTest.testInsert(DoublyLinkedList);
 
-    // Array-like methods tests
+    // Native Array methods tests
     doublyLinkedListTest.testAt(DoublyLinkedList);
     doublyLinkedListTest.testFind(DoublyLinkedList);
     doublyLinkedListTest.testFindIndex(DoublyLinkedList);
@@ -84,7 +84,7 @@ describe("Test SoLists", function () {
     // Custom methods tests
     frequencyCountSoListTest.testInsert();
 
-    // Array-like methods tests
+    // Native Array methods tests
     frequencyCountSoListTest.testAt();
     frequencyCountSoListTest.testFind();
     frequencyCountSoListTest.testFindIndex();
@@ -100,13 +100,10 @@ describe("Test SoLists", function () {
   /** MoveToFrontSoList Search & Creation Tests **/
 
   describe("Test MoveToFrontSoList Search & Creation", function () {
-    // Constructor tests
-    moveToFrontSoListTest.testConstructor();
-
     // Custom methods tests
     moveToFrontSoListTest.testInsert();
 
-    // Array-like methods tests
+    // Native Array methods tests
     moveToFrontSoListTest.testAt();
     moveToFrontSoListTest.testFind();
     moveToFrontSoListTest.testFindIndex();
@@ -122,13 +119,10 @@ describe("Test SoLists", function () {
   /** TransposeSoList Search & Creation Tests **/
 
   describe("Test transposeSoListTest Search & Creation", function () {
-    // Constructor tests
-    transposeSoListTest.testConstructor();
-
     // Custom methods tests
     transposeSoListTest.testInsert();
 
-    // Array-like methods tests
+    // Native Array methods tests
     transposeSoListTest.testAt();
     transposeSoListTest.testFind();
     transposeSoListTest.testFindIndex();

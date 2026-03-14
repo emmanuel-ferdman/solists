@@ -810,7 +810,12 @@ export class DoublyLinkedList<T> {
       throw TypeError("The value should be iterable");
     }
     for (const value of iterable) {
-      this.push(value);
+      const newNode = new Node<T>(value);
+      if (this.length === 0) {
+        this._insertFirst(newNode);
+      } else {
+        this._insertAfter(this._tail!, newNode);
+      }
     }
   }
 

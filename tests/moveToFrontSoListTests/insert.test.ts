@@ -39,16 +39,15 @@ function testInsert() {
 
     it('should check "insert" of values [6,7,8] with indices [0,2,-1] to list [1,2,3,4,5] with accessOnly=false after "includes" [3]', function () {
       const array = [1, 2, 3, 4, 5];
-      const expectedInitArray = [5, 4, 3, 2, 1];
       const findInputs = [3];
       const inputs = [
-        { expectedArray: [6, 3, 5, 4, 2, 1], expectedValue: 6, value: 6, index: 0 },
-        { expectedArray: [7, 6, 3, 5, 4, 2, 1], expectedValue: 7, value: 7, index: 2 },
-        { expectedArray: [8, 7, 6, 3, 5, 4, 2, 1], expectedValue: 8, value: 8, index: -1 },
+        { expectedArray: [6, 3, 1, 2, 4, 5], expectedValue: 6, value: 6, index: 0 },
+        { expectedArray: [7, 6, 3, 1, 2, 4, 5], expectedValue: 7, value: 7, index: 2 },
+        { expectedArray: [8, 7, 6, 3, 1, 2, 4, 5], expectedValue: 8, value: 8, index: -1 },
       ];
       const ds = new MoveToFrontSoList(array, { accessOnly: false });
       assert.equal(ds.length, array.length);
-      assert(ds.isEqual(expectedInitArray));
+      assert(ds.isEqual(array));
       findInputs.forEach((input) => {
         assert(ds.includes(input));
       });
@@ -60,16 +59,15 @@ function testInsert() {
 
     it('should check "insert" of values [6,7,8] with indices [0,2,-1] to list [1,2,3,4,5] with accessOnly=false after "includes" [3,2,3]', function () {
       const array = [1, 2, 3, 4, 5];
-      const expectedInitArray = [5, 4, 3, 2, 1];
       const findInputs = [3, 2, 3];
       const inputs = [
-        { expectedArray: [6, 3, 2, 5, 4, 1], expectedValue: 6, value: 6, index: 0 },
-        { expectedArray: [7, 6, 3, 2, 5, 4, 1], expectedValue: 7, value: 7, index: 2 },
-        { expectedArray: [8, 7, 6, 3, 2, 5, 4, 1], expectedValue: 8, value: 8, index: -1 },
+        { expectedArray: [6, 3, 2, 1, 4, 5], expectedValue: 6, value: 6, index: 0 },
+        { expectedArray: [7, 6, 3, 2, 1, 4, 5], expectedValue: 7, value: 7, index: 2 },
+        { expectedArray: [8, 7, 6, 3, 2, 1, 4, 5], expectedValue: 8, value: 8, index: -1 },
       ];
       const ds = new MoveToFrontSoList(array, { accessOnly: false });
       assert.equal(ds.length, array.length);
-      assert(ds.isEqual(expectedInitArray));
+      assert(ds.isEqual(array));
       findInputs.forEach((input) => {
         assert(ds.includes(input));
       });
