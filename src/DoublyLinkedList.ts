@@ -416,7 +416,7 @@ export class DoublyLinkedList {
     return this;
   }
 
-  public splice(start: any, deleteCount: any /* , ...items */): DoublyLinkedList {
+  public splice(start: any, deleteCount?: any, ...items: any[]): DoublyLinkedList {
     if (arguments.length === 0) {
       deleteCount = 0;
     } else if (arguments.length === 1) {
@@ -456,7 +456,6 @@ export class DoublyLinkedList {
       }
     }
 
-    const items = Array.prototype.slice.call(arguments, 2, arguments.length);
     if (items.length > 0) {
       let current, next;
       if (start === 0) {
@@ -522,6 +521,18 @@ export class DoublyLinkedList {
     }
     const copy = this.slice(0, this.length);
     return copy.sort(comparefn);
+  }
+
+  public toSpliced(start?: any, deleteCount?: any, ...items: any[]): DoublyLinkedList {
+    const copy = this.slice(0, this.length);
+    if (arguments.length === 0) {
+      return copy;
+    } else if (arguments.length === 1) {
+      copy.splice(start, this.length);
+    } else {
+      copy.splice(start, deleteCount, ...items);
+    }
+    return copy;
   }
 
   public toString(): string {
