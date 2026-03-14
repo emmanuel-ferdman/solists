@@ -7,7 +7,7 @@ export class TransposeSoList extends DoublyLinkedList {
   }
 
   protected _rearrange(node: Node): number {
-    if (!node.isEqual(this.head)) {
+    if (!node.isEqual(this._head)) {
       const prev = node.prev;
       if (prev !== null) {
         this._remove(node);

@@ -45,6 +45,20 @@ function testIsEqual(dsClass) {
       assert.equal(ds.length, array.length);
       assert.throws(() => ds.isEqual({}), TypeError("The value should be iterable"));
     });
+
+    it('should check "isEqual" of non iterable object "null"', function () {
+      const array = [1, 2, 3];
+      const ds = new dsClass(array);
+      assert.equal(ds.length, array.length);
+      assert.throws(() => ds.isEqual(null), TypeError("The value should be iterable"));
+    });
+
+    it('should check "isEqual" of non iterable object "undefined"', function () {
+      const array = [1, 2, 3];
+      const ds = new dsClass(array);
+      assert.equal(ds.length, array.length);
+      assert.throws(() => ds.isEqual(undefined), TypeError("The value should be iterable"));
+    });
   });
 }
 
