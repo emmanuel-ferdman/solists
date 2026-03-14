@@ -6,7 +6,7 @@ function testAt() {
     it('should check "at" of indices [2] in list [0,1,2,3,4,5]', function () {
       const array = [0, 1, 2, 3, 4, 5];
       const inputs = [{ expectedArray: [0, 2, 1, 3, 4, 5], expectedValue: 2, index: 2 }];
-      const ds = new TransposeSoList(false, array);
+      const ds = new TransposeSoList(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       inputs.forEach((input) => {
@@ -22,7 +22,7 @@ function testAt() {
         { expectedArray: [0, 1, 2, 3, 4, 5], expectedValue: 3, index: 4 },
         { expectedArray: [0, 1, 2, 4, 3, 5], expectedValue: 4, index: 4 },
       ];
-      const ds = new TransposeSoList(false, array);
+      const ds = new TransposeSoList(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       inputs.forEach((input) => {
@@ -42,7 +42,7 @@ function testAt() {
         { expectedArray: [0, 1, 2, 4, 3, 5], expectedValue: 0, index: 1 },
         { expectedArray: [1, 0, 2, 4, 3, 5], expectedValue: 1, index: 1 },
       ];
-      const ds = new TransposeSoList(false, array);
+      const ds = new TransposeSoList(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       inputs.forEach((input) => {
@@ -54,7 +54,7 @@ function testAt() {
     it('should check "at" of indices [-1] in list [0,1,2,3,4,5]', function () {
       const array = [0, 1, 2, 3, 4, 5];
       const inputs = [{ expectedArray: [0, 1, 2, 3, 5, 4], expectedValue: 5, index: -1 }];
-      const ds = new TransposeSoList(false, array);
+      const ds = new TransposeSoList(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       inputs.forEach((input) => {
@@ -73,7 +73,7 @@ function testAt() {
         { expectedArray: [0, 2, 1, 5, 3, 4], expectedValue: 2, index: 2 },
         { expectedArray: [2, 0, 1, 5, 3, 4], expectedValue: 2, index: 1 },
       ];
-      const ds = new TransposeSoList(false, array);
+      const ds = new TransposeSoList(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       inputs.forEach((input) => {
@@ -85,7 +85,7 @@ function testAt() {
     it('should check "at" of indices [2.5] in list [0,1,2,3,4,5]', function () {
       const array = [0, 1, 2, 3, 4, 5];
       const inputs = [{ expectedArray: [0, 2, 1, 3, 4, 5], expectedValue: 2, index: 2.5 }];
-      const ds = new TransposeSoList(false, array);
+      const ds = new TransposeSoList(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       inputs.forEach((input) => {
@@ -101,7 +101,7 @@ function testAt() {
         { expectedArray: [0, 1, 2, 3, 4, 5], expectedValue: undefined, index: 10 },
         { expectedArray: [0, 1, 2, 3, 4, 5], expectedValue: undefined, index: Infinity },
       ];
-      const ds = new TransposeSoList(false, array);
+      const ds = new TransposeSoList(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       inputs.forEach((input) => {
@@ -125,7 +125,7 @@ function testAt() {
         { expectedArray: [1, 0, 2, 3, 4, 5], expectedValue: 1, index: 1 },
         { expectedArray: [0, 1, 2, 3, 4, 5], expectedValue: 0, index: 1 },
       ];
-      const ds = new TransposeSoList(false, array);
+      const ds = new TransposeSoList(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       inputs.forEach((input) => {

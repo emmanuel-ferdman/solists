@@ -3,14 +3,14 @@ import { strict as assert } from "assert";
 
 function testUnshift() {
   describe('MoveToFrontSoList: Test the "unshift" method', function () {
-    it('should check "unshift" of values [1,2,3] to list [] with rearrangeOnCreation=true', function () {
+    it('should check "unshift" of values [1,2,3] to list [] with accessOnly=false', function () {
       const array = [];
       const inputs = [
         { expectedArray: [1], expectedValue: 1, value: 1 },
         { expectedArray: [2, 1], expectedValue: 2, value: 2 },
         { expectedArray: [3, 2, 1], expectedValue: 3, value: 3 },
       ];
-      const ds = new MoveToFrontSoList(true, array);
+      const ds = new MoveToFrontSoList(array, { accessOnly: false });
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       inputs.forEach((input) => {
@@ -19,7 +19,7 @@ function testUnshift() {
       });
     });
 
-    it('should check "unshift" of values [1,5,2,3,6] to list [] with rearrangeOnCreation=true', function () {
+    it('should check "unshift" of values [1,5,2,3,6] to list [] with accessOnly=false', function () {
       const array = [];
       const inputs = [
         { expectedArray: [1], expectedValue: 1, value: 1 },
@@ -28,7 +28,7 @@ function testUnshift() {
         { expectedArray: [3, 2, 5, 1], expectedValue: 4, value: 3 },
         { expectedArray: [6, 3, 2, 5, 1], expectedValue: 5, value: 6 },
       ];
-      const ds = new MoveToFrontSoList(true, array);
+      const ds = new MoveToFrontSoList(array, { accessOnly: false });
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       inputs.forEach((input) => {
@@ -37,7 +37,7 @@ function testUnshift() {
       });
     });
 
-    it('should check "unshift" of values [6,5,4] to list [1,2,3] with rearrangeOnCreation=true after "includes" [3]', function () {
+    it('should check "unshift" of values [6,5,4] to list [1,2,3] with accessOnly=false after "includes" [3]', function () {
       const array = [1, 2, 3];
       const expectedInitArray = [3, 2, 1];
       const findInputs = [3];
@@ -46,7 +46,7 @@ function testUnshift() {
         { expectedArray: [5, 6, 3, 2, 1], expectedValue: 5, value: 5 },
         { expectedArray: [4, 5, 6, 3, 2, 1], expectedValue: 6, value: 4 },
       ];
-      const ds = new MoveToFrontSoList(true, array);
+      const ds = new MoveToFrontSoList(array, { accessOnly: false });
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(expectedInitArray));
       findInputs.forEach((input) => {
@@ -58,7 +58,7 @@ function testUnshift() {
       });
     });
 
-    it('should check "unshift" of values [6,5,4] to list [1,2,3] with rearrangeOnCreation=true after "includes" [3,2,3]', function () {
+    it('should check "unshift" of values [6,5,4] to list [1,2,3] with accessOnly=false after "includes" [3,2,3]', function () {
       const array = [1, 2, 3];
       const expectedInitArray = [3, 2, 1];
       const findInputs = [3, 2, 3];
@@ -67,7 +67,7 @@ function testUnshift() {
         { expectedArray: [5, 6, 3, 2, 1], expectedValue: 5, value: 5 },
         { expectedArray: [4, 5, 6, 3, 2, 1], expectedValue: 6, value: 4 },
       ];
-      const ds = new MoveToFrontSoList(true, array);
+      const ds = new MoveToFrontSoList(array, { accessOnly: false });
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(expectedInitArray));
       findInputs.forEach((input) => {

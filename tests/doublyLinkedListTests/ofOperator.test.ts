@@ -4,7 +4,7 @@ function testOfOperator(dsClass) {
   describe(dsClass.name + ' Base: Test the "ofOperator" method', function () {
     it('should check "ofOperator" on []', function () {
       const array = [];
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       let counter = 0;
@@ -17,7 +17,7 @@ function testOfOperator(dsClass) {
 
     it('should check "ofOperator" on [1]', function () {
       const array = [1];
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       let counter = 0;
@@ -30,7 +30,7 @@ function testOfOperator(dsClass) {
 
     it('should check "ofOperator" on [1,2,3]', function () {
       const array = [1, 2, 3];
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       let counter = 0;
@@ -54,7 +54,7 @@ function testOfOperator(dsClass) {
         true,
         new Date("21 Dec 1997 14:12:00 UTC"),
       ];
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       let counter = 0;

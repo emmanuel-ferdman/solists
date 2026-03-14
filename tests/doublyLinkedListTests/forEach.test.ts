@@ -8,7 +8,7 @@ function testForEach(dsClass) {
       let result2 = 0;
       const func1 = (v) => (result1 += v);
       const func2 = (v) => (result2 += v);
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.forEach(func1), array.forEach(func2));
@@ -21,7 +21,7 @@ function testForEach(dsClass) {
       let result2 = 0;
       const func1 = (v) => (result1 += v);
       const func2 = (v) => (result2 += v);
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.forEach(func1), array.forEach(func2));
@@ -34,7 +34,7 @@ function testForEach(dsClass) {
       let result2 = 0;
       const func1 = (v) => (result1 += v);
       const func2 = (v) => (result2 += v);
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.forEach(func1), array.forEach(func2));
@@ -47,7 +47,7 @@ function testForEach(dsClass) {
       let result2 = "";
       const func1 = (v, i) => (result1 += "(" + v + "," + i + ")");
       const func2 = (v, i) => (result2 += "(" + v + "," + i + ")");
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.forEach(func1), array.forEach(func2));
@@ -56,7 +56,7 @@ function testForEach(dsClass) {
 
     it('should check "forEach" with assertion inside the function', function () {
       const array = [1];
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       const func = function (value, index, that) {
         assert.equal(arguments.length, 3);
         assert.equal(value, 1);

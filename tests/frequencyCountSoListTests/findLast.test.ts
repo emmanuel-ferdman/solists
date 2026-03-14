@@ -12,7 +12,7 @@ function testFindLast() {
           func: (v) => v == 2,
         },
       ];
-      const ds = new FrequencyCountSoList(false, array);
+      const ds = new FrequencyCountSoList(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       inputs.forEach((input) => {
@@ -45,7 +45,7 @@ function testFindLast() {
           func: (v) => v == 2,
         },
       ];
-      const ds = new FrequencyCountSoList(false, array);
+      const ds = new FrequencyCountSoList(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       inputs.forEach((input) => {
@@ -68,7 +68,7 @@ function testFindLast() {
           func: (v) => v > 6,
         },
       ];
-      const ds = new FrequencyCountSoList(false, array);
+      const ds = new FrequencyCountSoList(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       inputs.forEach((input) => {
@@ -96,7 +96,7 @@ function testFindLast() {
           func: (v) => v == 5,
         },
       ];
-      const ds = new FrequencyCountSoList(false, array);
+      const ds = new FrequencyCountSoList(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       inputs.forEach((input) => {

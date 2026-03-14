@@ -7,7 +7,7 @@ function testFlatMap(dsClass) {
       const arrayDs = [];
       const func = (v) => v;
       const expected = arrayIn.flatMap(func);
-      const ds = new dsClass(false, arrayDs);
+      const ds = new dsClass(arrayDs);
       assert.equal(ds.length, arrayDs.length);
       const result = ds.flatMap(func);
       assert.equal(result.length, expected.length);
@@ -17,17 +17,10 @@ function testFlatMap(dsClass) {
 
     it('should check "flatMap" of list [1,2,DS([3]),DS([4,5]),6,DS([])] with func v => v', function () {
       const arrayIn = [1, 2, [3], [4, 5], 6, []];
-      const arrayDs = [
-        1,
-        2,
-        new dsClass(false, [3]),
-        new dsClass(false, [4, 5]),
-        6,
-        new dsClass(false, []),
-      ];
+      const arrayDs = [1, 2, new dsClass([3]), new dsClass([4, 5]), 6, new dsClass([])];
       const func = (v) => v;
       const expected = arrayIn.flatMap(func);
-      const ds = new dsClass(false, arrayDs);
+      const ds = new dsClass(arrayDs);
       assert.equal(ds.length, arrayDs.length);
       const result = ds.flatMap(func);
       assert.equal(result.length, expected.length);
@@ -40,7 +33,7 @@ function testFlatMap(dsClass) {
       const arrayDs = [1, 2, 3, 4];
       const func = (v) => [v, v * 2];
       const expected = arrayIn.flatMap(func);
-      const ds = new dsClass(false, arrayDs);
+      const ds = new dsClass(arrayDs);
       assert.equal(ds.length, arrayDs.length);
       const result = ds.flatMap(func);
       assert.equal(result.length, expected.length);
@@ -53,7 +46,7 @@ function testFlatMap(dsClass) {
       const arrayDs = [1, 2, 3, 4];
       const func = (v) => [v * 2];
       const expected = arrayIn.flatMap(func);
-      const ds = new dsClass(false, arrayDs);
+      const ds = new dsClass(arrayDs);
       assert.equal(ds.length, arrayDs.length);
       const result = ds.flatMap(func);
       assert.equal(result.length, expected.length);
@@ -63,10 +56,10 @@ function testFlatMap(dsClass) {
 
     it('should check "flatMap" of list [DS([DS([DS([1])])])] with func v => v', function () {
       const arrayIn = [[[[1]]]];
-      const arrayDs = [new dsClass(false, [new dsClass(false, [new dsClass(false, [1])])])];
+      const arrayDs = [new dsClass([new dsClass([new dsClass([1])])])];
       const func = (v) => v;
       const expected = arrayIn.flatMap(func);
-      const ds = new dsClass(false, arrayDs);
+      const ds = new dsClass(arrayDs);
       assert.equal(ds.length, arrayDs.length);
       const result = ds.flatMap(func);
       assert.equal(result.length, expected.length);
@@ -79,7 +72,7 @@ function testFlatMap(dsClass) {
       const arrayDs = [1, [2, 3]];
       const func = () => 100;
       const expected = arrayIn.flatMap(func);
-      const ds = new dsClass(false, arrayDs);
+      const ds = new dsClass(arrayDs);
       assert.equal(ds.length, arrayDs.length);
       const result = ds.flatMap(func);
       assert.equal(result.length, expected.length);
@@ -89,7 +82,7 @@ function testFlatMap(dsClass) {
 
     it('should check "flatMap" with assertion inside the function', function () {
       const array = [1];
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       const func = function (value, index, that) {
         assert.equal(arguments.length, 3);
         assert.equal(value, 1);

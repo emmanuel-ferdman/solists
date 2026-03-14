@@ -5,7 +5,7 @@ function testUnshift(dsClass) {
     it('should check "unshift" value 1 on []', function () {
       const array = [];
       const value = 1;
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.unshift(value), array.unshift(value));
@@ -15,7 +15,7 @@ function testUnshift(dsClass) {
     it('should check "unshift" value 2 on [1]', function () {
       const array = [];
       const value = 2;
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.unshift(value), array.unshift(value));
@@ -24,7 +24,7 @@ function testUnshift(dsClass) {
 
     it('should check "unshift" value 2 & 3 & 4 on [1]', function () {
       const array = [1];
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.unshift(2, 3, 4), array.unshift(2, 3, 4));
@@ -34,7 +34,7 @@ function testUnshift(dsClass) {
     it('should check "unshift" value "null" on [1]', function () {
       const array = [1];
       const value = null;
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.unshift(value), array.unshift(value));
@@ -44,7 +44,7 @@ function testUnshift(dsClass) {
     it('should check "unshift" value "undefined" on [1]', function () {
       const array = [1];
       const value = undefined;
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.unshift(value), array.unshift(value));
@@ -54,7 +54,7 @@ function testUnshift(dsClass) {
     it('should check "unshift" value "NaN" on [1]', function () {
       const array = [1];
       const value = NaN;
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.unshift(value), array.unshift(value));
@@ -64,7 +64,7 @@ function testUnshift(dsClass) {
     it('should check "unshift" value "Infinity" on [1]', function () {
       const array = [1];
       const value = Infinity;
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.unshift(value), array.unshift(value));
@@ -74,7 +74,7 @@ function testUnshift(dsClass) {
     it('should check "unshift" value "{}" on [1]', function () {
       const array = [1];
       const value = {};
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.unshift(value), array.unshift(value));

@@ -4,7 +4,7 @@ function testSort(dsClass) {
   describe(dsClass.name + ' Base: Test the "sort" method', function () {
     it('should check "sort" lexicographically of list []', function () {
       const array = [];
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert(ds.sort().isEqual(array.sort()));
@@ -12,7 +12,7 @@ function testSort(dsClass) {
 
     it('should check "sort" lexicographically of list [1]', function () {
       const array = [1];
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert(ds.sort().isEqual(array.sort()));
@@ -20,7 +20,7 @@ function testSort(dsClass) {
 
     it('should check "sort" lexicographically of list [3,1,2]', function () {
       const array = [3, 1, 2];
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert(ds.sort().isEqual(array.sort()));
@@ -28,7 +28,7 @@ function testSort(dsClass) {
 
     it('should check "sort" lexicographically of list [1,30,4,21,100000]', function () {
       const array = [1, 30, 4, 21, 100000];
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert(ds.sort().isEqual(array.sort()));
@@ -36,7 +36,7 @@ function testSort(dsClass) {
 
     it('should check "sort" lexicographically of list [3,1,2,-8,2.5,100]', function () {
       const array = [3, 1, 2, -8, 2.5, 100];
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert(ds.sort().isEqual(array.sort()));
@@ -44,7 +44,7 @@ function testSort(dsClass) {
 
     it('should check "sort" lexicographically of list [9,3,7,1,5,8,2,6,4]', function () {
       const array = [9, 3, 7, 1, 5, 8, 2, 6, 4];
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert(ds.sort().isEqual(array.sort()));
@@ -52,7 +52,7 @@ function testSort(dsClass) {
 
     it('should check "sort" lexicographically of list ["Mar","Jan","Feb","Dec"]', function () {
       const array = ["Mar", "Jan", "Feb", "Dec"];
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert(ds.sort().isEqual(array.sort()));
@@ -60,7 +60,7 @@ function testSort(dsClass) {
 
     it('should check "sort" lexicographically of list ["Mar","Jan","Feb","Dec","Apr","May","Jun","Jul"]', function () {
       const array = ["Mar", "Jan", "Feb", "Dec", "Apr", "May", "Jun", "Jul"];
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert(ds.sort().isEqual(array.sort()));
@@ -69,7 +69,7 @@ function testSort(dsClass) {
     it('should check "sort" numerically of list [6,2,-500,4,10000,80,2.5]', function () {
       const array = [6, 2, -500, 4, 10000, 80, 2.5];
       const func = (a, b) => a - b;
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert(ds.sort(func).isEqual(array.sort(func)));
@@ -78,7 +78,7 @@ function testSort(dsClass) {
     it('should check "sort" numerically of list [6,2,-500,4,10000,80,2.5,99,-1]', function () {
       const array = [6, 2, -500, 4, 10000, 80, 2.5, 99, -1];
       const func = (a, b) => a - b;
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert(ds.sort(func).isEqual(array.sort(func)));
@@ -94,7 +94,7 @@ function testSort(dsClass) {
         { name: "Zeros", value: 37 },
       ];
       const func = (a, b) => a.value - b.value;
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert(ds.sort(func).isEqual(array.sort(func)));
@@ -103,7 +103,7 @@ function testSort(dsClass) {
     it('should check "sort" with non-ASCII characters of list ["r�serv�", "premier", "communiqu�", "caf�"]', function () {
       const array = ["r�serv�", "premier", "communiqu�", "caf�"];
       const func = (a, b) => a.localeCompare(b);
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert(ds.sort(func).isEqual(array.sort(func)));
@@ -117,7 +117,7 @@ function testSort(dsClass) {
         { name: "Sam", grade: 14 },
       ];
       const func = (a, b) => a.grade - b.grade;
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert(ds.sort(func).isEqual(array.sort(func)));
@@ -135,7 +135,7 @@ function testSort(dsClass) {
         { name: "Zeros", grade: 15 },
       ];
       const func = (a, b) => a.grade - b.grade;
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert(ds.sort(func).isEqual(array.sort(func)));
@@ -147,7 +147,7 @@ function testSort(dsClass) {
         { toString: () => "Devlin", id: 2 },
         { toString: () => "Alex", id: 3 },
       ];
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert(ds.sort().isEqual(array.sort()));
@@ -166,7 +166,7 @@ function testSort(dsClass) {
         true,
         new Date("21 Dec 1997 14:12:00 UTC"),
       ];
-      const ds = new dsClass(false, array);
+      const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert(ds.sort().isEqual(array.sort()));

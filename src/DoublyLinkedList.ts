@@ -1,17 +1,21 @@
 import { Node } from "./Node";
 
+interface SoListOptions {
+  accessOnly?: boolean;
+}
+
 export class DoublyLinkedList {
   public length: number;
 
   protected head: Node | null;
   protected tail: Node | null;
-  protected rearrangeOnCreation: boolean;
+  protected accessOnly: boolean;
 
-  public constructor(rearrangeOnCreation = false, iterable = null) {
+  public constructor(iterable: Iterable<unknown> | null = null, options: SoListOptions = {}) {
     this.head = null;
     this.tail = null;
     this.length = 0;
-    this.rearrangeOnCreation = rearrangeOnCreation;
+    this.accessOnly = options.accessOnly ?? true;
     if (iterable !== null) {
       this._extend(iterable);
     }
@@ -299,7 +303,7 @@ export class DoublyLinkedList {
       } else {
         continue;
       }
-      if (this.rearrangeOnCreation) {
+      if (!this.accessOnly) {
         this._rearrange(newNode);
       }
     }
@@ -515,7 +519,7 @@ export class DoublyLinkedList {
       } else {
         continue;
       }
-      if (this.rearrangeOnCreation) {
+      if (!this.accessOnly) {
         this._rearrange(newNode);
       }
     }
@@ -545,7 +549,7 @@ export class DoublyLinkedList {
     }
     const newNode = new Node(value);
     this._insertAfter(prev, newNode);
-    if (this.rearrangeOnCreation) {
+    if (!this.accessOnly) {
       this._rearrange(newNode);
     }
     return this.length;

@@ -3,14 +3,14 @@ import { strict as assert } from "assert";
 
 function testInsert() {
   describe('MoveToFrontSoList: Test the "insert" method', function () {
-    it('should check "insert" of values [1,2,3] with indices [0,1,2] to list [] with rearrangeOnCreation=true', function () {
+    it('should check "insert" of values [1,2,3] with indices [0,1,2] to list [] with accessOnly=false', function () {
       const array = [];
       const inputs = [
         { expectedArray: [1], expectedValue: 1, value: 1, index: 0 },
         { expectedArray: [2, 1], expectedValue: 2, value: 2, index: 1 },
         { expectedArray: [3, 2, 1], expectedValue: 3, value: 3, index: 2 },
       ];
-      const ds = new MoveToFrontSoList(true, array);
+      const ds = new MoveToFrontSoList(array, { accessOnly: false });
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       inputs.forEach((input) => {
@@ -19,7 +19,7 @@ function testInsert() {
       });
     });
 
-    it('should check "insert" of values [1,5,2,3,6] with indices [0,1,-1,1,2] to list [] with rearrangeOnCreation=true', function () {
+    it('should check "insert" of values [1,5,2,3,6] with indices [0,1,-1,1,2] to list [] with accessOnly=false', function () {
       const array = [];
       const inputs = [
         { expectedArray: [1], expectedValue: 1, value: 1, index: 0 },
@@ -28,7 +28,7 @@ function testInsert() {
         { expectedArray: [3, 2, 5, 1], expectedValue: 4, value: 3, index: 1 },
         { expectedArray: [6, 3, 2, 5, 1], expectedValue: 5, value: 6, index: 2 },
       ];
-      const ds = new MoveToFrontSoList(true, array);
+      const ds = new MoveToFrontSoList(array, { accessOnly: false });
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       inputs.forEach((input) => {
@@ -37,7 +37,7 @@ function testInsert() {
       });
     });
 
-    it('should check "insert" of values [6,7,8] with indices [0,2,-1] to list [1,2,3,4,5] with rearrangeOnCreation=true after "includes" [3]', function () {
+    it('should check "insert" of values [6,7,8] with indices [0,2,-1] to list [1,2,3,4,5] with accessOnly=false after "includes" [3]', function () {
       const array = [1, 2, 3, 4, 5];
       const expectedInitArray = [5, 4, 3, 2, 1];
       const findInputs = [3];
@@ -46,7 +46,7 @@ function testInsert() {
         { expectedArray: [7, 6, 3, 5, 4, 2, 1], expectedValue: 7, value: 7, index: 2 },
         { expectedArray: [8, 7, 6, 3, 5, 4, 2, 1], expectedValue: 8, value: 8, index: -1 },
       ];
-      const ds = new MoveToFrontSoList(true, array);
+      const ds = new MoveToFrontSoList(array, { accessOnly: false });
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(expectedInitArray));
       findInputs.forEach((input) => {
@@ -58,7 +58,7 @@ function testInsert() {
       });
     });
 
-    it('should check "insert" of values [6,7,8] with indices [0,2,-1] to list [1,2,3,4,5] with rearrangeOnCreation=true after "includes" [3,2,3]', function () {
+    it('should check "insert" of values [6,7,8] with indices [0,2,-1] to list [1,2,3,4,5] with accessOnly=false after "includes" [3,2,3]', function () {
       const array = [1, 2, 3, 4, 5];
       const expectedInitArray = [5, 4, 3, 2, 1];
       const findInputs = [3, 2, 3];
@@ -67,7 +67,7 @@ function testInsert() {
         { expectedArray: [7, 6, 3, 2, 5, 4, 1], expectedValue: 7, value: 7, index: 2 },
         { expectedArray: [8, 7, 6, 3, 2, 5, 4, 1], expectedValue: 8, value: 8, index: -1 },
       ];
-      const ds = new MoveToFrontSoList(true, array);
+      const ds = new MoveToFrontSoList(array, { accessOnly: false });
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(expectedInitArray));
       findInputs.forEach((input) => {
