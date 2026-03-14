@@ -157,15 +157,10 @@ const l = new MoveToFrontSoList([1, 2, 3], { accessOnly: false });
 | `sort()`              | Sorts the elements                                            |
 | `splice()`            | Adds/removes elements                                         |
 | `toLocaleString()`    | Returns a localized string representation                     |
+| `toSorted()`          | Returns a sorted copy                                         |
 | `toString()`          | Returns a string representation                               |
 | `unshift()`           | Adds elements to the beginning                                |
 | `values()`            | Returns an iterator of values                                 |
-
-## Limitations
-
-- Does not support empty items (e.g., `[1,,3]`)
-- The `thisArg` argument is not supported in: `every()`, `filter()`, `find()`, `findIndex()`, `findLast()`, `findLastIndex()`, `flatMap()`, `some()`
-- Unsupported methods: `group()`, `groupToMap()`
 
 ## Contributing
 
