@@ -163,6 +163,50 @@ function testSome(dsClass) {
       assert(ds.isEqual(array));
       assert.equal(ds.some(func), array.some(func));
     });
+
+    it('should check "some" with thisArg', function () {
+      const array = [1, 2, 3, 4];
+      const thisArg = { min: 3 };
+      const func = function (v) {
+        return v >= this.min;
+      };
+      const ds = new dsClass(array);
+      assert.equal(ds.length, array.length);
+      assert(ds.isEqual(array));
+      assert.equal(ds.some(func, thisArg), array.some(func, thisArg));
+    });
+
+    it('should check "some" with thisArg as undefined', function () {
+      const array = [1, 2, 3];
+      const func = function () {
+        return this === undefined;
+      };
+      const ds = new dsClass(array);
+      assert.equal(ds.some(func, undefined), array.some(func, undefined));
+    });
+
+    it('should check "some" with thisArg as null', function () {
+      const array = [1, 2, 3];
+      const func = function () {
+        return this === null;
+      };
+      const ds = new dsClass(array);
+      assert.equal(ds.some(func, null), array.some(func, null));
+    });
+
+    it('should check "some" with thisArg modifying accumulator', function () {
+      const array = [1, 2, 3];
+      const thisArg = { count: 0 };
+      const func = function () {
+        this.count += 1;
+        return false;
+      };
+      const thisArg2 = { count: 0 };
+      const ds = new dsClass(array);
+      ds.some(func, thisArg);
+      array.some(func, thisArg2);
+      assert.equal(thisArg.count, thisArg2.count);
+    });
   });
 }
 

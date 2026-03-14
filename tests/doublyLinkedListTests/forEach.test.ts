@@ -67,6 +67,50 @@ function testForEach(dsClass) {
       assert(ds.isEqual(array));
       assert.equal(ds.forEach(func), array.forEach(func));
     });
+
+    it('should check "forEach" with thisArg', function () {
+      const array = [1, 2, 3];
+      const func = function (v) {
+        this.sum += v;
+      };
+      const thisArg1 = { sum: 0 };
+      const thisArg2 = { sum: 0 };
+      const ds = new dsClass(array);
+      assert.equal(ds.length, array.length);
+      assert(ds.isEqual(array));
+      ds.forEach(func, thisArg1);
+      array.forEach(func, thisArg2);
+      assert.equal(thisArg1.sum, thisArg2.sum);
+    });
+
+    it('should check "forEach" with thisArg as undefined', function () {
+      const array = [1, 2, 3];
+      let dsResult = true;
+      let arrResult = true;
+      const func = function () {
+        if (this !== undefined) {
+          dsResult = false;
+          arrResult = false;
+        }
+      };
+      const ds = new dsClass(array);
+      ds.forEach(func, undefined);
+      array.forEach(func, undefined);
+      assert.equal(dsResult, arrResult);
+    });
+
+    it('should check "forEach" with thisArg collecting indices', function () {
+      const array = [10, 20, 30];
+      const thisArg1 = { indices: [] };
+      const thisArg2 = { indices: [] };
+      const func = function (v, i) {
+        this.indices.push(i);
+      };
+      const ds = new dsClass(array);
+      ds.forEach(func, thisArg1);
+      array.forEach(func, thisArg2);
+      assert.deepEqual(thisArg1.indices, thisArg2.indices);
+    });
   });
 }
 

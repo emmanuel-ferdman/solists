@@ -160,6 +160,39 @@ function testMap(dsClass) {
       assert(ds.isEqual(array));
       assert(ds.map(func).isEqual(array.map(func)));
     });
+
+    it('should check "map" with thisArg', function () {
+      const array = [1, 2, 3];
+      const thisArg = { multiplier: 2 };
+      const func = function (v) {
+        return v * this.multiplier;
+      };
+      const ds = new dsClass(array);
+      assert.equal(ds.length, array.length);
+      assert(ds.isEqual(array));
+      assert(ds.map(func, thisArg).isEqual(array.map(func, thisArg)));
+    });
+
+    it('should check "map" with thisArg as undefined', function () {
+      const array = [1, 2, 3];
+      const func = function (v) {
+        return this === undefined ? v * 2 : v;
+      };
+      const ds = new dsClass(array);
+      assert(ds.map(func, undefined).isEqual(array.map(func, undefined)));
+    });
+
+    it('should check "map" with thisArg modifying accumulator', function () {
+      const array = [1, 2, 3];
+      const thisArg = { sum: 0 };
+      const func = function (v) {
+        this.sum += v;
+        return this.sum;
+      };
+      const thisArg2 = { sum: 0 };
+      const ds = new dsClass(array);
+      assert(ds.map(func, thisArg).isEqual(array.map(func, thisArg2)));
+    });
   });
 }
 

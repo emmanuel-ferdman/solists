@@ -150,7 +150,7 @@ function testFindLastIndex(dsClass) {
       assert.equal(result1, result2);
     });
 
-    it('should check "findLast" with assertion inside the function', function () {
+    it('should check "findLastIndex" with assertion inside the function', function () {
       const array = [1];
       const ds = new dsClass(array);
       const func = function (value, index, that) {
@@ -161,7 +161,42 @@ function testFindLastIndex(dsClass) {
       };
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
-      assert.equal(ds.findLast(func), array.findLast(func));
+      assert.equal(ds.findLastIndex(func), array.findLastIndex(func));
+    });
+
+    it('should check "findLastIndex" with thisArg', function () {
+      const array = [1, 2, 3, 4];
+      const thisArg = { target: 3 };
+      const func = function (v) {
+        return v === this.target;
+      };
+      const ds = new dsClass(array);
+      assert.equal(ds.length, array.length);
+      assert(ds.isEqual(array));
+      assert.equal(ds.findLastIndex(func, thisArg), array.findLastIndex(func, thisArg));
+    });
+
+    it('should check "findLastIndex" with thisArg as undefined', function () {
+      const array = [1, 2, 3];
+      const func = function (v) {
+        return v > 0 && this === undefined;
+      };
+      const ds = new dsClass(array);
+      assert.equal(ds.findLastIndex(func, undefined), array.findLastIndex(func, undefined));
+    });
+
+    it('should check "findLastIndex" with thisArg tracking calls', function () {
+      const array = [1, 2, 3, 4];
+      const thisArg = { calls: 0, target: 2 };
+      const func = function (v) {
+        this.calls += 1;
+        return v === this.target;
+      };
+      const thisArg2 = { calls: 0, target: 2 };
+      const ds = new dsClass(array);
+      ds.findLastIndex(func, thisArg);
+      array.findLastIndex(func, thisArg2);
+      assert.equal(thisArg.calls, thisArg2.calls);
     });
   });
 }

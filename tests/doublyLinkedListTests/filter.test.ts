@@ -163,6 +163,41 @@ function testFilter(dsClass) {
       assert(ds.isEqual(array));
       assert(ds.filter(func).isEqual(array.filter(func)));
     });
+
+    it('should check "filter" with thisArg', function () {
+      const array = [1, 2, 3, 4];
+      const thisArg = { min: 2 };
+      const func = function (v) {
+        return v >= this.min;
+      };
+      const ds = new dsClass(array);
+      assert.equal(ds.length, array.length);
+      assert(ds.isEqual(array));
+      assert(ds.filter(func, thisArg).isEqual(array.filter(func, thisArg)));
+    });
+
+    it('should check "filter" with thisArg as undefined', function () {
+      const array = [1, 2, 3];
+      const func = function (v) {
+        return v > 0 && this === undefined;
+      };
+      const ds = new dsClass(array);
+      assert(ds.filter(func, undefined).isEqual(array.filter(func, undefined)));
+    });
+
+    it('should check "filter" with thisArg modifying accumulator', function () {
+      const array = [1, 2, 3];
+      const thisArg = { count: 0 };
+      const func = function (v) {
+        this.count += v;
+        return true;
+      };
+      const thisArg2 = { count: 0 };
+      const ds = new dsClass(array);
+      ds.filter(func, thisArg);
+      array.filter(func, thisArg2);
+      assert.equal(thisArg.count, thisArg2.count);
+    });
   });
 }
 

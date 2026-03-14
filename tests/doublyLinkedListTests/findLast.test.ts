@@ -163,6 +163,41 @@ function testFindLast(dsClass) {
       assert(ds.isEqual(array));
       assert.equal(ds.findLast(func), array.findLast(func));
     });
+
+    it('should check "findLast" with thisArg', function () {
+      const array = [1, 2, 3, 4];
+      const thisArg = { target: 3 };
+      const func = function (v) {
+        return v === this.target;
+      };
+      const ds = new dsClass(array);
+      assert.equal(ds.length, array.length);
+      assert(ds.isEqual(array));
+      assert.equal(ds.findLast(func, thisArg), array.findLast(func, thisArg));
+    });
+
+    it('should check "findLast" with thisArg as undefined', function () {
+      const array = [1, 2, 3];
+      const func = function (v) {
+        return v > 0 && this === undefined;
+      };
+      const ds = new dsClass(array);
+      assert.equal(ds.findLast(func, undefined), array.findLast(func, undefined));
+    });
+
+    it('should check "findLast" with thisArg tracking calls', function () {
+      const array = [1, 2, 3, 4];
+      const thisArg = { calls: 0, target: 2 };
+      const func = function (v) {
+        this.calls += 1;
+        return v === this.target;
+      };
+      const thisArg2 = { calls: 0, target: 2 };
+      const ds = new dsClass(array);
+      ds.findLast(func, thisArg);
+      array.findLast(func, thisArg2);
+      assert.equal(thisArg.calls, thisArg2.calls);
+    });
   });
 }
 

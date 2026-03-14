@@ -163,6 +163,50 @@ function testEvery(dsClass) {
       assert(ds.isEqual(array));
       assert.equal(ds.every(func), array.every(func));
     });
+
+    it('should check "every" with thisArg', function () {
+      const array = [2, 3, 4];
+      const thisArg = { min: 1 };
+      const func = function (v) {
+        return v > this.min;
+      };
+      const ds = new dsClass(array);
+      assert.equal(ds.length, array.length);
+      assert(ds.isEqual(array));
+      assert.equal(ds.every(func, thisArg), array.every(func, thisArg));
+    });
+
+    it('should check "every" with thisArg as undefined', function () {
+      const array = [1, 2, 3];
+      const func = function (v) {
+        return v > 0 && this === undefined;
+      };
+      const ds = new dsClass(array);
+      assert.equal(ds.every(func, undefined), array.every(func, undefined));
+    });
+
+    it('should check "every" with thisArg as null', function () {
+      const array = [1, 2, 3];
+      const func = function (v) {
+        return v > 0 && this === null;
+      };
+      const ds = new dsClass(array);
+      assert.equal(ds.every(func, null), array.every(func, null));
+    });
+
+    it('should check "every" with thisArg modifying accumulator', function () {
+      const array = [1, 2, 3];
+      const thisArg = { count: 0 };
+      const func = function (v) {
+        this.count += v;
+        return true;
+      };
+      const thisArg2 = { count: 0 };
+      const ds = new dsClass(array);
+      ds.every(func, thisArg);
+      array.every(func, thisArg2);
+      assert.equal(thisArg.count, thisArg2.count);
+    });
   });
 }
 

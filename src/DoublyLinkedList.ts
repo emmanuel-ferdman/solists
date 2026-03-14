@@ -85,11 +85,10 @@ export class DoublyLinkedList {
     return this._entries();
   }
 
-  // TODO: Support "thisArg" argument
-  public every(callbackFn: any): boolean {
+  public every(callbackFn: any, thisArg?: any): boolean {
     this._aCallable(callbackFn);
     for (const [index, node] of this._nodes(0, this.length)) {
-      if (!callbackFn(node.value, index, this)) {
+      if (!callbackFn.call(thisArg, node.value, index, this)) {
         return false;
       }
     }
@@ -113,23 +112,21 @@ export class DoublyLinkedList {
     return this;
   }
 
-  // TODO: Support "thisArg" argument
-  public filter(callbackFn: any): DoublyLinkedList {
+  public filter(callbackFn: any, thisArg?: any): DoublyLinkedList {
     this._aCallable(callbackFn);
     const result = new DoublyLinkedList();
     for (const [index, node] of this._nodes(0, this.length)) {
-      if (callbackFn(node.value, index, this)) {
+      if (callbackFn.call(thisArg, node.value, index, this)) {
         result.push(node.value);
       }
     }
     return result;
   }
 
-  // TODO: Support "thisArg" argument
-  public find(callbackFn: any): unknown {
+  public find(callbackFn: any, thisArg?: any): unknown {
     this._aCallable(callbackFn);
     for (const [index, node] of this._nodes(0, this.length)) {
-      if (callbackFn(node.value, index, this)) {
+      if (callbackFn.call(thisArg, node.value, index, this)) {
         node.count += 1;
         this._rearrange(node);
         return node.value;
@@ -138,11 +135,10 @@ export class DoublyLinkedList {
     return undefined;
   }
 
-  // TODO: Support "thisArg" argument
-  public findIndex(callbackFn: any): number {
+  public findIndex(callbackFn: any, thisArg?: any): number {
     this._aCallable(callbackFn);
     for (const [index, node] of this._nodes(0, this.length)) {
-      if (callbackFn(node.value, index, this)) {
+      if (callbackFn.call(thisArg, node.value, index, this)) {
         node.count += 1;
         const result = this._rearrange(node);
         return result === undefined ? index : result;
@@ -151,11 +147,10 @@ export class DoublyLinkedList {
     return -1;
   }
 
-  // TODO: Support "thisArg" argument
-  public findLast(callbackFn: any): unknown {
+  public findLast(callbackFn: any, thisArg?: any): unknown {
     this._aCallable(callbackFn);
     for (const [index, node] of this._nodesReverse(0, this.length)) {
-      if (callbackFn(node.value, index, this)) {
+      if (callbackFn.call(thisArg, node.value, index, this)) {
         node.count += 1;
         this._rearrange(node);
         return node.value;
@@ -164,11 +159,10 @@ export class DoublyLinkedList {
     return undefined;
   }
 
-  // TODO: Support "thisArg" argument
-  public findLastIndex(callbackFn: any) {
+  public findLastIndex(callbackFn: any, thisArg?: any): number {
     this._aCallable(callbackFn);
     for (const [index, node] of this._nodesReverse(0, this.length)) {
-      if (callbackFn(node.value, index, this)) {
+      if (callbackFn.call(thisArg, node.value, index, this)) {
         node.count += 1;
         const result = this._rearrange(node);
         return result === undefined ? index : result;
@@ -189,16 +183,15 @@ export class DoublyLinkedList {
     }, new DoublyLinkedList());
   }
 
-  // TODO: Support "thisArg" argument
-  public flatMap(callbackFn: any): DoublyLinkedList {
+  public flatMap(callbackFn: any, thisArg?: any): DoublyLinkedList {
     this._aCallable(callbackFn);
-    return this.map(callbackFn).flat();
+    return this.map(callbackFn, thisArg).flat();
   }
 
-  public forEach(callbackFn: any): void {
+  public forEach(callbackFn: any, thisArg?: any): void {
     this._aCallable(callbackFn);
     for (const [index, node] of this._nodes(0, this.length)) {
-      callbackFn(node.value, index, this);
+      callbackFn.call(thisArg, node.value, index, this);
     }
     return undefined;
   }
@@ -277,11 +270,11 @@ export class DoublyLinkedList {
     return -1;
   }
 
-  public map(callbackFn: any): DoublyLinkedList {
+  public map(callbackFn: any, thisArg?: any): DoublyLinkedList {
     this._aCallable(callbackFn);
     const result = new DoublyLinkedList();
     for (const [index, node] of this._nodes(0, this.length)) {
-      result.push(callbackFn(node.value, index, this));
+      result.push(callbackFn.call(thisArg, node.value, index, this));
     }
     return result;
   }
@@ -393,11 +386,10 @@ export class DoublyLinkedList {
     return result;
   }
 
-  // TODO: Support "thisArg" argument
-  public some(callbackFn: any): boolean {
+  public some(callbackFn: any, thisArg?: any): boolean {
     this._aCallable(callbackFn);
     for (const [index, node] of this._nodes(0, this.length)) {
-      if (callbackFn(node.value, index, this)) {
+      if (callbackFn.call(thisArg, node.value, index, this)) {
         return true;
       }
     }
