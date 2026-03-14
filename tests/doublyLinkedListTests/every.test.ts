@@ -137,7 +137,7 @@ function testEvery(dsClass) {
       assert.equal(ds.every(func), array.every(func));
     });
 
-    it('should check "every" with upading a variable by appending (value,index)', function () {
+    it('should check "every" with updating a variable by appending (value,index)', function () {
       const array = [0, 1, -2, 3, -4, -5];
       let result1 = "";
       let result2 = "";

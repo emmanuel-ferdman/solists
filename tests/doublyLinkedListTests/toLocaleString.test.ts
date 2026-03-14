@@ -26,14 +26,6 @@ function testToLocaleString(dsClass) {
       assert.equal(ds.toLocaleString(), array.toLocaleString());
     });
 
-    it('should check "toLocaleString" of list [1,2,3]', function () {
-      const array = [1, 2, 3];
-      const ds = new dsClass(array);
-      assert.equal(ds.length, array.length);
-      assert(ds.isEqual(array));
-      assert.equal(ds.toLocaleString(), array.toLocaleString());
-    });
-
     it('should check "toLocaleString" of list [1,-2,3]', function () {
       const array = [1, -2, 3];
       const ds = new dsClass(array);

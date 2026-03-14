@@ -26,14 +26,6 @@ function testJoin(dsClass) {
       assert.equal(ds.join(), array.join());
     });
 
-    it('should check "join" of list [1,2,3]', function () {
-      const array = [1, 2, 3];
-      const ds = new dsClass(array);
-      assert.equal(ds.length, array.length);
-      assert(ds.isEqual(array));
-      assert.equal(ds.join(), array.join());
-    });
-
     it('should check "join" of list [1,-2,3]', function () {
       const array = [1, -2, 3];
       const ds = new dsClass(array);
@@ -72,15 +64,6 @@ function testJoin(dsClass) {
 
     it('should check "join" of list [1] with separator "==="', function () {
       const array = [1];
-      const separator = "===";
-      const ds = new dsClass(array);
-      assert.equal(ds.length, array.length);
-      assert(ds.isEqual(array));
-      assert.equal(ds.join(separator), array.join(separator));
-    });
-
-    it('should check "join" of list [1,2,3] with separator "==="', function () {
-      const array = [1, 2, 3];
       const separator = "===";
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);

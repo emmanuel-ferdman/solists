@@ -15,14 +15,14 @@ function testIsEmpty(dsClass) {
       assert(ds.isEmpty());
     });
 
-    it("should return true to a list that was created from an array with one element", function () {
+    it("should return false to a list that was created from an array with one element", function () {
       const array = [1];
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(!ds.isEmpty());
     });
 
-    it("should return true to a list that was created from an array with three elements", function () {
+    it("should return false to a list that was created from an array with three elements", function () {
       const array = [1, 2, 3];
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);

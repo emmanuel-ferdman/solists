@@ -1,7 +1,7 @@
 import { strict as assert } from "assert";
 
 function testConstructor(dsClass) {
-  describe(dsClass.name + ' Base: Test the "constructor"', function () {
+  describe(dsClass.name + ' Base: Test the "constructor" method', function () {
     it('should check "constructor" without array input', function () {
       const ds = new dsClass();
       assert.equal(ds.length, 0);

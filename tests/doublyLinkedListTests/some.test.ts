@@ -137,7 +137,7 @@ function testSome(dsClass) {
       assert.equal(ds.some(func), array.some(func));
     });
 
-    it('should check "some" with upading a variable by appending (value,index)', function () {
+    it('should check "some" with updating a variable by appending (value,index)', function () {
       const array = [0, 1, -2, 3, -4, -5];
       let result1 = "";
       let result2 = "";
