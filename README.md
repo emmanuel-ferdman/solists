@@ -26,17 +26,18 @@ npm install solists
 
 ## Example
 
-<table width="100%">
+<div align="center">
+<table>
 <tr>
-<th align="left">Code</th>
-<th align="left">Visualization</th>
+<th>Visualization</th>
+<th>Code</th>
 </tr>
 <tr>
-<td>
+<td><img src="https://raw.githubusercontent.com/emmanuel-ferdman/solists/main/img/frequency-count.gif" width="300" /></td>
+<td><details>
+<summary><strong>FrequencyCountSoList</strong></summary>
 
 ```javascript
-const { FrequencyCountSoList } = require("solists");
-
 const l = new FrequencyCountSoList(["A", "B", "C", "D", "E"]);
 l.includes("D"); // D(1) -> front
 l.includes("B"); // B(1) -> #2
@@ -44,17 +45,14 @@ l.includes("B"); // B(2) overtakes D
 // Result: ["B", "D", "A", "C", "E"]
 ```
 
-</td>
-<td align="center" valign="middle">
-<img src="https://raw.githubusercontent.com/emmanuel-ferdman/solists/main/img/frequency-count.gif" width="400">
-</td>
+</details></td>
 </tr>
 <tr>
-<td>
+<td><img src="https://raw.githubusercontent.com/emmanuel-ferdman/solists/main/img/k-in-a-row.gif" width="300" /></td>
+<td><details>
+<summary><strong>KInARowSoList</strong></summary>
 
 ```javascript
-const { KInARowSoList } = require("solists");
-
 const l = new KInARowSoList(["A", "B", "C", "D", "E"], { k: 2 });
 l.includes("D"); // D: 1st access, no move
 l.includes("D"); // D: 2nd access, -> front
@@ -62,17 +60,14 @@ l.includes("B"); // B: 1st access, no move
 // Result: ["D", "A", "B", "C", "E"]
 ```
 
-</td>
-<td align="center" valign="middle">
-<img src="https://raw.githubusercontent.com/emmanuel-ferdman/solists/main/img/k-in-a-row.gif" width="400">
-</td>
+</details></td>
 </tr>
 <tr>
-<td>
+<td><img src="https://raw.githubusercontent.com/emmanuel-ferdman/solists/main/img/move-ahead-k.gif" width="300" /></td>
+<td><details>
+<summary><strong>MoveAheadKSoList</strong></summary>
 
 ```javascript
-const { MoveAheadKSoList } = require("solists");
-
 const l = new MoveAheadKSoList(["A", "B", "C", "D", "E"], { k: 2 });
 l.includes("D"); // D moves 2 ahead
 l.includes("E"); // E moves 2 ahead
@@ -80,17 +75,14 @@ l.includes("B"); // B moves 2 ahead
 // Result: ["A", "B", "D", "E", "C"]
 ```
 
-</td>
-<td align="center" valign="middle">
-<img src="https://raw.githubusercontent.com/emmanuel-ferdman/solists/main/img/move-ahead-k.gif" width="400">
-</td>
+</details></td>
 </tr>
 <tr>
-<td>
+<td><img src="https://raw.githubusercontent.com/emmanuel-ferdman/solists/main/img/move-to-front.gif" width="300" /></td>
+<td><details>
+<summary><strong>MoveToFrontSoList</strong></summary>
 
 ```javascript
-const { MoveToFrontSoList } = require("solists");
-
 const l = new MoveToFrontSoList(["A", "B", "C", "D", "E"]);
 l.includes("D"); // D -> front
 l.includes("B"); // B -> front
@@ -98,17 +90,14 @@ l.includes("C"); // C -> front
 // Result: ["C", "B", "D", "A", "E"]
 ```
 
-</td>
-<td align="center" valign="middle">
-<img src="https://raw.githubusercontent.com/emmanuel-ferdman/solists/main/img/move-to-front.gif" width="400">
-</td>
+</details></td>
 </tr>
 <tr>
-<td>
+<td><img src="https://raw.githubusercontent.com/emmanuel-ferdman/solists/main/img/transpose.gif" width="300" /></td>
+<td><details>
+<summary><strong>TransposeSoList</strong></summary>
 
 ```javascript
-const { TransposeSoList } = require("solists");
-
 const l = new TransposeSoList(["A", "B", "C", "D", "E"]);
 l.includes("D"); // D swaps with C
 l.includes("E"); // E swaps with C
@@ -116,12 +105,10 @@ l.includes("B"); // B swaps with A
 // Result: ["B", "A", "D", "E", "C"]
 ```
 
-</td>
-<td align="center" valign="middle">
-<img src="https://raw.githubusercontent.com/emmanuel-ferdman/solists/main/img/transpose.gif" width="400">
-</td>
+</details></td>
 </tr>
 </table>
+</div>
 
 ## How It Works
 
@@ -152,11 +139,17 @@ const l = new MoveToFrontSoList([1, 2, 3], { accessOnly: false });
 
 **Properties:**
 
+<div align="center">
+
 | Name     | Description                    |
 | :------- | :----------------------------- |
 | `length` | Number of elements in the list |
 
+</div>
+
 **Methods:**
+
+<div align="center">
 
 | Name                  | Description                                                   |
 | :-------------------- | :------------------------------------------------------------ |
@@ -203,6 +196,8 @@ const l = new MoveToFrontSoList([1, 2, 3], { accessOnly: false });
 | `unshift()`           | Adds elements to the beginning                                |
 | `values()`            | Returns an iterator of values                                 |
 | `with()`              | Returns copy with element at index replaced                   |
+
+</div>
 
 ## Contributing
 
