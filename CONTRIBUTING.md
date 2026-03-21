@@ -7,6 +7,8 @@ Thank you for your interest in contributing to SoLists! This document will guide
 SoLists is a TypeScript library implementing self-organizing lists (SoList) with multiple heuristics, such as:
 
 - **Frequency Count**: Moves frequently accessed items forward based on access count.
+- **k-in-a-Row**: Moves accessed items to front after k consecutive accesses.
+- **Move-Ahead-k**: Moves accessed items k positions toward the head.
 - **Move to Front**: Moves accessed items to the front of the list.
 - **Transpose**: Swaps accessed items with their predecessor.
 
