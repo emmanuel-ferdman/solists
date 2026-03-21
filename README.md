@@ -1,7 +1,7 @@
 <p align="center">
   <a href="https://github.com/emmanuel-ferdman/solists">
     <picture>
-      <img src="img/logo.png" height="128">
+      <img src="https://raw.githubusercontent.com/emmanuel-ferdman/solists/main/img/logo.png" height="128">
     </picture>
   </a>
 </p>
@@ -46,7 +46,7 @@ l.includes("B"); // B(2) overtakes D
 
 </td>
 <td align="center" valign="middle">
-<img src="img/frequency-count.gif" width="400">
+<img src="https://raw.githubusercontent.com/emmanuel-ferdman/solists/main/img/frequency-count.gif" width="400">
 </td>
 </tr>
 <tr>
@@ -64,7 +64,7 @@ l.includes("B"); // B: 1st access, no move
 
 </td>
 <td align="center" valign="middle">
-<img src="img/k-in-a-row.gif" width="400">
+<img src="https://raw.githubusercontent.com/emmanuel-ferdman/solists/main/img/k-in-a-row.gif" width="400">
 </td>
 </tr>
 <tr>
@@ -82,7 +82,7 @@ l.includes("B"); // B moves 2 ahead
 
 </td>
 <td align="center" valign="middle">
-<img src="img/move-ahead-k.gif" width="400">
+<img src="https://raw.githubusercontent.com/emmanuel-ferdman/solists/main/img/move-ahead-k.gif" width="400">
 </td>
 </tr>
 <tr>
@@ -100,7 +100,7 @@ l.includes("C"); // C -> front
 
 </td>
 <td align="center" valign="middle">
-<img src="img/move-to-front.gif" width="400">
+<img src="https://raw.githubusercontent.com/emmanuel-ferdman/solists/main/img/move-to-front.gif" width="400">
 </td>
 </tr>
 <tr>
@@ -118,7 +118,7 @@ l.includes("B"); // B swaps with A
 
 </td>
 <td align="center" valign="middle">
-<img src="img/transpose.gif" width="400">
+<img src="https://raw.githubusercontent.com/emmanuel-ferdman/solists/main/img/transpose.gif" width="400">
 </td>
 </tr>
 </table>
