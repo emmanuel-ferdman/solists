@@ -173,6 +173,7 @@ const l = new MoveToFrontSoList([1, 2, 3], { accessOnly: false });
 | `findLast()`          | Returns the last element satisfying a predicate               |
 | `findLastIndex()`     | Returns the index of the last element satisfying a predicate  |
 | `flat()`              | Creates a new SoList with sub-lists flattened                 |
+| `flatMap()`           | Maps then flattens the result by one level                    |
 | `forEach()`           | Executes a function for each element                          |
 | `includes()`          | Determines whether a value exists in the list                 |
 | `indexOf()`           | Returns the first index of a given element                    |
