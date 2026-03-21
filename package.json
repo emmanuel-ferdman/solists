@@ -1,7 +1,7 @@
 {
   "name": "solists",
   "version": "0.3.0",
-  "description": "Implementation of self-organizing lists",
+  "description": "Self-organizing lists with native Array methods",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -19,7 +19,10 @@
     "url": "git+https://github.com/emmanuel-ferdman/solists.git"
   },
   "keywords": [
+    "array",
     "data-structure",
+    "linked-list",
+    "list",
     "self-organizing-list"
   ],
   "author": "Emmanuel Ferdman",
