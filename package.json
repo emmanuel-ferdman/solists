@@ -36,7 +36,7 @@
     "@typescript-eslint/eslint-plugin": "^8.58.0",
     "@typescript-eslint/parser": "^8.58.0",
     "eslint": "^10.0.2",
-    "mocha": "^11.7.5",
+    "mocha": "^11.7.6",
     "nyc": "^18.0.0",
     "prettier": "^3.6.2",
     "ts-mocha": "^11.1.0",
