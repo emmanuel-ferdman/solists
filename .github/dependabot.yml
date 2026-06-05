@@ -8,6 +8,7 @@ updates:
       eslint:
         patterns:
           - "@typescript-eslint/*"
+          - "typescript-eslint"
           - "eslint"
       mocha:
         patterns:
