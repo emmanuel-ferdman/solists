@@ -1,5 +1,5 @@
-import { DoublyLinkedList, SoListOptions } from "./DoublyLinkedList";
-import { Node } from "./Node";
+import { DoublyLinkedList, type SoListOptions } from "./DoublyLinkedList";
+import type { Node } from "./Node";
 
 export interface KInARowOptions extends SoListOptions {
   k?: number;

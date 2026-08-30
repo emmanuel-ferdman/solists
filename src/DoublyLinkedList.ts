@@ -644,7 +644,7 @@ export class DoublyLinkedList<T, O extends SoListOptions = SoListOptions> {
     const relativeIndex = this._toIntegerOrInfinity(index);
     const actualIndex = relativeIndex < 0 ? this.length + relativeIndex : relativeIndex;
     if (actualIndex >= this.length || actualIndex < 0) {
-      throw new RangeError("Invalid index : " + index);
+      throw new RangeError(`Invalid index : ${index}`);
     }
     const copy = this.slice();
     const node = copy._getNode(actualIndex);
@@ -840,7 +840,7 @@ export class DoublyLinkedList<T, O extends SoListOptions = SoListOptions> {
     if (this._isCallable(argument)) return argument;
     const type = typeof argument;
     const value = this._tryToString(argument);
-    const typePrefix = type !== "undefined" ? type + " " : "";
+    const typePrefix = type !== "undefined" ? `${type} ` : "";
     throw TypeError(`${typePrefix}${value} is not a function`);
   }
 
@@ -934,7 +934,7 @@ export class DoublyLinkedList<T, O extends SoListOptions = SoListOptions> {
 
     this._tail = lists[0];
     this._head = lists[0];
-    while (this._tail && this._tail.next) {
+    while (this._tail?.next) {
       this._tail = this._tail.next;
     }
   }
@@ -1018,7 +1018,7 @@ export class DoublyLinkedList<T, O extends SoListOptions = SoListOptions> {
   private _toIntegerOrInfinity(argument: number | undefined): number {
     if (argument === undefined) return 0;
     const number = +argument;
-    return number !== number || number === 0 ? 0 : Math.trunc(number);
+    return Number.isNaN(number) || number === 0 ? 0 : Math.trunc(number);
   }
 
   private _tryToString(argument: unknown): string {

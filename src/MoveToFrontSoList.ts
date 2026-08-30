@@ -1,5 +1,5 @@
 import { DoublyLinkedList } from "./DoublyLinkedList";
-import { Node } from "./Node";
+import type { Node } from "./Node";
 
 export class MoveToFrontSoList<T> extends DoublyLinkedList<T> {
   protected _rearrange(node: Node<T>): number {
