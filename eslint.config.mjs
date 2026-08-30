@@ -15,7 +15,7 @@ export default defineConfig([
       "@typescript-eslint/no-non-null-assertion": "off",
       "no-plusplus": ["error", { allowForLoopAfterthoughts: true }],
       "prefer-rest-params": "off",
-      "sort-imports": "error",
+      "sort-imports": ["error", { ignoreCase: true }],
     },
   },
   {
