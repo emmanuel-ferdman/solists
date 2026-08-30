@@ -1,8 +1,8 @@
-import { strict as assert } from "assert";
+import { strict as assert } from "node:assert";
 
 function testEntries(dsClass) {
-  describe(dsClass.name + ' Base: Test the "entries" method', function () {
-    it('should check "entries" on []', function () {
+  describe(`${dsClass.name} Base: Test the "entries" method`, () => {
+    it('should check "entries" on []', () => {
       const array = [];
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
@@ -22,7 +22,7 @@ function testEntries(dsClass) {
       assert.equal(dsIter.done, arrayIter.done);
     });
 
-    it('should check "entries" on [1]', function () {
+    it('should check "entries" on [1]', () => {
       const array = [1];
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
@@ -42,7 +42,7 @@ function testEntries(dsClass) {
       assert.equal(dsIter.done, arrayIter.done);
     });
 
-    it('should check "entries" on [1,2,3]', function () {
+    it('should check "entries" on [1,2,3]', () => {
       const array = [1, 2, 3];
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
@@ -62,7 +62,7 @@ function testEntries(dsClass) {
       assert.equal(dsIter.done, arrayIter.done);
     });
 
-    it('should check "entries" on [null,undefined,NaN,{},Infinity,"string",-0,1.5,true,new Date("21 Dec 1997 14:12:00 UTC")]', function () {
+    it('should check "entries" on [null,undefined,NaN,{},Infinity,"string",-0,1.5,true,new Date("21 Dec 1997 14:12:00 UTC")]', () => {
       const array = [
         null,
         undefined,

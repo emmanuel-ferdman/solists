@@ -1,8 +1,8 @@
-import { strict as assert } from "assert";
+import { strict as assert } from "node:assert";
 
 function testToString(dsClass) {
-  describe(dsClass.name + ' Base: Test the "toString" method', function () {
-    it('should check "toString" of list []', function () {
+  describe(`${dsClass.name} Base: Test the "toString" method`, () => {
+    it('should check "toString" of list []', () => {
       const array = [];
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
@@ -10,7 +10,7 @@ function testToString(dsClass) {
       assert.equal(ds.toString(), array.toString());
     });
 
-    it('should check "toString" of list [1]', function () {
+    it('should check "toString" of list [1]', () => {
       const array = [1];
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
@@ -18,7 +18,7 @@ function testToString(dsClass) {
       assert.equal(ds.toString(), array.toString());
     });
 
-    it('should check "toString" of list [1,2,3]', function () {
+    it('should check "toString" of list [1,2,3]', () => {
       const array = [1, 2, 3];
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
@@ -26,7 +26,7 @@ function testToString(dsClass) {
       assert.equal(ds.toString(), array.toString());
     });
 
-    it('should check "toString" of list [1,-2,3]', function () {
+    it('should check "toString" of list [1,-2,3]', () => {
       const array = [1, -2, 3];
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
@@ -34,7 +34,7 @@ function testToString(dsClass) {
       assert.equal(ds.toString(), array.toString());
     });
 
-    it('should check "toString" of list [null,undefined,NaN,{},Infinity,"string",-0,1.5,true,new Date("21 Dec 1997 14:12:00 UTC")]', function () {
+    it('should check "toString" of list [null,undefined,NaN,{},Infinity,"string",-0,1.5,true,new Date("21 Dec 1997 14:12:00 UTC")]', () => {
       const array = [
         null,
         undefined,

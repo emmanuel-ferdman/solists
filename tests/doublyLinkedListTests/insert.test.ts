@@ -1,8 +1,8 @@
-import { strict as assert } from "assert";
+import { strict as assert } from "node:assert";
 
 function testInsert(dsClass) {
-  describe(dsClass.name + ' Base: Test the "insert" method', function () {
-    it('should check "insert" on [] of value=5 at index=0', function () {
+  describe(`${dsClass.name} Base: Test the "insert" method`, () => {
+    it('should check "insert" on [] of value=5 at index=0', () => {
       const array = [];
       const expectedArray = [5];
       const expectedValue = 1;
@@ -15,7 +15,7 @@ function testInsert(dsClass) {
       assert(ds.isEqual(expectedArray));
     });
 
-    it('should check "insert" on [] of value=5 at index=1', function () {
+    it('should check "insert" on [] of value=5 at index=1', () => {
       const array = [];
       const expectedArray = [5];
       const expectedValue = 1;
@@ -28,7 +28,7 @@ function testInsert(dsClass) {
       assert(ds.isEqual(expectedArray));
     });
 
-    it('should check "insert" on [1] of value=5 at index=0', function () {
+    it('should check "insert" on [1] of value=5 at index=0', () => {
       const array = [1];
       const expectedArray = [5, 1];
       const expectedValue = 2;
@@ -41,7 +41,7 @@ function testInsert(dsClass) {
       assert(ds.isEqual(expectedArray));
     });
 
-    it('should check "insert" on [1] of value=5 at index=1', function () {
+    it('should check "insert" on [1] of value=5 at index=1', () => {
       const array = [1];
       const expectedArray = [1, 5];
       const expectedValue = 2;
@@ -54,7 +54,7 @@ function testInsert(dsClass) {
       assert(ds.isEqual(expectedArray));
     });
 
-    it('should check "insert" on [1] of value=5 at index=10', function () {
+    it('should check "insert" on [1] of value=5 at index=10', () => {
       const array = [1];
       const expectedArray = [1, 5];
       const expectedValue = 2;
@@ -67,7 +67,7 @@ function testInsert(dsClass) {
       assert(ds.isEqual(expectedArray));
     });
 
-    it('should check "insert" on [1,2,3,4,5] of value=10 at index=2', function () {
+    it('should check "insert" on [1,2,3,4,5] of value=10 at index=2', () => {
       const array = [1, 2, 3, 4, 5];
       const expectedArray = [1, 2, 10, 3, 4, 5];
       const expectedValue = 6;
@@ -80,7 +80,7 @@ function testInsert(dsClass) {
       assert(ds.isEqual(expectedArray));
     });
 
-    it('should check "insert" on [1,2,3,4,5] of value=10 at index=4', function () {
+    it('should check "insert" on [1,2,3,4,5] of value=10 at index=4', () => {
       const array = [1, 2, 3, 4, 5];
       const expectedArray = [1, 2, 3, 4, 10, 5];
       const expectedValue = 6;
@@ -93,7 +93,7 @@ function testInsert(dsClass) {
       assert(ds.isEqual(expectedArray));
     });
 
-    it('should check "insert" on [1,2,3,4,5] of value=10 at index=-2', function () {
+    it('should check "insert" on [1,2,3,4,5] of value=10 at index=-2', () => {
       const array = [1, 2, 3, 4, 5];
       const expectedArray = [1, 2, 3, 10, 4, 5];
       const expectedValue = 6;
@@ -106,7 +106,7 @@ function testInsert(dsClass) {
       assert(ds.isEqual(expectedArray));
     });
 
-    it('should check "insert" on [1,2,3,4,5] of value=10 at index=-4', function () {
+    it('should check "insert" on [1,2,3,4,5] of value=10 at index=-4', () => {
       const array = [1, 2, 3, 4, 5];
       const expectedArray = [1, 10, 2, 3, 4, 5];
       const expectedValue = 6;
@@ -119,7 +119,7 @@ function testInsert(dsClass) {
       assert(ds.isEqual(expectedArray));
     });
 
-    it('should check "insert" on [1,2,3,4,5] of value=10 at index=1.5', function () {
+    it('should check "insert" on [1,2,3,4,5] of value=10 at index=1.5', () => {
       const array = [1, 2, 3, 4, 5];
       const expectedArray = [1, 10, 2, 3, 4, 5];
       const expectedValue = 6;
@@ -132,7 +132,7 @@ function testInsert(dsClass) {
       assert(ds.isEqual(expectedArray));
     });
 
-    it('should check "insert" on [1,2,3,4,5] of value=10 at index=-2.5', function () {
+    it('should check "insert" on [1,2,3,4,5] of value=10 at index=-2.5', () => {
       const array = [1, 2, 3, 4, 5];
       const expectedArray = [1, 2, 3, 10, 4, 5];
       const expectedValue = 6;
@@ -145,7 +145,7 @@ function testInsert(dsClass) {
       assert(ds.isEqual(expectedArray));
     });
 
-    it('should check "insert" on [1,2,3,4,5] of without value and without index', function () {
+    it('should check "insert" on [1,2,3,4,5] of without value and without index', () => {
       const array = [1, 2, 3, 4, 5];
       const expectedArray = [1, 2, 3, 4, 5];
       const expectedValue = undefined;
@@ -156,7 +156,7 @@ function testInsert(dsClass) {
       assert(ds.isEqual(expectedArray));
     });
 
-    it('should check "insert" on [1,2,3,4,5] of without value and with index=0', function () {
+    it('should check "insert" on [1,2,3,4,5] of without value and with index=0', () => {
       const array = [1, 2, 3, 4, 5];
       const expectedArray = [1, 2, 3, 4, 5];
       const expectedValue = undefined;
@@ -168,7 +168,7 @@ function testInsert(dsClass) {
       assert(ds.isEqual(expectedArray));
     });
 
-    it('should check "insert" on [1,2,3,4,5] of value=10 at index=null', function () {
+    it('should check "insert" on [1,2,3,4,5] of value=10 at index=null', () => {
       const array = [1, 2, 3, 4, 5];
       const expectedArray = [10, 1, 2, 3, 4, 5];
       const expectedValue = 6;
@@ -181,7 +181,7 @@ function testInsert(dsClass) {
       assert(ds.isEqual(expectedArray));
     });
 
-    it('should check "insert" on [1,2,3,4,5] of value=10 at index=undefined', function () {
+    it('should check "insert" on [1,2,3,4,5] of value=10 at index=undefined', () => {
       const array = [1, 2, 3, 4, 5];
       const expectedArray = [1, 2, 3, 4, 5];
       const expectedValue = undefined;
@@ -194,7 +194,7 @@ function testInsert(dsClass) {
       assert(ds.isEqual(expectedArray));
     });
 
-    it('should check "insert" on [1,2,3,4,5] of value=10 at index=NaN', function () {
+    it('should check "insert" on [1,2,3,4,5] of value=10 at index=NaN', () => {
       const array = [1, 2, 3, 4, 5];
       const expectedArray = [10, 1, 2, 3, 4, 5];
       const expectedValue = 6;
@@ -207,7 +207,7 @@ function testInsert(dsClass) {
       assert(ds.isEqual(expectedArray));
     });
 
-    it('should check "insert" on [1,2,3,4,5] of value=10 at index=Infinity', function () {
+    it('should check "insert" on [1,2,3,4,5] of value=10 at index=Infinity', () => {
       const array = [1, 2, 3, 4, 5];
       const expectedArray = [1, 2, 3, 4, 5, 10];
       const expectedValue = 6;
@@ -220,7 +220,7 @@ function testInsert(dsClass) {
       assert(ds.isEqual(expectedArray));
     });
 
-    it('should check "insert" on [1,2,3,4,5] of value=10 at index=-Infinity', function () {
+    it('should check "insert" on [1,2,3,4,5] of value=10 at index=-Infinity', () => {
       const array = [1, 2, 3, 4, 5];
       const expectedArray = [10, 1, 2, 3, 4, 5];
       const expectedValue = 6;
@@ -233,7 +233,7 @@ function testInsert(dsClass) {
       assert(ds.isEqual(expectedArray));
     });
 
-    it('should check "insert" on [1,2,3,4,5] of value=10 at index=-0', function () {
+    it('should check "insert" on [1,2,3,4,5] of value=10 at index=-0', () => {
       const array = [1, 2, 3, 4, 5];
       const expectedArray = [10, 1, 2, 3, 4, 5];
       const expectedValue = 6;
@@ -246,7 +246,7 @@ function testInsert(dsClass) {
       assert(ds.isEqual(expectedArray));
     });
 
-    it('should check "insert" on [1,2,3,4,5] of value=10 at index={}', function () {
+    it('should check "insert" on [1,2,3,4,5] of value=10 at index={}', () => {
       const array = [1, 2, 3, 4, 5];
       const expectedArray = [10, 1, 2, 3, 4, 5];
       const expectedValue = 6;
@@ -259,7 +259,7 @@ function testInsert(dsClass) {
       assert(ds.isEqual(expectedArray));
     });
 
-    it('should check "insert" on [1,2,3,4,5] of value=null at index=1', function () {
+    it('should check "insert" on [1,2,3,4,5] of value=null at index=1', () => {
       const array = [1, 2, 3, 4, 5];
       const expectedArray = [1, null, 2, 3, 4, 5];
       const expectedValue = 6;
@@ -272,7 +272,7 @@ function testInsert(dsClass) {
       assert(ds.isEqual(expectedArray));
     });
 
-    it('should check "insert" on [1,2,3,4,5] of value=undefined at index=1', function () {
+    it('should check "insert" on [1,2,3,4,5] of value=undefined at index=1', () => {
       const array = [1, 2, 3, 4, 5];
       const expectedArray = [1, undefined, 2, 3, 4, 5];
       const expectedValue = 6;
@@ -285,7 +285,7 @@ function testInsert(dsClass) {
       assert(ds.isEqual(expectedArray));
     });
 
-    it('should check "insert" on [1,2,3,4,5] of value=NaN at index=1', function () {
+    it('should check "insert" on [1,2,3,4,5] of value=NaN at index=1', () => {
       const array = [1, 2, 3, 4, 5];
       const expectedArray = [1, NaN, 2, 3, 4, 5];
       const expectedValue = 6;
@@ -298,7 +298,7 @@ function testInsert(dsClass) {
       assert(ds.isEqual(expectedArray));
     });
 
-    it('should check "insert" on [1,2,3,4,5] of value=Infinity at index=1', function () {
+    it('should check "insert" on [1,2,3,4,5] of value=Infinity at index=1', () => {
       const array = [1, 2, 3, 4, 5];
       const expectedArray = [1, Infinity, 2, 3, 4, 5];
       const expectedValue = 6;
@@ -311,7 +311,7 @@ function testInsert(dsClass) {
       assert(ds.isEqual(expectedArray));
     });
 
-    it('should check "insert" on [1,2,3,4,5] of value=-0 at index=1', function () {
+    it('should check "insert" on [1,2,3,4,5] of value=-0 at index=1', () => {
       const array = [1, 2, 3, 4, 5];
       const expectedArray = [1, -0, 2, 3, 4, 5];
       const expectedValue = 6;

@@ -1,9 +1,9 @@
+import { strict as assert } from "node:assert";
 import { FrequencyCountSoList } from "../../src/FrequencyCountSoList";
-import { strict as assert } from "assert";
 
 function testAt() {
-  describe('FrequencyCountSoList: Test the "at" method', function () {
-    it('should check "at" of indices [2] in list [0,1,2,3,4,5]', function () {
+  describe('FrequencyCountSoList: Test the "at" method', () => {
+    it('should check "at" of indices [2] in list [0,1,2,3,4,5]', () => {
       const array = [0, 1, 2, 3, 4, 5];
       const inputs = [{ expectedArray: [2, 0, 1, 3, 4, 5], expectedValue: 2, index: 2 }];
       const ds = new FrequencyCountSoList(array);
@@ -15,7 +15,7 @@ function testAt() {
       });
     });
 
-    it('should check "at" of indices [4,4,4] in list [0,1,2,3,4,5]', function () {
+    it('should check "at" of indices [4,4,4] in list [0,1,2,3,4,5]', () => {
       const array = [0, 1, 2, 3, 4, 5];
       const inputs = [
         { expectedArray: [4, 0, 1, 2, 3, 5], expectedValue: 4, index: 4 },
@@ -31,7 +31,7 @@ function testAt() {
       });
     });
 
-    it('should check "at" of indices [0,0,0,4,1,1,1] in list [0,1,2,3,4,5]', function () {
+    it('should check "at" of indices [0,0,0,4,1,1,1] in list [0,1,2,3,4,5]', () => {
       const array = [0, 1, 2, 3, 4, 5];
       const inputs = [
         { expectedArray: [0, 1, 2, 3, 4, 5], expectedValue: 0, index: 0 },
@@ -51,7 +51,7 @@ function testAt() {
       });
     });
 
-    it('should check "at" of indices [-1] in list [0,1,2,3,4,5]', function () {
+    it('should check "at" of indices [-1] in list [0,1,2,3,4,5]', () => {
       const array = [0, 1, 2, 3, 4, 5];
       const inputs = [{ expectedArray: [5, 0, 1, 2, 3, 4], expectedValue: 5, index: -1 }];
       const ds = new FrequencyCountSoList(array);
@@ -63,7 +63,7 @@ function testAt() {
       });
     });
 
-    it('should check "at" of indices [-1,-2,-3,3,2,1] in list [0,1,2,3,4,5]', function () {
+    it('should check "at" of indices [-1,-2,-3,3,2,1] in list [0,1,2,3,4,5]', () => {
       const array = [0, 1, 2, 3, 4, 5];
       const inputs = [
         { expectedArray: [5, 0, 1, 2, 3, 4], expectedValue: 5, index: -1 },
@@ -82,7 +82,7 @@ function testAt() {
       });
     });
 
-    it('should check "at" of indices [2.5] in list [0,1,2,3,4,5]', function () {
+    it('should check "at" of indices [2.5] in list [0,1,2,3,4,5]', () => {
       const array = [0, 1, 2, 3, 4, 5];
       const inputs = [{ expectedArray: [2, 0, 1, 3, 4, 5], expectedValue: 2, index: 2.5 }];
       const ds = new FrequencyCountSoList(array);
@@ -94,7 +94,7 @@ function testAt() {
       });
     });
 
-    it('should check "at" of indices [-10,10,Infinity] in list [0,1,2,3,4,5]', function () {
+    it('should check "at" of indices [-10,10,Infinity] in list [0,1,2,3,4,5]', () => {
       const array = [0, 1, 2, 3, 4, 5];
       const inputs = [
         { expectedArray: [0, 1, 2, 3, 4, 5], expectedValue: undefined, index: -10 },
@@ -110,7 +110,7 @@ function testAt() {
       });
     });
 
-    it('should check "at" of indices [null,undefined,NaN,-0,{},1,1,1,1,1,1] in list [0,1,2,3,4,5]', function () {
+    it('should check "at" of indices [null,undefined,NaN,-0,{},1,1,1,1,1,1] in list [0,1,2,3,4,5]', () => {
       const array = [0, 1, 2, 3, 4, 5];
       const inputs = [
         { expectedArray: [0, 1, 2, 3, 4, 5], expectedValue: 0, index: null },

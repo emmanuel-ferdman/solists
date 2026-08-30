@@ -1,8 +1,8 @@
-import { strict as assert } from "assert";
+import { strict as assert } from "node:assert";
 
 function testFlatMap(dsClass) {
-  describe(dsClass.name + ' Base: Test the "flatMap" method', function () {
-    it('should check "flatMap" of list [] with func v => v', function () {
+  describe(`${dsClass.name} Base: Test the "flatMap" method`, () => {
+    it('should check "flatMap" of list [] with func v => v', () => {
       const arrayIn = [];
       const arrayDs = [];
       const func = (v) => v;
@@ -15,7 +15,7 @@ function testFlatMap(dsClass) {
       assert(ds.isEqual(arrayDs));
     });
 
-    it('should check "flatMap" of list [1,2,DS([3]),DS([4,5]),6,DS([])] with func v => v', function () {
+    it('should check "flatMap" of list [1,2,DS([3]),DS([4,5]),6,DS([])] with func v => v', () => {
       const arrayIn = [1, 2, [3], [4, 5], 6, []];
       const arrayDs = [1, 2, new dsClass([3]), new dsClass([4, 5]), 6, new dsClass([])];
       const func = (v) => v;
@@ -28,7 +28,7 @@ function testFlatMap(dsClass) {
       assert(ds.isEqual(arrayDs));
     });
 
-    it('should check "flatMap" of list [1,2,3,4] with func v => [v,v*2]', function () {
+    it('should check "flatMap" of list [1,2,3,4] with func v => [v,v*2]', () => {
       const arrayIn = [1, 2, 3, 4];
       const arrayDs = [1, 2, 3, 4];
       const func = (v) => [v, v * 2];
@@ -41,7 +41,7 @@ function testFlatMap(dsClass) {
       assert(ds.isEqual(arrayDs));
     });
 
-    it('should check "flatMap" of list [1,2,3,4] with func v => [v*2]', function () {
+    it('should check "flatMap" of list [1,2,3,4] with func v => [v*2]', () => {
       const arrayIn = [1, 2, 3, 4];
       const arrayDs = [1, 2, 3, 4];
       const func = (v) => [v * 2];
@@ -54,7 +54,7 @@ function testFlatMap(dsClass) {
       assert(ds.isEqual(arrayDs));
     });
 
-    it('should check "flatMap" of list [DS([DS([DS([1])])])] with func v => v', function () {
+    it('should check "flatMap" of list [DS([DS([DS([1])])])] with func v => v', () => {
       const arrayIn = [[[[1]]]];
       const arrayDs = [new dsClass([new dsClass([new dsClass([1])])])];
       const func = (v) => v;
@@ -67,7 +67,7 @@ function testFlatMap(dsClass) {
       assert(ds.isEqual(arrayDs));
     });
 
-    it('should check "flatMap" of list [1,[2,3]] with func () => 100', function () {
+    it('should check "flatMap" of list [1,[2,3]] with func () => 100', () => {
       const arrayIn = [1, [2, 3]];
       const arrayDs = [1, [2, 3]];
       const func = () => 100;
@@ -80,7 +80,7 @@ function testFlatMap(dsClass) {
       assert(ds.isEqual(arrayDs));
     });
 
-    it('should check "flatMap" with assertion inside the function', function () {
+    it('should check "flatMap" with assertion inside the function', () => {
       const array = [1];
       const ds = new dsClass(array);
       const func = function (value, index, that) {
@@ -94,7 +94,7 @@ function testFlatMap(dsClass) {
       assert(ds.flatMap(func).isEqual(array.flatMap(func)));
     });
 
-    it('should check "flatMap" with thisArg', function () {
+    it('should check "flatMap" with thisArg', () => {
       const array = [1, 2, 3];
       const thisArg = { multiplier: 2 };
       const func = function (v) {
@@ -106,7 +106,7 @@ function testFlatMap(dsClass) {
       assert(ds.flatMap(func, thisArg).isEqual(array.flatMap(func, thisArg)));
     });
 
-    it('should check "flatMap" with thisArg as undefined', function () {
+    it('should check "flatMap" with thisArg as undefined', () => {
       const array = [1, 2, 3];
       const func = function (v) {
         return this === undefined ? [v, v] : [v];
@@ -115,7 +115,7 @@ function testFlatMap(dsClass) {
       assert(ds.flatMap(func, undefined).isEqual(array.flatMap(func, undefined)));
     });
 
-    it('should check "flatMap" with thisArg modifying state', function () {
+    it('should check "flatMap" with thisArg modifying state', () => {
       const array = [1, 2, 3];
       const thisArg = { count: 0 };
       const func = function (v) {
@@ -129,7 +129,7 @@ function testFlatMap(dsClass) {
       assert.equal(thisArg.count, thisArg2.count);
     });
 
-    it('should check "flatMap" throws TypeError for undefined callback', function () {
+    it('should check "flatMap" throws TypeError for undefined callback', () => {
       const func = undefined;
       const array = [1, 2, 3];
       const ds = new dsClass(array);
@@ -139,7 +139,7 @@ function testFlatMap(dsClass) {
       assert.throws(() => ds.flatMap(func), TypeError("undefined is not a function"));
     });
 
-    it('should check "flatMap" throws TypeError for null callback', function () {
+    it('should check "flatMap" throws TypeError for null callback', () => {
       const func = null;
       const array = [1, 2, 3];
       const ds = new dsClass(array);

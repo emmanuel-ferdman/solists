@@ -1,9 +1,9 @@
+import { strict as assert } from "node:assert";
 import { TransposeSoList } from "../../src/TransposeSoList";
-import { strict as assert } from "assert";
 
 function testIncludes() {
-  describe('TransposeSoList: Test the "includes" method', function () {
-    it('should check "includes" of values [2] in list [0,1,2,3,4,5]', function () {
+  describe('TransposeSoList: Test the "includes" method', () => {
+    it('should check "includes" of values [2] in list [0,1,2,3,4,5]', () => {
       const array = [0, 1, 2, 3, 4, 5];
       const inputs = [{ expectedArray: [0, 2, 1, 3, 4, 5], expectedValue: true, value: 2 }];
       const ds = new TransposeSoList(array);
@@ -15,7 +15,7 @@ function testIncludes() {
       });
     });
 
-    it('should check "includes" of values [3,2,4,2] in list [0,1,2,3,4,5]', function () {
+    it('should check "includes" of values [3,2,4,2] in list [0,1,2,3,4,5]', () => {
       const array = [0, 1, 2, 3, 4, 5];
       const inputs = [
         { expectedArray: [0, 1, 3, 2, 4, 5], expectedValue: true, value: 3 },
@@ -32,7 +32,7 @@ function testIncludes() {
       });
     });
 
-    it('should check "includes" of values [-1,6,3] in list [0,1,2,3,4,5]', function () {
+    it('should check "includes" of values [-1,6,3] in list [0,1,2,3,4,5]', () => {
       const array = [0, 1, 2, 3, 4, 5];
       const inputs = [
         { expectedArray: [0, 1, 2, 3, 4, 5], expectedValue: false, value: -1 },
@@ -48,7 +48,7 @@ function testIncludes() {
       });
     });
 
-    it('should check "includes" of values [1,0,5] in list [0,1,2,5,4,5]', function () {
+    it('should check "includes" of values [1,0,5] in list [0,1,2,5,4,5]', () => {
       const array = [0, 1, 2, 5, 4, 5];
       const inputs = [
         { expectedArray: [1, 0, 2, 5, 4, 5], expectedValue: true, value: 1 },

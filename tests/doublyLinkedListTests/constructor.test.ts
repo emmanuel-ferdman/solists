@@ -1,47 +1,47 @@
-import { strict as assert } from "assert";
+import { strict as assert } from "node:assert";
 
 function testConstructor(dsClass) {
-  describe(dsClass.name + ' Base: Test the "constructor" method', function () {
-    it('should check "constructor" without array input', function () {
+  describe(`${dsClass.name} Base: Test the "constructor" method`, () => {
+    it('should check "constructor" without array input', () => {
       const ds = new dsClass();
       assert.equal(ds.length, 0);
       assert(ds.isEqual([]));
     });
 
-    it('should check "constructor" from []', function () {
+    it('should check "constructor" from []', () => {
       const array = [];
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
     });
 
-    it('should check "constructor" from [1,2,3]', function () {
+    it('should check "constructor" from [1,2,3]', () => {
       const array = [1, 2, 3];
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
     });
 
-    it('should check "constructor" from null', function () {
+    it('should check "constructor" from null', () => {
       const array = null;
       const ds = new dsClass(array);
       assert.equal(ds.length, 0);
       assert(ds.isEqual([]));
     });
 
-    it('should check "constructor" from undefined', function () {
+    it('should check "constructor" from undefined', () => {
       const array = undefined;
       const ds = new dsClass(array);
       assert.equal(ds.length, 0);
       assert(ds.isEqual([]));
     });
 
-    it('should check "constructor" from non iterable "1"', function () {
+    it('should check "constructor" from non iterable "1"', () => {
       const input = 1;
       assert.throws(() => new dsClass(input), TypeError("The value should be iterable"));
     });
 
-    it('should check "constructor" from non iterable "NaN"', function () {
+    it('should check "constructor" from non iterable "NaN"', () => {
       const input = NaN;
       assert.throws(() => new dsClass(input), TypeError("The value should be iterable"));
     });

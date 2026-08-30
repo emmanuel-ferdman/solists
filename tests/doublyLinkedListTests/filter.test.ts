@@ -1,8 +1,8 @@
-import { strict as assert } from "assert";
+import { strict as assert } from "node:assert";
 
 function testFilter(dsClass) {
-  describe(dsClass.name + ' Base: Test the "filter" method', function () {
-    it('should check "filter" of negative value in list []', function () {
+  describe(`${dsClass.name} Base: Test the "filter" method`, () => {
+    it('should check "filter" of negative value in list []', () => {
       const array = [];
       const func = (v) => v < 0;
       const ds = new dsClass(array);
@@ -11,7 +11,7 @@ function testFilter(dsClass) {
       assert(ds.filter(func).isEqual(array.filter(func)));
     });
 
-    it('should check "filter" of negative value in list [1,2,3]', function () {
+    it('should check "filter" of negative value in list [1,2,3]', () => {
       const array = [1, 2, 3];
       const func = (v) => v < 0;
       const ds = new dsClass(array);
@@ -20,7 +20,7 @@ function testFilter(dsClass) {
       assert(ds.filter(func).isEqual(array.filter(func)));
     });
 
-    it('should check "filter" of negative value in list [1,-2,3]', function () {
+    it('should check "filter" of negative value in list [1,-2,3]', () => {
       const array = [1, -2, 3];
       const func = (v) => v < 0;
       const ds = new dsClass(array);
@@ -29,7 +29,7 @@ function testFilter(dsClass) {
       assert(ds.filter(func).isEqual(array.filter(func)));
     });
 
-    it('should check "filter" of negative value in list [0,-1,2,3,-4,5]', function () {
+    it('should check "filter" of negative value in list [0,-1,2,3,-4,5]', () => {
       const array = [0, -1, 2, 3, -4, 5];
       const func = (v) => v < 0;
       const ds = new dsClass(array);
@@ -38,7 +38,7 @@ function testFilter(dsClass) {
       assert(ds.filter(func).isEqual(array.filter(func)));
     });
 
-    it('should check "filter" of negative value in list [0,-4,2,3,-4,5]', function () {
+    it('should check "filter" of negative value in list [0,-4,2,3,-4,5]', () => {
       const array = [0, -4, 2, 3, -4, 5];
       const func = (v) => v < 0;
       const ds = new dsClass(array);
@@ -47,7 +47,7 @@ function testFilter(dsClass) {
       assert(ds.filter(func).isEqual(array.filter(func)));
     });
 
-    it('should check "filter" of value "null" in list [0,null,2,3,4,5]', function () {
+    it('should check "filter" of value "null" in list [0,null,2,3,4,5]', () => {
       const array = [0, null, 2, 3, 4, 5];
       const func = (v) => v === null;
       const ds = new dsClass(array);
@@ -56,7 +56,7 @@ function testFilter(dsClass) {
       assert(ds.filter(func).isEqual(array.filter(func)));
     });
 
-    it('should check "filter" of value "undefined" in list [0,undefined,2,3,4,5]', function () {
+    it('should check "filter" of value "undefined" in list [0,undefined,2,3,4,5]', () => {
       const array = [0, undefined, 2, 3, 4, 5];
       const func = (v) => v === undefined;
       const ds = new dsClass(array);
@@ -65,16 +65,16 @@ function testFilter(dsClass) {
       assert(ds.filter(func).isEqual(array.filter(func)));
     });
 
-    it('should check "filter" of value "NaN" in list [0,NaN,2,3,4,5]', function () {
+    it('should check "filter" of value "NaN" in list [0,NaN,2,3,4,5]', () => {
       const array = [0, NaN, 2, 3, 4, 5];
-      const func = (v) => isNaN(v);
+      const func = (v) => Number.isNaN(v);
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert(ds.filter(func).isEqual(array.filter(func)));
     });
 
-    it('should check "filter" of value "object" in list [0,{value:1},2,3,{value:4},5]', function () {
+    it('should check "filter" of value "object" in list [0,{value:1},2,3,{value:4},5]', () => {
       const array = [0, { value: 1 }, 2, 3, { value: 4 }, 5];
       const func = (v) => typeof v === "object" && v !== null;
       const ds = new dsClass(array);
@@ -83,7 +83,7 @@ function testFilter(dsClass) {
       assert(ds.filter(func).isEqual(array.filter(func)));
     });
 
-    it('should check "filter" with "null" function', function () {
+    it('should check "filter" with "null" function', () => {
       const array = [0, 1, 2, 3, 4, 5];
       const func = null;
       const funcType = typeof func;
@@ -100,7 +100,7 @@ function testFilter(dsClass) {
       );
     });
 
-    it('should check "filter" with "undefined" function', function () {
+    it('should check "filter" with "undefined" function', () => {
       const array = [0, 1, 2, 3, 4, 5];
       const func = undefined;
       const ds = new dsClass(array);
@@ -110,7 +110,7 @@ function testFilter(dsClass) {
       assert.throws(() => ds.filter(func), TypeError("undefined is not a function"));
     });
 
-    it('should check "filter" of negative value and index bigger than 2 in list [0,-4,2,3,-4,5]', function () {
+    it('should check "filter" of negative value and index bigger than 2 in list [0,-4,2,3,-4,5]', () => {
       const array = [0, -4, 2, 3, -4, 5];
       const func = (v, i) => v < 0 && i > 2;
       const ds = new dsClass(array);
@@ -119,7 +119,7 @@ function testFilter(dsClass) {
       assert(ds.filter(func).isEqual(array.filter(func)));
     });
 
-    it('should check "filter" of negative value and index bigger than 4 in list [0,-4,2,3,-4,5]', function () {
+    it('should check "filter" of negative value and index bigger than 4 in list [0,-4,2,3,-4,5]', () => {
       const array = [0, -4, 2, 3, -4, 5];
       const func = (v, i) => v < 0 && i > 4;
       const ds = new dsClass(array);
@@ -128,7 +128,7 @@ function testFilter(dsClass) {
       assert(ds.filter(func).isEqual(array.filter(func)));
     });
 
-    it('should check "filter" of negative value and index bigger than 2 and list length equal 2 in list [0,-4,2,3,-4,5]', function () {
+    it('should check "filter" of negative value and index bigger than 2 and list length equal 2 in list [0,-4,2,3,-4,5]', () => {
       const array = [0, -4, 2, 3, -4, 5];
       const func = (v, i, l) => v < 0 && i > 2 && l.length === 2;
       const ds = new dsClass(array);
@@ -137,12 +137,12 @@ function testFilter(dsClass) {
       assert(ds.filter(func).isEqual(array.filter(func)));
     });
 
-    it('should check "filter" with updating a variable by appending (value,index)', function () {
+    it('should check "filter" with updating a variable by appending (value,index)', () => {
       const array = [0, 1, -2, 3, -4, -5];
       let result1 = "";
       let result2 = "";
-      const func1 = (v, i) => (result1 += "(" + v + "," + i + ")");
-      const func2 = (v, i) => (result2 += "(" + v + "," + i + ")");
+      const func1 = (v, i) => (result1 += `(${v},${i})`);
+      const func2 = (v, i) => (result2 += `(${v},${i})`);
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
@@ -150,7 +150,7 @@ function testFilter(dsClass) {
       assert.equal(result1, result2);
     });
 
-    it('should check "filter" with assertion inside the function', function () {
+    it('should check "filter" with assertion inside the function', () => {
       const array = [1];
       const ds = new dsClass(array);
       const func = function (value, index, that) {
@@ -164,7 +164,7 @@ function testFilter(dsClass) {
       assert(ds.filter(func).isEqual(array.filter(func)));
     });
 
-    it('should check "filter" with thisArg', function () {
+    it('should check "filter" with thisArg', () => {
       const array = [1, 2, 3, 4];
       const thisArg = { min: 2 };
       const func = function (v) {
@@ -176,7 +176,7 @@ function testFilter(dsClass) {
       assert(ds.filter(func, thisArg).isEqual(array.filter(func, thisArg)));
     });
 
-    it('should check "filter" with thisArg as undefined', function () {
+    it('should check "filter" with thisArg as undefined', () => {
       const array = [1, 2, 3];
       const func = function (v) {
         return v > 0 && this === undefined;
@@ -185,7 +185,7 @@ function testFilter(dsClass) {
       assert(ds.filter(func, undefined).isEqual(array.filter(func, undefined)));
     });
 
-    it('should check "filter" with thisArg modifying accumulator', function () {
+    it('should check "filter" with thisArg modifying accumulator', () => {
       const array = [1, 2, 3];
       const thisArg = { count: 0 };
       const func = function (v) {

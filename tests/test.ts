@@ -1,17 +1,17 @@
 import { DoublyLinkedList } from "../src/DoublyLinkedList";
-import { FrequencyCountSoList } from "../src/FrequencyCountSoList";
-import { KInARowSoList } from "../src/KInARowSoList";
-import { MoveAheadKSoList } from "../src/MoveAheadKSoList";
-import { MoveToFrontSoList } from "../src/MoveToFrontSoList";
-import { TransposeSoList } from "../src/TransposeSoList";
 import { doublyLinkedListTest } from "./doublyLinkedListTests";
+import { FrequencyCountSoList } from "../src/FrequencyCountSoList";
 import { frequencyCountSoListTest } from "./frequencyCountSoListTests";
+import { KInARowSoList } from "../src/KInARowSoList";
 import { kInARowSoListTest } from "./kInARowSoListTests";
+import { MoveAheadKSoList } from "../src/MoveAheadKSoList";
 import { moveAheadKSoListTest } from "./moveAheadKSoListTests";
+import { MoveToFrontSoList } from "../src/MoveToFrontSoList";
 import { moveToFrontSoListTest } from "./moveToFrontSoListTests";
+import { TransposeSoList } from "../src/TransposeSoList";
 import { transposeSoListTest } from "./transposeSoListTests";
 
-describe("Test SoLists", function () {
+describe("Test SoLists", () => {
   /** General Tests **/
 
   const dsClasses = [
@@ -22,8 +22,8 @@ describe("Test SoLists", function () {
     MoveToFrontSoList,
     TransposeSoList,
   ];
-  dsClasses.forEach(function (dsClass) {
-    describe("Test Base " + dsClass.name, function () {
+  dsClasses.forEach((dsClass) => {
+    describe(`Test Base ${dsClass.name}`, () => {
       // Constructor tests
       doublyLinkedListTest.testConstructor(dsClass);
 
@@ -69,7 +69,7 @@ describe("Test SoLists", function () {
 
   /** DoublyLinkedList Search & Creation Tests **/
 
-  describe("Test DoublyLinkedList Search & Creation", function () {
+  describe("Test DoublyLinkedList Search & Creation", () => {
     // Custom methods tests
     doublyLinkedListTest.testInsert(DoublyLinkedList);
 
@@ -88,7 +88,7 @@ describe("Test SoLists", function () {
 
   /** FrequencyCountSoList Search & Creation Tests **/
 
-  describe("Test FrequencyCountSoList Search & Creation", function () {
+  describe("Test FrequencyCountSoList Search & Creation", () => {
     // Constructor tests
     frequencyCountSoListTest.testConstructor();
 
@@ -110,7 +110,7 @@ describe("Test SoLists", function () {
 
   /** MoveToFrontSoList Search & Creation Tests **/
 
-  describe("Test MoveToFrontSoList Search & Creation", function () {
+  describe("Test MoveToFrontSoList Search & Creation", () => {
     // Custom methods tests
     moveToFrontSoListTest.testInsert();
 
@@ -129,7 +129,7 @@ describe("Test SoLists", function () {
 
   /** TransposeSoList Search & Creation Tests **/
 
-  describe("Test transposeSoListTest Search & Creation", function () {
+  describe("Test transposeSoListTest Search & Creation", () => {
     // Custom methods tests
     transposeSoListTest.testInsert();
 
@@ -148,7 +148,7 @@ describe("Test SoLists", function () {
 
   /** MoveAheadKSoList Search & Creation Tests **/
 
-  describe("Test MoveAheadKSoList Search & Creation", function () {
+  describe("Test MoveAheadKSoList Search & Creation", () => {
     // Custom methods tests
     moveAheadKSoListTest.testInsert();
 
@@ -167,7 +167,7 @@ describe("Test SoLists", function () {
 
   /** KInARowSoList Search & Creation Tests **/
 
-  describe("Test KInARowSoList Search & Creation", function () {
+  describe("Test KInARowSoList Search & Creation", () => {
     // Custom methods tests
     kInARowSoListTest.testInsert();
 

@@ -1,8 +1,8 @@
-import { strict as assert } from "assert";
+import { strict as assert } from "node:assert";
 
 function testToReversed(dsClass) {
-  describe(dsClass.name + ' Base: Test the "toReversed" method', function () {
-    it('should check "toReversed" of list []', function () {
+  describe(`${dsClass.name} Base: Test the "toReversed" method`, () => {
+    it('should check "toReversed" of list []', () => {
       const array = [];
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
@@ -11,7 +11,7 @@ function testToReversed(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toReversed" of list [1]', function () {
+    it('should check "toReversed" of list [1]', () => {
       const array = [1];
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
@@ -20,7 +20,7 @@ function testToReversed(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toReversed" of list [1,2,3]', function () {
+    it('should check "toReversed" of list [1,2,3]', () => {
       const array = [1, 2, 3];
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
@@ -29,7 +29,7 @@ function testToReversed(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toReversed" of list [1,2,3,4,5]', function () {
+    it('should check "toReversed" of list [1,2,3,4,5]', () => {
       const array = [1, 2, 3, 4, 5];
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
@@ -38,7 +38,7 @@ function testToReversed(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toReversed" of list [null,undefined,NaN,{},Infinity,"string",-0,1.5,true,new Date("21 Dec 1997 14:12:00 UTC")]', function () {
+    it('should check "toReversed" of list [null,undefined,NaN,{},Infinity,"string",-0,1.5,true,new Date("21 Dec 1997 14:12:00 UTC")]', () => {
       const array = [
         null,
         undefined,
@@ -58,7 +58,7 @@ function testToReversed(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toReversed" of list [1,2,3,4,5] twice', function () {
+    it('should check "toReversed" of list [1,2,3,4,5] twice', () => {
       const array = [1, 2, 3, 4, 5];
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);

@@ -1,8 +1,8 @@
-import { strict as assert } from "assert";
+import { strict as assert } from "node:assert";
 
 function testConcat(dsClass) {
-  describe(dsClass.name + ' Base: Test the "concat" method', function () {
-    it('should check "concat" from DS([]) & DS([])', function () {
+  describe(`${dsClass.name} Base: Test the "concat" method`, () => {
+    it('should check "concat" from DS([]) & DS([])', () => {
       const array1 = [];
       const array2 = [];
       const array3 = array1.concat(array2);
@@ -13,7 +13,7 @@ function testConcat(dsClass) {
       assert(ds3.isEqual(array3));
     });
 
-    it('should check "concat" from DS([1]) & DS([2])', function () {
+    it('should check "concat" from DS([1]) & DS([2])', () => {
       const array1 = [1];
       const array2 = [2];
       const array3 = array1.concat(array2);
@@ -24,7 +24,7 @@ function testConcat(dsClass) {
       assert(ds3.isEqual(array3));
     });
 
-    it('should check "concat" from DS([1,2]) & DS([5,4,3])', function () {
+    it('should check "concat" from DS([1,2]) & DS([5,4,3])', () => {
       const array1 = [1, 2];
       const array2 = [5, 4, 3];
       const array3 = array1.concat(array2);
@@ -35,7 +35,7 @@ function testConcat(dsClass) {
       assert(ds3.isEqual(array3));
     });
 
-    it('should check "concat" from DS([1,2]) & DS(["null"])', function () {
+    it('should check "concat" from DS([1,2]) & DS(["null"])', () => {
       const array1 = [1, 2];
       const array2 = [null];
       const array3 = array1.concat(array2);
@@ -46,7 +46,7 @@ function testConcat(dsClass) {
       assert(ds3.isEqual(array3));
     });
 
-    it('should check "concat" from DS([1,2]) & DS(["undefined"])', function () {
+    it('should check "concat" from DS([1,2]) & DS(["undefined"])', () => {
       const array1 = [1, 2];
       const array2 = [undefined];
       const array3 = array1.concat(array2);
@@ -57,7 +57,7 @@ function testConcat(dsClass) {
       assert(ds3.isEqual(array3));
     });
 
-    it('should check "concat" from DS([1,2]) & DS(["NaN"])', function () {
+    it('should check "concat" from DS([1,2]) & DS(["NaN"])', () => {
       const array1 = [1, 2];
       const array2 = [NaN];
       const array3 = array1.concat(array2);
@@ -68,7 +68,7 @@ function testConcat(dsClass) {
       assert(ds3.isEqual(array3));
     });
 
-    it('should check "concat" from DS([1,2]) & 3 & DS([3])', function () {
+    it('should check "concat" from DS([1,2]) & 3 & DS([3])', () => {
       const array1 = [1, 2];
       const array2 = [3];
       const array3 = array1.concat(3, array2);
@@ -79,7 +79,7 @@ function testConcat(dsClass) {
       assert(ds3.isEqual(array3));
     });
 
-    it('should check "concat" from DS([1,2]) & 3 & 4 & 5', function () {
+    it('should check "concat" from DS([1,2]) & 3 & 4 & 5', () => {
       const array1 = [1, 2];
       const array2 = array1.concat(3, 4, 5);
       const ds1 = new dsClass(array1);
@@ -88,7 +88,7 @@ function testConcat(dsClass) {
       assert(ds2.isEqual(array2));
     });
 
-    it('should check "concat" from DS([1,2]) & [3,4,5]', function () {
+    it('should check "concat" from DS([1,2]) & [3,4,5]', () => {
       const array1 = [1, 2];
       const array2 = array1.concat([3, 4, 5]);
       const ds1 = new dsClass(array1);
@@ -97,7 +97,7 @@ function testConcat(dsClass) {
       assert(ds2.isEqual(array2));
     });
 
-    it('should check "concat" from DS([1,2]) & "null"', function () {
+    it('should check "concat" from DS([1,2]) & "null"', () => {
       const array1 = [1, 2];
       const array2 = array1.concat(null);
       const ds1 = new dsClass(array1);
@@ -106,7 +106,7 @@ function testConcat(dsClass) {
       assert(ds2.isEqual(array2));
     });
 
-    it('should check "concat" from DS([1,2]) & "undefined"', function () {
+    it('should check "concat" from DS([1,2]) & "undefined"', () => {
       const array1 = [1, 2];
       const array2 = array1.concat(undefined);
       const ds1 = new dsClass(array1);
@@ -115,7 +115,7 @@ function testConcat(dsClass) {
       assert(ds2.isEqual(array2));
     });
 
-    it('should check "concat" from DS([1,2]) & "NaN"', function () {
+    it('should check "concat" from DS([1,2]) & "NaN"', () => {
       const array1 = [1, 2];
       const array2 = array1.concat(NaN);
       const ds1 = new dsClass(array1);
@@ -124,7 +124,7 @@ function testConcat(dsClass) {
       assert(ds2.isEqual(array2));
     });
 
-    it('should check "concat" from DS([1,2]) & [1,2]', function () {
+    it('should check "concat" from DS([1,2]) & [1,2]', () => {
       const array1 = [1, 2];
       const array2 = array1.concat([1, 2]);
       const ds1 = new dsClass(array1);
@@ -133,7 +133,7 @@ function testConcat(dsClass) {
       assert(ds2.isEqual(array2));
     });
 
-    it('should check "concat" from DS([1,2]) & [3,4,5,4,3]', function () {
+    it('should check "concat" from DS([1,2]) & [3,4,5,4,3]', () => {
       const array1 = [1, 2];
       const array2 = array1.concat([3, 4, 5, 4, 3]);
       const ds1 = new dsClass(array1);
@@ -142,7 +142,7 @@ function testConcat(dsClass) {
       assert(ds2.isEqual(array2));
     });
 
-    it('should check "concat" from DS([1,2]) & "string"', function () {
+    it('should check "concat" from DS([1,2]) & "string"', () => {
       const array1 = [1, 2];
       const array2 = array1.concat("string");
       const ds1 = new dsClass(array1);

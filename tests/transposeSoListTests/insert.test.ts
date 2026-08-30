@@ -1,9 +1,9 @@
+import { strict as assert } from "node:assert";
 import { TransposeSoList } from "../../src/TransposeSoList";
-import { strict as assert } from "assert";
 
 function testInsert() {
-  describe('TransposeSoList: Test the "insert" method', function () {
-    it('should check "insert" of values [1,2,3] with indices [0,1,2] to list [] with accessOnly=false', function () {
+  describe('TransposeSoList: Test the "insert" method', () => {
+    it('should check "insert" of values [1,2,3] with indices [0,1,2] to list [] with accessOnly=false', () => {
       const array = [];
       const inputs = [
         { expectedArray: [1], expectedValue: 1, value: 1, index: 0 },
@@ -19,7 +19,7 @@ function testInsert() {
       });
     });
 
-    it('should check "insert" of values [1,5,2,3,6] with indices [0,1,-1,1,2] to list [] with accessOnly=false', function () {
+    it('should check "insert" of values [1,5,2,3,6] with indices [0,1,-1,1,2] to list [] with accessOnly=false', () => {
       const array = [];
       const inputs = [
         { expectedArray: [1], expectedValue: 1, value: 1, index: 0 },
@@ -37,7 +37,7 @@ function testInsert() {
       });
     });
 
-    it('should check "insert" of values [6,7,8] with indices [0,2,-1] to list [1,2,3,4,5] with accessOnly=false after "includes" [3]', function () {
+    it('should check "insert" of values [6,7,8] with indices [0,2,-1] to list [1,2,3,4,5] with accessOnly=false after "includes" [3]', () => {
       const array = [1, 2, 3, 4, 5];
       const findInputs = [3];
       const inputs = [
@@ -57,7 +57,7 @@ function testInsert() {
       });
     });
 
-    it('should check "insert" of values [6,7,8] with indices [0,2,-1] to list [1,2,3,4,5] with accessOnly=false after "includes" [3,2,3]', function () {
+    it('should check "insert" of values [6,7,8] with indices [0,2,-1] to list [1,2,3,4,5] with accessOnly=false after "includes" [3,2,3]', () => {
       const array = [1, 2, 3, 4, 5];
       const findInputs = [3, 2, 3];
       const inputs = [

@@ -1,8 +1,8 @@
-import { strict as assert } from "assert";
+import { strict as assert } from "node:assert";
 
 function testForEach(dsClass) {
-  describe(dsClass.name + ' Base: Test the "forEach" method', function () {
-    it('should check "forEach" to count values in list []', function () {
+  describe(`${dsClass.name} Base: Test the "forEach" method`, () => {
+    it('should check "forEach" to count values in list []', () => {
       const array = [];
       let result1 = 0;
       let result2 = 0;
@@ -15,7 +15,7 @@ function testForEach(dsClass) {
       assert.equal(result1, result2);
     });
 
-    it('should check "forEach" to count values in list [1,2,3]', function () {
+    it('should check "forEach" to count values in list [1,2,3]', () => {
       const array = [1, 2, 3];
       let result1 = 0;
       let result2 = 0;
@@ -28,7 +28,7 @@ function testForEach(dsClass) {
       assert.equal(result1, result2);
     });
 
-    it('should check "forEach" to count values in list [1,-2,3,-4,5]', function () {
+    it('should check "forEach" to count values in list [1,-2,3,-4,5]', () => {
       const array = [1, -2, 3, -4, 5];
       let result1 = 0;
       let result2 = 0;
@@ -41,12 +41,12 @@ function testForEach(dsClass) {
       assert.equal(result1, result2);
     });
 
-    it('should check "forEach" to append (value,index) in list [1,2,3,4,5]', function () {
+    it('should check "forEach" to append (value,index) in list [1,2,3,4,5]', () => {
       const array = [1, 2, 3, 4, 5];
       let result1 = "";
       let result2 = "";
-      const func1 = (v, i) => (result1 += "(" + v + "," + i + ")");
-      const func2 = (v, i) => (result2 += "(" + v + "," + i + ")");
+      const func1 = (v, i) => (result1 += `(${v},${i})`);
+      const func2 = (v, i) => (result2 += `(${v},${i})`);
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
@@ -54,7 +54,7 @@ function testForEach(dsClass) {
       assert.equal(result1, result2);
     });
 
-    it('should check "forEach" with assertion inside the function', function () {
+    it('should check "forEach" with assertion inside the function', () => {
       const array = [1];
       const ds = new dsClass(array);
       const func = function (value, index, that) {
@@ -68,7 +68,7 @@ function testForEach(dsClass) {
       assert.equal(ds.forEach(func), array.forEach(func));
     });
 
-    it('should check "forEach" with thisArg', function () {
+    it('should check "forEach" with thisArg', () => {
       const array = [1, 2, 3];
       const func = function (v) {
         this.sum += v;
@@ -83,7 +83,7 @@ function testForEach(dsClass) {
       assert.equal(thisArg1.sum, thisArg2.sum);
     });
 
-    it('should check "forEach" with thisArg as undefined', function () {
+    it('should check "forEach" with thisArg as undefined', () => {
       const array = [1, 2, 3];
       let dsResult = true;
       let arrResult = true;
@@ -99,11 +99,11 @@ function testForEach(dsClass) {
       assert.equal(dsResult, arrResult);
     });
 
-    it('should check "forEach" with thisArg collecting indices', function () {
+    it('should check "forEach" with thisArg collecting indices', () => {
       const array = [10, 20, 30];
       const thisArg1 = { indices: [] };
       const thisArg2 = { indices: [] };
-      const func = function (v, i) {
+      const func = function (_v, i) {
         this.indices.push(i);
       };
       const ds = new dsClass(array);
@@ -112,7 +112,7 @@ function testForEach(dsClass) {
       assert.deepEqual(thisArg1.indices, thisArg2.indices);
     });
 
-    it('should check "forEach" throws TypeError for undefined callback', function () {
+    it('should check "forEach" throws TypeError for undefined callback', () => {
       const func = undefined;
       const array = [1, 2, 3];
       const ds = new dsClass(array);
@@ -122,7 +122,7 @@ function testForEach(dsClass) {
       assert.throws(() => ds.forEach(func), TypeError("undefined is not a function"));
     });
 
-    it('should check "forEach" throws TypeError for null callback', function () {
+    it('should check "forEach" throws TypeError for null callback', () => {
       const func = null;
       const array = [1, 2, 3];
       const ds = new dsClass(array);

@@ -1,9 +1,9 @@
+import { strict as assert } from "node:assert";
 import { KInARowSoList } from "../../src/KInARowSoList";
-import { strict as assert } from "assert";
 
 function testIndexOf() {
-  describe('KInARowSoList: Test the "indexOf" method', function () {
-    it('should check "indexOf" of values [2] in list [0,1,2,3,4,5]', function () {
+  describe('KInARowSoList: Test the "indexOf" method', () => {
+    it('should check "indexOf" of values [2] in list [0,1,2,3,4,5]', () => {
       const array = [0, 1, 2, 3, 4, 5];
       const inputs = [{ expectedArray: [0, 1, 2, 3, 4, 5], expectedValue: 2, value: 2 }];
       const ds = new KInARowSoList(array);
@@ -15,7 +15,7 @@ function testIndexOf() {
       });
     });
 
-    it('should check "indexOf" of values [3,2,4,2] in list [0,1,2,3,4,5]', function () {
+    it('should check "indexOf" of values [3,2,4,2] in list [0,1,2,3,4,5]', () => {
       const array = [0, 1, 2, 3, 4, 5];
       const inputs = [
         { expectedArray: [0, 1, 2, 3, 4, 5], expectedValue: 3, value: 3 },
@@ -32,7 +32,7 @@ function testIndexOf() {
       });
     });
 
-    it('should check "indexOf" of values [-1,6,3] in list [0,1,2,3,4,5]', function () {
+    it('should check "indexOf" of values [-1,6,3] in list [0,1,2,3,4,5]', () => {
       const array = [0, 1, 2, 3, 4, 5];
       const inputs = [
         { expectedArray: [0, 1, 2, 3, 4, 5], expectedValue: -1, value: -1 },
@@ -48,7 +48,7 @@ function testIndexOf() {
       });
     });
 
-    it('should check "indexOf" of values [1,0,5] in list [0,1,2,5,4,5]', function () {
+    it('should check "indexOf" of values [1,0,5] in list [0,1,2,5,4,5]', () => {
       const array = [0, 1, 2, 5, 4, 5];
       const inputs = [
         { expectedArray: [0, 1, 2, 5, 4, 5], expectedValue: 1, value: 1 },

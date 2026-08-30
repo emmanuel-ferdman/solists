@@ -1,8 +1,8 @@
-import { strict as assert } from "assert";
+import { strict as assert } from "node:assert";
 
 function testToSpliced(dsClass) {
-  describe(dsClass.name + ' Base: Test the "toSpliced" method', function () {
-    it('should check "toSpliced" of list [] with start=0', function () {
+  describe(`${dsClass.name} Base: Test the "toSpliced" method`, () => {
+    it('should check "toSpliced" of list [] with start=0', () => {
       const array = [];
       const start = 0;
       const ds = new dsClass(array);
@@ -12,7 +12,7 @@ function testToSpliced(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSpliced" of list [1] with start=0', function () {
+    it('should check "toSpliced" of list [1] with start=0', () => {
       const array = [1];
       const start = 0;
       const ds = new dsClass(array);
@@ -22,7 +22,7 @@ function testToSpliced(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSpliced" of list [1] with start=1', function () {
+    it('should check "toSpliced" of list [1] with start=1', () => {
       const array = [1];
       const start = 1;
       const ds = new dsClass(array);
@@ -32,7 +32,7 @@ function testToSpliced(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSpliced" of list [1,2,3,4] with start=2', function () {
+    it('should check "toSpliced" of list [1,2,3,4] with start=2', () => {
       const array = [1, 2, 3, 4];
       const start = 2;
       const ds = new dsClass(array);
@@ -42,7 +42,7 @@ function testToSpliced(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSpliced" of list [1,2,3,4] with start=3', function () {
+    it('should check "toSpliced" of list [1,2,3,4] with start=3', () => {
       const array = [1, 2, 3, 4];
       const start = 3;
       const ds = new dsClass(array);
@@ -52,7 +52,7 @@ function testToSpliced(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSpliced" of list [1,2,3,4] with start=10', function () {
+    it('should check "toSpliced" of list [1,2,3,4] with start=10', () => {
       const array = [1, 2, 3, 4];
       const start = 10;
       const ds = new dsClass(array);
@@ -62,7 +62,7 @@ function testToSpliced(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSpliced" of list [1,2,3,4] with start=-2', function () {
+    it('should check "toSpliced" of list [1,2,3,4] with start=-2', () => {
       const array = [1, 2, 3, 4];
       const start = -2;
       const ds = new dsClass(array);
@@ -72,7 +72,7 @@ function testToSpliced(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSpliced" of list [1,2,3,4] with start=-3', function () {
+    it('should check "toSpliced" of list [1,2,3,4] with start=-3', () => {
       const array = [1, 2, 3, 4];
       const start = -3;
       const ds = new dsClass(array);
@@ -82,7 +82,7 @@ function testToSpliced(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSpliced" of list [1,2,3,4] with start=-10', function () {
+    it('should check "toSpliced" of list [1,2,3,4] with start=-10', () => {
       const array = [1, 2, 3, 4];
       const start = -10;
       const ds = new dsClass(array);
@@ -92,7 +92,7 @@ function testToSpliced(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSpliced" of list [1,2,3,4] without start', function () {
+    it('should check "toSpliced" of list [1,2,3,4] without start', () => {
       const array = [1, 2, 3, 4];
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
@@ -101,7 +101,7 @@ function testToSpliced(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSpliced" of list [1,2,3,4] with start=0 and deleteCount=0', function () {
+    it('should check "toSpliced" of list [1,2,3,4] with start=0 and deleteCount=0', () => {
       const array = [1, 2, 3, 4];
       const start = 0;
       const deleteCount = 0;
@@ -112,7 +112,7 @@ function testToSpliced(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSpliced" of list [1,2,3,4] with start=null', function () {
+    it('should check "toSpliced" of list [1,2,3,4] with start=null', () => {
       const array = [1, 2, 3, 4];
       const start = null;
       const ds = new dsClass(array);
@@ -122,7 +122,7 @@ function testToSpliced(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSpliced" of list [1,2,3,4] with start=undefined', function () {
+    it('should check "toSpliced" of list [1,2,3,4] with start=undefined', () => {
       const array = [1, 2, 3, 4];
       const start = undefined;
       const ds = new dsClass(array);
@@ -132,7 +132,7 @@ function testToSpliced(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSpliced" of list [1,2,3,4] with start=NaN', function () {
+    it('should check "toSpliced" of list [1,2,3,4] with start=NaN', () => {
       const array = [1, 2, 3, 4];
       const start = NaN;
       const ds = new dsClass(array);
@@ -142,7 +142,7 @@ function testToSpliced(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSpliced" of list [1,2,3,4] with start=Infinity', function () {
+    it('should check "toSpliced" of list [1,2,3,4] with start=Infinity', () => {
       const array = [1, 2, 3, 4];
       const start = Infinity;
       const ds = new dsClass(array);
@@ -152,7 +152,7 @@ function testToSpliced(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSpliced" of list [1,2,3,4] with start=-0', function () {
+    it('should check "toSpliced" of list [1,2,3,4] with start=-0', () => {
       const array = [1, 2, 3, 4];
       const start = -0;
       const ds = new dsClass(array);
@@ -162,7 +162,7 @@ function testToSpliced(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSpliced" of list [1,2,3,4] with start={}', function () {
+    it('should check "toSpliced" of list [1,2,3,4] with start={}', () => {
       const array = [1, 2, 3, 4];
       const start = {};
       const ds = new dsClass(array);
@@ -172,7 +172,7 @@ function testToSpliced(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSpliced" of list [1,2,3,4] with start=1.5', function () {
+    it('should check "toSpliced" of list [1,2,3,4] with start=1.5', () => {
       const array = [1, 2, 3, 4];
       const start = 1.5;
       const ds = new dsClass(array);
@@ -182,7 +182,7 @@ function testToSpliced(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSpliced" of list [1,2,3,4] with start=2.5', function () {
+    it('should check "toSpliced" of list [1,2,3,4] with start=2.5', () => {
       const array = [1, 2, 3, 4];
       const start = 2.5;
       const ds = new dsClass(array);
@@ -192,7 +192,7 @@ function testToSpliced(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSpliced" of list [1,2,3,4,5] with start=1 and deleteCount=0', function () {
+    it('should check "toSpliced" of list [1,2,3,4,5] with start=1 and deleteCount=0', () => {
       const array = [1, 2, 3, 4, 5];
       const start = 1;
       const deleteCount = 0;
@@ -203,7 +203,7 @@ function testToSpliced(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSpliced" of list [1,2,3,4,5] with start=1 and deleteCount=2', function () {
+    it('should check "toSpliced" of list [1,2,3,4,5] with start=1 and deleteCount=2', () => {
       const array = [1, 2, 3, 4, 5];
       const start = 1;
       const deleteCount = 2;
@@ -214,7 +214,7 @@ function testToSpliced(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSpliced" of list [1,2,3,4,5] with start=1 and deleteCount=10', function () {
+    it('should check "toSpliced" of list [1,2,3,4,5] with start=1 and deleteCount=10', () => {
       const array = [1, 2, 3, 4, 5];
       const start = 1;
       const deleteCount = 10;
@@ -225,7 +225,7 @@ function testToSpliced(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSpliced" of list [1,2,3,4,5] with start=-2 and deleteCount=-1', function () {
+    it('should check "toSpliced" of list [1,2,3,4,5] with start=-2 and deleteCount=-1', () => {
       const array = [1, 2, 3, 4, 5];
       const start = -2;
       const deleteCount = -1;
@@ -236,7 +236,7 @@ function testToSpliced(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSpliced" of list [1,2,3,4,5] with start=-2 and deleteCount=-3', function () {
+    it('should check "toSpliced" of list [1,2,3,4,5] with start=-2 and deleteCount=-3', () => {
       const array = [1, 2, 3, 4, 5];
       const start = -2;
       const deleteCount = -3;
@@ -247,7 +247,7 @@ function testToSpliced(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSpliced" of list [1,2,3,4,5] with start=1 and deleteCount=-1', function () {
+    it('should check "toSpliced" of list [1,2,3,4,5] with start=1 and deleteCount=-1', () => {
       const array = [1, 2, 3, 4, 5];
       const start = 1;
       const deleteCount = -1;
@@ -258,7 +258,7 @@ function testToSpliced(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSpliced" of list [1,2,3,4,5] with start=1 and deleteCount=-3', function () {
+    it('should check "toSpliced" of list [1,2,3,4,5] with start=1 and deleteCount=-3', () => {
       const array = [1, 2, 3, 4, 5];
       const start = 1;
       const deleteCount = -3;
@@ -269,7 +269,7 @@ function testToSpliced(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSpliced" of list [1,2,3,4,5] with start=1 and deleteCount=-10', function () {
+    it('should check "toSpliced" of list [1,2,3,4,5] with start=1 and deleteCount=-10', () => {
       const array = [1, 2, 3, 4, 5];
       const start = 1;
       const deleteCount = -10;
@@ -280,7 +280,7 @@ function testToSpliced(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSpliced" of list [1,2,3,4,5] with start=1 and deleteCount=null', function () {
+    it('should check "toSpliced" of list [1,2,3,4,5] with start=1 and deleteCount=null', () => {
       const array = [1, 2, 3, 4, 5];
       const start = 1;
       const deleteCount = null;
@@ -291,7 +291,7 @@ function testToSpliced(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSpliced" of list [1,2,3,4,5] with start=1 and deleteCount=undefined', function () {
+    it('should check "toSpliced" of list [1,2,3,4,5] with start=1 and deleteCount=undefined', () => {
       const array = [1, 2, 3, 4, 5];
       const start = 1;
       const deleteCount = undefined;
@@ -302,7 +302,7 @@ function testToSpliced(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSpliced" of list [1,2,3,4,5] with start=1 and deleteCount=NaN', function () {
+    it('should check "toSpliced" of list [1,2,3,4,5] with start=1 and deleteCount=NaN', () => {
       const array = [1, 2, 3, 4, 5];
       const start = 1;
       const deleteCount = NaN;
@@ -313,7 +313,7 @@ function testToSpliced(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSpliced" of list [1,2,3,4,5] with start=1 and deleteCount=Infinity', function () {
+    it('should check "toSpliced" of list [1,2,3,4,5] with start=1 and deleteCount=Infinity', () => {
       const array = [1, 2, 3, 4, 5];
       const start = 1;
       const deleteCount = Infinity;
@@ -324,7 +324,7 @@ function testToSpliced(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSpliced" of list [1,2,3,4,5] with start=1 and deleteCount=-0', function () {
+    it('should check "toSpliced" of list [1,2,3,4,5] with start=1 and deleteCount=-0', () => {
       const array = [1, 2, 3, 4, 5];
       const start = 1;
       const deleteCount = -0;
@@ -335,7 +335,7 @@ function testToSpliced(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSpliced" of list [1,2,3,4,5] with start=1 and deleteCount={}', function () {
+    it('should check "toSpliced" of list [1,2,3,4,5] with start=1 and deleteCount={}', () => {
       const array = [1, 2, 3, 4, 5];
       const start = 1;
       const deleteCount = {};
@@ -346,7 +346,7 @@ function testToSpliced(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSpliced" of list [1,2,3,4,5] with start=1 and deleteCount=0.5', function () {
+    it('should check "toSpliced" of list [1,2,3,4,5] with start=1 and deleteCount=0.5', () => {
       const array = [1, 2, 3, 4, 5];
       const start = 1;
       const deleteCount = 0.5;
@@ -357,7 +357,7 @@ function testToSpliced(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSpliced" of list [1,2,3,4,5] with start=1 and deleteCount=2.5', function () {
+    it('should check "toSpliced" of list [1,2,3,4,5] with start=1 and deleteCount=2.5', () => {
       const array = [1, 2, 3, 4, 5];
       const start = 1;
       const deleteCount = 2.5;
@@ -368,7 +368,7 @@ function testToSpliced(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSpliced" of list [] with start=0 and deleteCount=1', function () {
+    it('should check "toSpliced" of list [] with start=0 and deleteCount=1', () => {
       const array = [];
       const start = 0;
       const deleteCount = 1;
@@ -379,7 +379,7 @@ function testToSpliced(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSpliced" of list [1,2,3,4,5,6,7,8] with start=1 and deleteCount=2 and items=[]', function () {
+    it('should check "toSpliced" of list [1,2,3,4,5,6,7,8] with start=1 and deleteCount=2 and items=[]', () => {
       const array = [1, 2, 3, 4, 5, 6, 7, 8];
       const start = 1;
       const deleteCount = 2;
@@ -395,7 +395,7 @@ function testToSpliced(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSpliced" of list [1,2,3,4,5,6,7,8] with start=1 and deleteCount=2 and items=[1]', function () {
+    it('should check "toSpliced" of list [1,2,3,4,5,6,7,8] with start=1 and deleteCount=2 and items=[1]', () => {
       const array = [1, 2, 3, 4, 5, 6, 7, 8];
       const start = 1;
       const deleteCount = 2;
@@ -411,7 +411,7 @@ function testToSpliced(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSpliced" of list [1,2,3,4,5,6,7,8] with start=1 and deleteCount=2 and items=[20,30]', function () {
+    it('should check "toSpliced" of list [1,2,3,4,5,6,7,8] with start=1 and deleteCount=2 and items=[20,30]', () => {
       const array = [1, 2, 3, 4, 5, 6, 7, 8];
       const start = 1;
       const deleteCount = 2;
@@ -427,7 +427,7 @@ function testToSpliced(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSpliced" of list [1,2,3,4,5,6,7,8] with start=2 and deleteCount=1 and items=[40,-20,30,40]', function () {
+    it('should check "toSpliced" of list [1,2,3,4,5,6,7,8] with start=2 and deleteCount=1 and items=[40,-20,30,40]', () => {
       const array = [1, 2, 3, 4, 5, 6, 7, 8];
       const start = 2;
       const deleteCount = 1;
@@ -443,7 +443,7 @@ function testToSpliced(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSpliced" of list [1,2,3,4,5,6,7,8] with start=2 and deleteCount=1 and items=[null,undefined,NaN,{},Infinity,"string",-0,1.5,true]', function () {
+    it('should check "toSpliced" of list [1,2,3,4,5,6,7,8] with start=2 and deleteCount=1 and items=[null,undefined,NaN,{},Infinity,"string",-0,1.5,true]', () => {
       const array = [1, 2, 3, 4, 5, 6, 7, 8];
       const start = 2;
       const deleteCount = 1;
@@ -459,7 +459,7 @@ function testToSpliced(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSpliced" of list [1,2,3,4,5,6,7,8] with start=0 and deleteCount=3 and items=[3,4,5,6,7]', function () {
+    it('should check "toSpliced" of list [1,2,3,4,5,6,7,8] with start=0 and deleteCount=3 and items=[3,4,5,6,7]', () => {
       const array = [1, 2, 3, 4, 5, 6, 7, 8];
       const start = 0;
       const deleteCount = 3;
@@ -475,7 +475,7 @@ function testToSpliced(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSpliced" of list [1] with start=0 and deleteCount=3 and items=[3,-4,5,6,7]', function () {
+    it('should check "toSpliced" of list [1] with start=0 and deleteCount=3 and items=[3,-4,5,6,7]', () => {
       const array = [1];
       const start = 0;
       const deleteCount = 3;
@@ -491,7 +491,7 @@ function testToSpliced(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSpliced" of list ["val0","val1","val2","val3"] with start="val0"', function () {
+    it('should check "toSpliced" of list ["val0","val1","val2","val3"] with start="val0"', () => {
       const array = ["val0", "val1", "val2", "val3"];
       const start = "val0";
       const ds = new dsClass(array);

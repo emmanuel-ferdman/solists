@@ -1,9 +1,9 @@
+import { strict as assert } from "node:assert";
 import { MoveAheadKSoList } from "../../src/MoveAheadKSoList";
-import { strict as assert } from "assert";
 
 function testAt() {
-  describe('MoveAheadKSoList: Test the "at" method', function () {
-    it('should check "at" of indices [2] in list [0,1,2,3,4,5]', function () {
+  describe('MoveAheadKSoList: Test the "at" method', () => {
+    it('should check "at" of indices [2] in list [0,1,2,3,4,5]', () => {
       const array = [0, 1, 2, 3, 4, 5];
       const inputs = [{ expectedArray: [0, 2, 1, 3, 4, 5], expectedValue: 2, index: 2 }];
       const ds = new MoveAheadKSoList(array);
@@ -15,7 +15,7 @@ function testAt() {
       });
     });
 
-    it('should check "at" of indices [4,4,4] in list [0,1,2,3,4,5]', function () {
+    it('should check "at" of indices [4,4,4] in list [0,1,2,3,4,5]', () => {
       const array = [0, 1, 2, 3, 4, 5];
       const inputs = [
         { expectedArray: [0, 1, 2, 4, 3, 5], expectedValue: 4, index: 4 },
@@ -31,7 +31,7 @@ function testAt() {
       });
     });
 
-    it('should check "at" of indices [0,0,0,4,1,1,1] in list [0,1,2,3,4,5]', function () {
+    it('should check "at" of indices [0,0,0,4,1,1,1] in list [0,1,2,3,4,5]', () => {
       const array = [0, 1, 2, 3, 4, 5];
       const inputs = [
         { expectedArray: [0, 1, 2, 3, 4, 5], expectedValue: 0, index: 0 },
@@ -51,7 +51,7 @@ function testAt() {
       });
     });
 
-    it('should check "at" of indices [-1] in list [0,1,2,3,4,5]', function () {
+    it('should check "at" of indices [-1] in list [0,1,2,3,4,5]', () => {
       const array = [0, 1, 2, 3, 4, 5];
       const inputs = [{ expectedArray: [0, 1, 2, 3, 5, 4], expectedValue: 5, index: -1 }];
       const ds = new MoveAheadKSoList(array);
@@ -63,7 +63,7 @@ function testAt() {
       });
     });
 
-    it('should check "at" of indices [-1,-2,-3,3,2,1] in list [0,1,2,3,4,5]', function () {
+    it('should check "at" of indices [-1,-2,-3,3,2,1] in list [0,1,2,3,4,5]', () => {
       const array = [0, 1, 2, 3, 4, 5];
       const inputs = [
         { expectedArray: [0, 1, 2, 3, 5, 4], expectedValue: 5, index: -1 },
@@ -82,7 +82,7 @@ function testAt() {
       });
     });
 
-    it('should check "at" of indices [2.5] in list [0,1,2,3,4,5]', function () {
+    it('should check "at" of indices [2.5] in list [0,1,2,3,4,5]', () => {
       const array = [0, 1, 2, 3, 4, 5];
       const inputs = [{ expectedArray: [0, 2, 1, 3, 4, 5], expectedValue: 2, index: 2.5 }];
       const ds = new MoveAheadKSoList(array);
@@ -94,7 +94,7 @@ function testAt() {
       });
     });
 
-    it('should check "at" of indices [-10,10,Infinity] in list [0,1,2,3,4,5]', function () {
+    it('should check "at" of indices [-10,10,Infinity] in list [0,1,2,3,4,5]', () => {
       const array = [0, 1, 2, 3, 4, 5];
       const inputs = [
         { expectedArray: [0, 1, 2, 3, 4, 5], expectedValue: undefined, index: -10 },
@@ -110,7 +110,7 @@ function testAt() {
       });
     });
 
-    it('should check "at" of indices [null,undefined,NaN,-0,{},1,1,1,1,1,1] in list [0,1,2,3,4,5]', function () {
+    it('should check "at" of indices [null,undefined,NaN,-0,{},1,1,1,1,1,1] in list [0,1,2,3,4,5]', () => {
       const array = [0, 1, 2, 3, 4, 5];
       const inputs = [
         { expectedArray: [0, 1, 2, 3, 4, 5], expectedValue: 0, index: null },
@@ -134,7 +134,7 @@ function testAt() {
       });
     });
 
-    it('should check "at" with k=2 moves element 2 positions ahead', function () {
+    it('should check "at" with k=2 moves element 2 positions ahead', () => {
       const array = [0, 1, 2, 3, 4, 5];
       const ds = new MoveAheadKSoList(array, { k: 2 });
       assert.equal(ds.at(4), 4);
@@ -143,7 +143,7 @@ function testAt() {
       assert(ds.isEqual([0, 1, 3, 4, 2, 5]));
     });
 
-    it('should check "at" with k=3 moves element 3 positions ahead', function () {
+    it('should check "at" with k=3 moves element 3 positions ahead', () => {
       const array = [0, 1, 2, 3, 4, 5];
       const ds = new MoveAheadKSoList(array, { k: 3 });
       assert.equal(ds.at(5), 5);

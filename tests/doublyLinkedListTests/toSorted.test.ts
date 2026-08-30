@@ -1,8 +1,8 @@
-import { strict as assert } from "assert";
+import { strict as assert } from "node:assert";
 
 function testToSorted(dsClass) {
-  describe(dsClass.name + ' Base: Test the "toSorted" method', function () {
-    it('should check "toSorted" lexicographically of list []', function () {
+  describe(`${dsClass.name} Base: Test the "toSorted" method`, () => {
+    it('should check "toSorted" lexicographically of list []', () => {
       const array = [];
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
@@ -11,7 +11,7 @@ function testToSorted(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSorted" lexicographically of list [1]', function () {
+    it('should check "toSorted" lexicographically of list [1]', () => {
       const array = [1];
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
@@ -20,7 +20,7 @@ function testToSorted(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSorted" lexicographically of list [3,1,2]', function () {
+    it('should check "toSorted" lexicographically of list [3,1,2]', () => {
       const array = [3, 1, 2];
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
@@ -29,7 +29,7 @@ function testToSorted(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSorted" lexicographically of list [1,30,4,21,100000]', function () {
+    it('should check "toSorted" lexicographically of list [1,30,4,21,100000]', () => {
       const array = [1, 30, 4, 21, 100000];
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
@@ -38,7 +38,7 @@ function testToSorted(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSorted" lexicographically of list [3,1,2,-8,2.5,100]', function () {
+    it('should check "toSorted" lexicographically of list [3,1,2,-8,2.5,100]', () => {
       const array = [3, 1, 2, -8, 2.5, 100];
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
@@ -47,7 +47,7 @@ function testToSorted(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSorted" lexicographically of list [9,3,7,1,5,8,2,6,4]', function () {
+    it('should check "toSorted" lexicographically of list [9,3,7,1,5,8,2,6,4]', () => {
       const array = [9, 3, 7, 1, 5, 8, 2, 6, 4];
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
@@ -56,7 +56,7 @@ function testToSorted(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSorted" lexicographically of list ["Mar","Jan","Feb","Dec"]', function () {
+    it('should check "toSorted" lexicographically of list ["Mar","Jan","Feb","Dec"]', () => {
       const array = ["Mar", "Jan", "Feb", "Dec"];
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
@@ -65,7 +65,7 @@ function testToSorted(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSorted" lexicographically of list ["Mar","Jan","Feb","Dec","Apr","May","Jun","Jul"]', function () {
+    it('should check "toSorted" lexicographically of list ["Mar","Jan","Feb","Dec","Apr","May","Jun","Jul"]', () => {
       const array = ["Mar", "Jan", "Feb", "Dec", "Apr", "May", "Jun", "Jul"];
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
@@ -74,7 +74,7 @@ function testToSorted(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSorted" numerically of list [6,2,-500,4,10000,80,2.5]', function () {
+    it('should check "toSorted" numerically of list [6,2,-500,4,10000,80,2.5]', () => {
       const array = [6, 2, -500, 4, 10000, 80, 2.5];
       const func = (a, b) => a - b;
       const ds = new dsClass(array);
@@ -84,7 +84,7 @@ function testToSorted(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSorted" numerically of list [6,2,-500,4,10000,80,2.5,99,-1]', function () {
+    it('should check "toSorted" numerically of list [6,2,-500,4,10000,80,2.5,99,-1]', () => {
       const array = [6, 2, -500, 4, 10000, 80, 2.5, 99, -1];
       const func = (a, b) => a - b;
       const ds = new dsClass(array);
@@ -94,7 +94,7 @@ function testToSorted(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSorted" numerically by value of list of objects', function () {
+    it('should check "toSorted" numerically by value of list of objects', () => {
       const array = [
         { name: "Edward", value: 21 },
         { name: "Sharpe", value: 37 },
@@ -111,7 +111,7 @@ function testToSorted(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSorted" with non-ASCII characters of list ["réservé", "premier", "communiqué", "café"]', function () {
+    it('should check "toSorted" with non-ASCII characters of list ["réservé", "premier", "communiqué", "café"]', () => {
       const array = ["réservé", "premier", "communiqué", "café"];
       const func = (a, b) => a.localeCompare(b);
       const ds = new dsClass(array);
@@ -121,7 +121,7 @@ function testToSorted(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSorted" for stability of list of objects', function () {
+    it('should check "toSorted" for stability of list of objects', () => {
       const array = [
         { name: "Alex", grade: 15 },
         { name: "Devlin", grade: 15 },
@@ -136,7 +136,7 @@ function testToSorted(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSorted" for stability of list of objects with 8+ elements', function () {
+    it('should check "toSorted" for stability of list of objects with 8+ elements', () => {
       const array = [
         { name: "Alex", grade: 15 },
         { name: "Devlin", grade: 15 },
@@ -155,7 +155,7 @@ function testToSorted(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSorted" for stability with default comparison of equal string values', function () {
+    it('should check "toSorted" for stability with default comparison of equal string values', () => {
       const array = [
         { toString: () => "Devlin", id: 1 },
         { toString: () => "Devlin", id: 2 },
@@ -168,7 +168,7 @@ function testToSorted(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSorted" of list [null,undefined,NaN,{},Infinity,"string",-0,1.5,true,new Date("21 Dec 1997 14:12:00 UTC")]', function () {
+    it('should check "toSorted" of list [null,undefined,NaN,{},Infinity,"string",-0,1.5,true,new Date("21 Dec 1997 14:12:00 UTC")]', () => {
       const array = [
         null,
         undefined,
@@ -188,7 +188,7 @@ function testToSorted(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "toSorted" with "null" function on list [3,1,2]', function () {
+    it('should check "toSorted" with "null" function on list [3,1,2]', () => {
       const array = [3, 1, 2];
       const func = null;
       const ds = new dsClass(array);
@@ -199,7 +199,7 @@ function testToSorted(dsClass) {
       assert.throws(() => ds.toSorted(func), TypeError(errorMsg));
     });
 
-    it('should check "toSorted" with "string" function on list [3,1,2]', function () {
+    it('should check "toSorted" with "string" function on list [3,1,2]', () => {
       const array = [3, 1, 2];
       const func = "not a function";
       const ds = new dsClass(array);
@@ -210,7 +210,7 @@ function testToSorted(dsClass) {
       assert.throws(() => ds.toSorted(func), TypeError(errorMsg));
     });
 
-    it('should check "toSorted" with "number" function on list [3,1,2]', function () {
+    it('should check "toSorted" with "number" function on list [3,1,2]', () => {
       const array = [3, 1, 2];
       const func = 123;
       const ds = new dsClass(array);
@@ -221,7 +221,7 @@ function testToSorted(dsClass) {
       assert.throws(() => ds.toSorted(func), TypeError(errorMsg));
     });
 
-    it('should check "toSorted" with "object" function on list [3,1,2]', function () {
+    it('should check "toSorted" with "object" function on list [3,1,2]', () => {
       const array = [3, 1, 2];
       const func = {};
       const ds = new dsClass(array);
@@ -232,7 +232,7 @@ function testToSorted(dsClass) {
       assert.throws(() => ds.toSorted(func), TypeError(errorMsg));
     });
 
-    it('should check "toSorted" with "array" function on list [3,1,2]', function () {
+    it('should check "toSorted" with "array" function on list [3,1,2]', () => {
       const array = [3, 1, 2];
       const func = [];
       const ds = new dsClass(array);

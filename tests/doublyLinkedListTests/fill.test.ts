@@ -1,8 +1,8 @@
-import { strict as assert } from "assert";
+import { strict as assert } from "node:assert";
 
 function testFill(dsClass) {
-  describe(dsClass.name + ' Base: Test the "fill" method', function () {
-    it('should check "fill" with "4" on list []', function () {
+  describe(`${dsClass.name} Base: Test the "fill" method`, () => {
+    it('should check "fill" with "4" on list []', () => {
       const array = [];
       const value = 4;
       const ds = new dsClass(array);
@@ -11,7 +11,7 @@ function testFill(dsClass) {
       assert(ds.fill(value).isEqual(array.fill(value)));
     });
 
-    it('should check "fill" with "4" on list [1,2,3]', function () {
+    it('should check "fill" with "4" on list [1,2,3]', () => {
       const array = [1, 2, 3];
       const value = 4;
       const ds = new dsClass(array);
@@ -20,7 +20,7 @@ function testFill(dsClass) {
       assert(ds.fill(value).isEqual(array.fill(value)));
     });
 
-    it('should check "fill" with "null" on list [1,2,3]', function () {
+    it('should check "fill" with "null" on list [1,2,3]', () => {
       const array = [1, 2, 3];
       const value = null;
       const ds = new dsClass(array);
@@ -29,7 +29,7 @@ function testFill(dsClass) {
       assert(ds.fill(value).isEqual(array.fill(value)));
     });
 
-    it('should check "fill" with "undefined" on list [1,2,3]', function () {
+    it('should check "fill" with "undefined" on list [1,2,3]', () => {
       const array = [1, 2, 3];
       const value = undefined;
       const ds = new dsClass(array);
@@ -38,7 +38,7 @@ function testFill(dsClass) {
       assert(ds.fill(value).isEqual(array.fill(value)));
     });
 
-    it('should check "fill" with "NaN" on list [1,2,3]', function () {
+    it('should check "fill" with "NaN" on list [1,2,3]', () => {
       const array = [1, 2, 3];
       const value = NaN;
       const ds = new dsClass(array);
@@ -47,7 +47,7 @@ function testFill(dsClass) {
       assert(ds.fill(value).isEqual(array.fill(value)));
     });
 
-    it('should check "fill" with "{}" on list [1,2,3]', function () {
+    it('should check "fill" with "{}" on list [1,2,3]', () => {
       const array = [1, 2, 3];
       const value = {};
       const ds = new dsClass(array);
@@ -56,7 +56,7 @@ function testFill(dsClass) {
       assert(ds.fill(value).isEqual(array.fill(value)));
     });
 
-    it('should check "fill" with "Infinity" on list [1,2,3]', function () {
+    it('should check "fill" with "Infinity" on list [1,2,3]', () => {
       const array = [1, 2, 3];
       const value = Infinity;
       const ds = new dsClass(array);
@@ -65,7 +65,7 @@ function testFill(dsClass) {
       assert(ds.fill(value).isEqual(array.fill(value)));
     });
 
-    it('should check "fill" with "-0" on list [1,2,3]', function () {
+    it('should check "fill" with "-0" on list [1,2,3]', () => {
       const array = [1, 2, 3];
       const value = -0;
       const ds = new dsClass(array);
@@ -74,7 +74,7 @@ function testFill(dsClass) {
       assert(ds.fill(value).isEqual(array.fill(value)));
     });
 
-    it('should check "fill" with "6" on list [1,2,3,4,5] from start=2', function () {
+    it('should check "fill" with "6" on list [1,2,3,4,5] from start=2', () => {
       const array = [1, 2, 3, 4, 5];
       const value = 6;
       const start = 2;
@@ -84,7 +84,7 @@ function testFill(dsClass) {
       assert(ds.fill(value, start).isEqual(array.fill(value, start)));
     });
 
-    it('should check "fill" with "6" on list [1,2,3,4,5] from start=2 to end=4', function () {
+    it('should check "fill" with "6" on list [1,2,3,4,5] from start=2 to end=4', () => {
       const array = [1, 2, 3, 4, 5];
       const value = 6;
       const start = 2;
@@ -95,7 +95,7 @@ function testFill(dsClass) {
       assert(ds.fill(value, start, end).isEqual(array.fill(value, start, end)));
     });
 
-    it('should check "fill" with "6" on list [1,2,3,4,5] from start=0 to end=10', function () {
+    it('should check "fill" with "6" on list [1,2,3,4,5] from start=0 to end=10', () => {
       const array = [1, 2, 3, 4, 5];
       const value = 6;
       const start = 2;
@@ -106,7 +106,7 @@ function testFill(dsClass) {
       assert(ds.fill(value, start, end).isEqual(array.fill(value, start, end)));
     });
 
-    it('should check "fill" with "6" on list [1,2,3,4,5] from start=-2', function () {
+    it('should check "fill" with "6" on list [1,2,3,4,5] from start=-2', () => {
       const array = [1, 2, 3, 4, 5];
       const value = 6;
       const start = -2;
@@ -116,7 +116,7 @@ function testFill(dsClass) {
       assert(ds.fill(value, start).isEqual(array.fill(value, start)));
     });
 
-    it('should check "fill" with "6" on list [1,2,3,4,5] from start=1 to end=-1', function () {
+    it('should check "fill" with "6" on list [1,2,3,4,5] from start=1 to end=-1', () => {
       const array = [1, 2, 3, 4, 5];
       const value = 6;
       const start = 1;
@@ -127,7 +127,7 @@ function testFill(dsClass) {
       assert(ds.fill(value, start, end).isEqual(array.fill(value, start, end)));
     });
 
-    it('should check "fill" with "6" on list [1,2,3,4,5] from start=null', function () {
+    it('should check "fill" with "6" on list [1,2,3,4,5] from start=null', () => {
       const array = [1, 2, 3, 4, 5];
       const value = 6;
       const start = null;
@@ -137,7 +137,7 @@ function testFill(dsClass) {
       assert(ds.fill(value, start).isEqual(array.fill(value, start)));
     });
 
-    it('should check "fill" with "6" on list [1,2,3,4,5] from start=undefined', function () {
+    it('should check "fill" with "6" on list [1,2,3,4,5] from start=undefined', () => {
       const array = [1, 2, 3, 4, 5];
       const value = 6;
       const start = undefined;
@@ -147,7 +147,7 @@ function testFill(dsClass) {
       assert(ds.fill(value, start).isEqual(array.fill(value, start)));
     });
 
-    it('should check "fill" with "6" on list [1,2,3,4,5] from start=NaN', function () {
+    it('should check "fill" with "6" on list [1,2,3,4,5] from start=NaN', () => {
       const array = [1, 2, 3, 4, 5];
       const value = 6;
       const start = NaN;
@@ -157,7 +157,7 @@ function testFill(dsClass) {
       assert(ds.fill(value, start).isEqual(array.fill(value, start)));
     });
 
-    it('should check "fill" with "6" on list [1,2,3,4,5] from start=Infinity', function () {
+    it('should check "fill" with "6" on list [1,2,3,4,5] from start=Infinity', () => {
       const array = [1, 2, 3, 4, 5];
       const value = 6;
       const start = Infinity;
@@ -167,7 +167,7 @@ function testFill(dsClass) {
       assert(ds.fill(value, start).isEqual(array.fill(value, start)));
     });
 
-    it('should check "fill" with "6" on list [1,2,3,4,5] from start=-0', function () {
+    it('should check "fill" with "6" on list [1,2,3,4,5] from start=-0', () => {
       const array = [1, 2, 3, 4, 5];
       const value = 6;
       const start = -0;
@@ -177,7 +177,7 @@ function testFill(dsClass) {
       assert(ds.fill(value, start).isEqual(array.fill(value, start)));
     });
 
-    it('should check "fill" with "6" on list [1,2,3,4,5] from start={}', function () {
+    it('should check "fill" with "6" on list [1,2,3,4,5] from start={}', () => {
       const array = [1, 2, 3, 4, 5];
       const value = 6;
       const start = {};
@@ -187,7 +187,7 @@ function testFill(dsClass) {
       assert(ds.fill(value, start).isEqual(array.fill(value, start)));
     });
 
-    it('should check "fill" with "6" on list [1,2,3,4,5] from start=0 to end=null', function () {
+    it('should check "fill" with "6" on list [1,2,3,4,5] from start=0 to end=null', () => {
       const array = [1, 2, 3, 4, 5];
       const value = 6;
       const start = 0;
@@ -198,7 +198,7 @@ function testFill(dsClass) {
       assert(ds.fill(value, start, end).isEqual(array.fill(value, start, end)));
     });
 
-    it('should check "fill" with "6" on list [1,2,3,4,5] from start=0 to end=undefined', function () {
+    it('should check "fill" with "6" on list [1,2,3,4,5] from start=0 to end=undefined', () => {
       const array = [1, 2, 3, 4, 5];
       const value = 6;
       const start = 0;
@@ -209,7 +209,7 @@ function testFill(dsClass) {
       assert(ds.fill(value, start, end).isEqual(array.fill(value, start, end)));
     });
 
-    it('should check "fill" with "6" on list [1,2,3,4,5] from start=0 to end=NaN', function () {
+    it('should check "fill" with "6" on list [1,2,3,4,5] from start=0 to end=NaN', () => {
       const array = [1, 2, 3, 4, 5];
       const value = 6;
       const start = 0;
@@ -220,7 +220,7 @@ function testFill(dsClass) {
       assert(ds.fill(value, start, end).isEqual(array.fill(value, start, end)));
     });
 
-    it('should check "fill" with "6" on list [1,2,3,4,5] from start=0 to end=Infinity', function () {
+    it('should check "fill" with "6" on list [1,2,3,4,5] from start=0 to end=Infinity', () => {
       const array = [1, 2, 3, 4, 5];
       const value = 6;
       const start = 0;
@@ -231,7 +231,7 @@ function testFill(dsClass) {
       assert(ds.fill(value, start, end).isEqual(array.fill(value, start, end)));
     });
 
-    it('should check "fill" with "6" on list [1,2,3,4,5] from start=0 to end=-0', function () {
+    it('should check "fill" with "6" on list [1,2,3,4,5] from start=0 to end=-0', () => {
       const array = [1, 2, 3, 4, 5];
       const value = 6;
       const start = 0;
@@ -242,7 +242,7 @@ function testFill(dsClass) {
       assert(ds.fill(value, start, end).isEqual(array.fill(value, start, end)));
     });
 
-    it('should check "fill" with "6" on list [1,2,3,4,5] from start=0 to end={}', function () {
+    it('should check "fill" with "6" on list [1,2,3,4,5] from start=0 to end={}', () => {
       const array = [1, 2, 3, 4, 5];
       const value = 6;
       const start = 0;
@@ -253,7 +253,7 @@ function testFill(dsClass) {
       assert(ds.fill(value, start, end).isEqual(array.fill(value, start, end)));
     });
 
-    it('should check "fill" with "6" on list [1,2,3,4,5] from start=4 to end=2', function () {
+    it('should check "fill" with "6" on list [1,2,3,4,5] from start=4 to end=2', () => {
       const array = [1, 2, 3, 4, 5];
       const value = 6;
       const start = 4;
@@ -264,7 +264,7 @@ function testFill(dsClass) {
       assert(ds.fill(value, start, end).isEqual(array.fill(value, start, end)));
     });
 
-    it('should check "fill" with "6" on list [1,2,3,4,5] from start=2.5', function () {
+    it('should check "fill" with "6" on list [1,2,3,4,5] from start=2.5', () => {
       const array = [1, 2, 3, 4, 5];
       const value = 6;
       const start = 2.5;
@@ -274,7 +274,7 @@ function testFill(dsClass) {
       assert(ds.fill(value, start).isEqual(array.fill(value, start)));
     });
 
-    it('should check "fill" with "6" on list [1,2,3,4,5] from start=0 to end=4.5', function () {
+    it('should check "fill" with "6" on list [1,2,3,4,5] from start=0 to end=4.5', () => {
       const array = [1, 2, 3, 4, 5];
       const value = 6;
       const start = 0;
@@ -285,7 +285,7 @@ function testFill(dsClass) {
       assert(ds.fill(value, start, end).isEqual(array.fill(value, start, end)));
     });
 
-    it('should check "fill" with "6" on list [1,2,3,4,5] from start=0 to end=-2', function () {
+    it('should check "fill" with "6" on list [1,2,3,4,5] from start=0 to end=-2', () => {
       const array = [1, 2, 3, 4, 5];
       const value = 6;
       const start = 0;

@@ -1,9 +1,9 @@
+import { strict as assert } from "node:assert";
 import { FrequencyCountSoList } from "../../src/FrequencyCountSoList";
-import { strict as assert } from "assert";
 
 function testIndexOf() {
-  describe('FrequencyCountSoList: Test the "indexOf" method', function () {
-    it('should check "indexOf" of values [2] in list [0,1,2,3,4,5]', function () {
+  describe('FrequencyCountSoList: Test the "indexOf" method', () => {
+    it('should check "indexOf" of values [2] in list [0,1,2,3,4,5]', () => {
       const array = [0, 1, 2, 3, 4, 5];
       const inputs = [{ expectedArray: [2, 0, 1, 3, 4, 5], expectedValue: 0, value: 2 }];
       const ds = new FrequencyCountSoList(array);
@@ -15,7 +15,7 @@ function testIndexOf() {
       });
     });
 
-    it('should check "indexOf" of values [3,2,4,2] in list [0,1,2,3,4,5]', function () {
+    it('should check "indexOf" of values [3,2,4,2] in list [0,1,2,3,4,5]', () => {
       const array = [0, 1, 2, 3, 4, 5];
       const inputs = [
         { expectedArray: [3, 0, 1, 2, 4, 5], expectedValue: 0, value: 3 },
@@ -32,7 +32,7 @@ function testIndexOf() {
       });
     });
 
-    it('should check "indexOf" of values [-1,6,3] in list [0,1,2,3,4,5]', function () {
+    it('should check "indexOf" of values [-1,6,3] in list [0,1,2,3,4,5]', () => {
       const array = [0, 1, 2, 3, 4, 5];
       const inputs = [
         { expectedArray: [0, 1, 2, 3, 4, 5], expectedValue: -1, value: -1 },
@@ -48,7 +48,7 @@ function testIndexOf() {
       });
     });
 
-    it('should check "indexOf" of values [1,0,5] in list [0,1,2,5,4,5]', function () {
+    it('should check "indexOf" of values [1,0,5] in list [0,1,2,5,4,5]', () => {
       const array = [0, 1, 2, 5, 4, 5];
       const inputs = [
         { expectedArray: [1, 0, 2, 5, 4, 5], expectedValue: 0, value: 1 },

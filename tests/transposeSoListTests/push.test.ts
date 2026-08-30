@@ -1,9 +1,9 @@
+import { strict as assert } from "node:assert";
 import { TransposeSoList } from "../../src/TransposeSoList";
-import { strict as assert } from "assert";
 
 function testPush() {
-  describe('TransposeSoList: Test the "push" method', function () {
-    it('should check "push" of values [1,2,3] to list [] with accessOnly=false', function () {
+  describe('TransposeSoList: Test the "push" method', () => {
+    it('should check "push" of values [1,2,3] to list [] with accessOnly=false', () => {
       const array = [];
       const inputs = [
         { expectedArray: [1], expectedValue: 1, value: 1 },
@@ -19,7 +19,7 @@ function testPush() {
       });
     });
 
-    it('should check "push" of values [1,5,2,3,6] to list [] with accessOnly=false', function () {
+    it('should check "push" of values [1,5,2,3,6] to list [] with accessOnly=false', () => {
       const array = [];
       const inputs = [
         { expectedArray: [1], expectedValue: 1, value: 1 },
@@ -37,7 +37,7 @@ function testPush() {
       });
     });
 
-    it('should check "push" of values [6,5,4] to list [1,2,3] with accessOnly=false after "includes" [3]', function () {
+    it('should check "push" of values [6,5,4] to list [1,2,3] with accessOnly=false after "includes" [3]', () => {
       const array = [1, 2, 3];
       const findInputs = [3];
       const inputs = [
@@ -57,7 +57,7 @@ function testPush() {
       });
     });
 
-    it('should check "push" of values [6,5,4] to list [1,2,3] with accessOnly=false after "includes" [3,2,3]', function () {
+    it('should check "push" of values [6,5,4] to list [1,2,3] with accessOnly=false after "includes" [3,2,3]', () => {
       const array = [1, 2, 3];
       const findInputs = [3, 2, 3];
       const inputs = [

@@ -1,8 +1,8 @@
-import { strict as assert } from "assert";
+import { strict as assert } from "node:assert";
 
 function testWith(dsClass) {
-  describe(dsClass.name + ' Base: Test the "with" method', function () {
-    it('should check "with" throws RangeError for empty list', function () {
+  describe(`${dsClass.name} Base: Test the "with" method`, () => {
+    it('should check "with" throws RangeError for empty list', () => {
       const array = [];
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
@@ -11,7 +11,7 @@ function testWith(dsClass) {
       assert.throws(() => ds.with(0, 9), RangeError);
     });
 
-    it('should check "with" of list [1,2,3] at index 0', function () {
+    it('should check "with" of list [1,2,3] at index 0', () => {
       const array = [1, 2, 3];
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
@@ -20,7 +20,7 @@ function testWith(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "with" of list [1,2,3] at index 1', function () {
+    it('should check "with" of list [1,2,3] at index 1', () => {
       const array = [1, 2, 3];
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
@@ -29,7 +29,7 @@ function testWith(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "with" of list [1,2,3] at index 2', function () {
+    it('should check "with" of list [1,2,3] at index 2', () => {
       const array = [1, 2, 3];
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
@@ -38,7 +38,7 @@ function testWith(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "with" of list [1,2,3,4,5] at index -1', function () {
+    it('should check "with" of list [1,2,3,4,5] at index -1', () => {
       const array = [1, 2, 3, 4, 5];
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
@@ -47,7 +47,7 @@ function testWith(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "with" of list [1,2,3,4,5] at index -2', function () {
+    it('should check "with" of list [1,2,3,4,5] at index -2', () => {
       const array = [1, 2, 3, 4, 5];
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
@@ -56,7 +56,7 @@ function testWith(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "with" of list [1,2,3,4,5] at index -5', function () {
+    it('should check "with" of list [1,2,3,4,5] at index -5', () => {
       const array = [1, 2, 3, 4, 5];
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
@@ -65,7 +65,7 @@ function testWith(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "with" throws RangeError for out of bounds index', function () {
+    it('should check "with" throws RangeError for out of bounds index', () => {
       const array = [1, 2, 3];
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
@@ -74,7 +74,7 @@ function testWith(dsClass) {
       assert.throws(() => ds.with(10, 9), RangeError);
     });
 
-    it('should check "with" throws RangeError for negative out of bounds index', function () {
+    it('should check "with" throws RangeError for negative out of bounds index', () => {
       const array = [1, 2, 3];
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
@@ -83,7 +83,7 @@ function testWith(dsClass) {
       assert.throws(() => ds.with(-10, 9), RangeError);
     });
 
-    it('should check "with" of list [1] at index 0', function () {
+    it('should check "with" of list [1] at index 0', () => {
       const array = [1];
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
@@ -92,7 +92,7 @@ function testWith(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "with" with special values', function () {
+    it('should check "with" with special values', () => {
       const array = [1, 2, 3];
       const ds = new dsClass(array);
       assert(ds.with(0, null).isEqual(array.with(0, null)));
@@ -101,7 +101,7 @@ function testWith(dsClass) {
       assert(ds.with(2, obj).isEqual(array.with(2, obj)));
     });
 
-    it('should check "with" with edge values', function () {
+    it('should check "with" with edge values', () => {
       const array = [1, 2, 3, 4, 5];
       const ds = new dsClass(array);
       assert(ds.with(0, NaN).isEqual(array.with(0, NaN)));
@@ -111,7 +111,7 @@ function testWith(dsClass) {
       assert(ds.with(4, true).isEqual(array.with(4, true)));
     });
 
-    it('should check "with" returns new list without modifying original', function () {
+    it('should check "with" returns new list without modifying original', () => {
       const array = [1, 2, 3, 4, 5];
       const ds = new dsClass(array);
       const result = ds.with(2, 9);

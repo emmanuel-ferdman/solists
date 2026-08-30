@@ -1,8 +1,8 @@
-import { strict as assert } from "assert";
+import { strict as assert } from "node:assert";
 
 function testReduce(dsClass) {
-  describe(dsClass.name + ' Base: Test the "reduce" method', function () {
-    it('should check "reduce" of sum values of list []', function () {
+  describe(`${dsClass.name} Base: Test the "reduce" method`, () => {
+    it('should check "reduce" of sum values of list []', () => {
       const array = [];
       const func = (acc, v) => acc + v;
       const ds = new dsClass(array);
@@ -15,7 +15,7 @@ function testReduce(dsClass) {
       assert.throws(() => ds.reduce(func), TypeError("Reduce of empty list with no initial value"));
     });
 
-    it('should check "reduce" of sum values of list [1]', function () {
+    it('should check "reduce" of sum values of list [1]', () => {
       const array = [1];
       const func = (acc, v) => acc + v;
       const ds = new dsClass(array);
@@ -24,7 +24,7 @@ function testReduce(dsClass) {
       assert.equal(ds.reduce(func), array.reduce(func));
     });
 
-    it('should check "reduce" of sum values of list [1,2,null,4,5]', function () {
+    it('should check "reduce" of sum values of list [1,2,null,4,5]', () => {
       const array = [1, 2, null, 4, 5];
       const func = (acc, v) => acc + v;
       const ds = new dsClass(array);
@@ -33,7 +33,7 @@ function testReduce(dsClass) {
       assert.equal(ds.reduce(func), array.reduce(func));
     });
 
-    it('should check "reduce" of sum values of list [1,2,undefined,4,5]', function () {
+    it('should check "reduce" of sum values of list [1,2,undefined,4,5]', () => {
       const array = [1, 2, undefined, 4, 5];
       const func = (acc, v) => acc + v;
       const ds = new dsClass(array);
@@ -42,7 +42,7 @@ function testReduce(dsClass) {
       assert.equal(ds.reduce(func), array.reduce(func));
     });
 
-    it('should check "reduce" of sum values of list [1,2,3,4,5]', function () {
+    it('should check "reduce" of sum values of list [1,2,3,4,5]', () => {
       const array = [1, 2, 3, 4, 5];
       const func = (acc, v) => acc + v;
       const ds = new dsClass(array);
@@ -51,7 +51,7 @@ function testReduce(dsClass) {
       assert.equal(ds.reduce(func), array.reduce(func));
     });
 
-    it('should check "reduce" of max value of list [-10,20,100,0,30]', function () {
+    it('should check "reduce" of max value of list [-10,20,100,0,30]', () => {
       const array = [-10, 20, 100, 0, 30];
       const func = (acc, v) => Math.max(acc, v);
       const ds = new dsClass(array);
@@ -60,16 +60,16 @@ function testReduce(dsClass) {
       assert.equal(ds.reduce(func), array.reduce(func));
     });
 
-    it('should check "reduce" of last value of list [-10,20,100,0,30]', function () {
+    it('should check "reduce" of last value of list [-10,20,100,0,30]', () => {
       const array = [-10, 20, 100, 0, 30];
-      const func = (acc, v) => v;
+      const func = (_acc, v) => v;
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.reduce(func), array.reduce(func));
     });
 
-    it('should check "reduce" of without function on list [1,2,3,4,5]', function () {
+    it('should check "reduce" of without function on list [1,2,3,4,5]', () => {
       const array = [1, 2, 3, 4, 5];
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
@@ -78,7 +78,7 @@ function testReduce(dsClass) {
       assert.throws(() => ds.reduce(), TypeError("undefined is not a function"));
     });
 
-    it('should check "reduce" of "null" function on list [1,2,3,4,5]', function () {
+    it('should check "reduce" of "null" function on list [1,2,3,4,5]', () => {
       const array = [1, 2, 3, 4, 5];
       const func = null;
       const funcType = typeof func;
@@ -95,7 +95,7 @@ function testReduce(dsClass) {
       );
     });
 
-    it('should check "reduce" of "undefined" function on list [1,2,3,4,5]', function () {
+    it('should check "reduce" of "undefined" function on list [1,2,3,4,5]', () => {
       const array = [1, 2, 3, 4, 5];
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
@@ -104,7 +104,7 @@ function testReduce(dsClass) {
       assert.throws(() => ds.reduce(), TypeError("undefined is not a function"));
     });
 
-    it('should check "reduce" of "NaN" function on list [1,2,3,4,5]', function () {
+    it('should check "reduce" of "NaN" function on list [1,2,3,4,5]', () => {
       const array = [1, 2, 3, 4, 5];
       const func = NaN;
       const funcType = typeof func;
@@ -121,7 +121,7 @@ function testReduce(dsClass) {
       );
     });
 
-    it('should check "reduce" of "Infinity" function on list [1,2,3,4,5]', function () {
+    it('should check "reduce" of "Infinity" function on list [1,2,3,4,5]', () => {
       const array = [1, 2, 3, 4, 5];
       const func = Infinity;
       const funcType = typeof func;
@@ -138,7 +138,7 @@ function testReduce(dsClass) {
       );
     });
 
-    it('should check "reduce" of "-0" function on list [1,2,3,4,5]', function () {
+    it('should check "reduce" of "-0" function on list [1,2,3,4,5]', () => {
       const array = [1, 2, 3, 4, 5];
       const func = -0;
       const funcType = typeof func;
@@ -155,7 +155,7 @@ function testReduce(dsClass) {
       );
     });
 
-    it('should check "reduce" of sum values of list [1,2,3,4,5] from initial value "10"', function () {
+    it('should check "reduce" of sum values of list [1,2,3,4,5] from initial value "10"', () => {
       const array = [1, 2, 3, 4, 5];
       const func = (acc, v) => acc + v;
       const initial = 10;
@@ -165,7 +165,7 @@ function testReduce(dsClass) {
       assert.equal(ds.reduce(func, initial), array.reduce(func, initial));
     });
 
-    it('should check "reduce" of sum values of list [1] from initial value "10"', function () {
+    it('should check "reduce" of sum values of list [1] from initial value "10"', () => {
       const array = [1];
       const func = (acc, v) => acc + v;
       const initial = 10;
@@ -175,7 +175,7 @@ function testReduce(dsClass) {
       assert.equal(ds.reduce(func, initial), array.reduce(func, initial));
     });
 
-    it('should check "reduce" of max value of list [-10,20,100,0,30] from initial value "200"', function () {
+    it('should check "reduce" of max value of list [-10,20,100,0,30] from initial value "200"', () => {
       const array = [-10, 20, 100, 0, 30];
       const func = (acc, v) => Math.max(acc, v);
       const initial = 200;
@@ -185,7 +185,7 @@ function testReduce(dsClass) {
       assert.equal(ds.reduce(func, initial), array.reduce(func, initial));
     });
 
-    it('should check "reduce" of max value of list [] from initial value "200"', function () {
+    it('should check "reduce" of max value of list [] from initial value "200"', () => {
       const array = [];
       const func = (acc, v) => Math.max(acc, v);
       const initial = 200;
@@ -195,7 +195,7 @@ function testReduce(dsClass) {
       assert.equal(ds.reduce(func, initial), array.reduce(func, initial));
     });
 
-    it('should check "reduce" of max value of list [-10,20,100,0,30] from initial value "null"', function () {
+    it('should check "reduce" of max value of list [-10,20,100,0,30] from initial value "null"', () => {
       const array = [-10, 20, 100, 0, 30];
       const func = (acc, v) => Math.max(acc, v);
       const initial = null;
@@ -205,7 +205,7 @@ function testReduce(dsClass) {
       assert.equal(ds.reduce(func, initial), array.reduce(func, initial));
     });
 
-    it('should check "reduce" of max value of list [-10,20,100,0,30] from initial value "undefined"', function () {
+    it('should check "reduce" of max value of list [-10,20,100,0,30] from initial value "undefined"', () => {
       const array = [-10, 20, 100, 0, 30];
       const func = (acc, v) => Math.max(acc, v);
       const initial = undefined;
@@ -215,7 +215,7 @@ function testReduce(dsClass) {
       assert.equal(ds.reduce(func, initial), array.reduce(func, initial));
     });
 
-    it('should check "reduce" of max value of list [-10,20,100,0,30] from initial value "NaN"', function () {
+    it('should check "reduce" of max value of list [-10,20,100,0,30] from initial value "NaN"', () => {
       const array = [-10, 20, 100, 0, 30];
       const func = (acc, v) => Math.max(acc, v);
       const initial = NaN;
@@ -225,7 +225,7 @@ function testReduce(dsClass) {
       assert.equal(ds.reduce(func, initial), array.reduce(func, initial));
     });
 
-    it('should check "reduce" of max value of list [-10,20,100,0,30] from initial value "Infinity"', function () {
+    it('should check "reduce" of max value of list [-10,20,100,0,30] from initial value "Infinity"', () => {
       const array = [-10, 20, 100, 0, 30];
       const func = (acc, v) => Math.max(acc, v);
       const initial = Infinity;
@@ -235,7 +235,7 @@ function testReduce(dsClass) {
       assert.equal(ds.reduce(func, initial), array.reduce(func, initial));
     });
 
-    it('should check "reduce" of max value of list [-10,20,100,0,30] from initial value "-0"', function () {
+    it('should check "reduce" of max value of list [-10,20,100,0,30] from initial value "-0"', () => {
       const array = [-10, 20, 100, 0, 30];
       const func = (acc, v) => Math.max(acc, v);
       const initial = -0;
@@ -245,7 +245,7 @@ function testReduce(dsClass) {
       assert.equal(ds.reduce(func, initial), array.reduce(func, initial));
     });
 
-    it('should check "reduce" of max value of list [-10,20,100,0,30] from initial value "{}"', function () {
+    it('should check "reduce" of max value of list [-10,20,100,0,30] from initial value "{}"', () => {
       const array = [-10, 20, 100, 0, 30];
       const func = (acc, v) => Math.max(acc, v);
       const initial = {};

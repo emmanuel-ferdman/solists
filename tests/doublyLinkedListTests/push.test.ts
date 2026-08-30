@@ -1,8 +1,8 @@
-import { strict as assert } from "assert";
+import { strict as assert } from "node:assert";
 
 function testPush(dsClass) {
-  describe(dsClass.name + ' Base: Test the "push" method', function () {
-    it('should check "push" value 1 on []', function () {
+  describe(`${dsClass.name} Base: Test the "push" method`, () => {
+    it('should check "push" value 1 on []', () => {
       const array = [];
       const value = 1;
       const ds = new dsClass(array);
@@ -12,7 +12,7 @@ function testPush(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "push" value 2 on [1]', function () {
+    it('should check "push" value 2 on [1]', () => {
       const array = [];
       const value = 2;
       const ds = new dsClass(array);
@@ -22,7 +22,7 @@ function testPush(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "push" value 2 & 3 & 4 on [1]', function () {
+    it('should check "push" value 2 & 3 & 4 on [1]', () => {
       const array = [1];
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
@@ -31,7 +31,7 @@ function testPush(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "push" value "null" on [1]', function () {
+    it('should check "push" value "null" on [1]', () => {
       const array = [1];
       const value = null;
       const ds = new dsClass(array);
@@ -41,7 +41,7 @@ function testPush(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "push" value "undefined" on [1]', function () {
+    it('should check "push" value "undefined" on [1]', () => {
       const array = [1];
       const value = undefined;
       const ds = new dsClass(array);
@@ -51,7 +51,7 @@ function testPush(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "push" value "NaN" on [1]', function () {
+    it('should check "push" value "NaN" on [1]', () => {
       const array = [1];
       const value = NaN;
       const ds = new dsClass(array);
@@ -61,7 +61,7 @@ function testPush(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "push" value "Infinity" on [1]', function () {
+    it('should check "push" value "Infinity" on [1]', () => {
       const array = [1];
       const value = Infinity;
       const ds = new dsClass(array);
@@ -71,7 +71,7 @@ function testPush(dsClass) {
       assert(ds.isEqual(array));
     });
 
-    it('should check "push" value "{}" on [1]', function () {
+    it('should check "push" value "{}" on [1]', () => {
       const array = [1];
       const value = {};
       const ds = new dsClass(array);

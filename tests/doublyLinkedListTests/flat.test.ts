@@ -1,8 +1,8 @@
-import { strict as assert } from "assert";
+import { strict as assert } from "node:assert";
 
 function testFlat(dsClass) {
-  describe(dsClass.name + ' Base: Test the "flat" method', function () {
-    it('should check "flat" of list []', function () {
+  describe(`${dsClass.name} Base: Test the "flat" method`, () => {
+    it('should check "flat" of list []', () => {
       const arrayIn = [];
       const arrayDs = [];
       const expected = arrayIn.flat();
@@ -11,7 +11,7 @@ function testFlat(dsClass) {
       assert(ds.flat().isEqual(expected));
     });
 
-    it('should check "flat" of list [1]', function () {
+    it('should check "flat" of list [1]', () => {
       const arrayIn = [1];
       const arrayDs = [1];
       const expected = arrayIn.flat();
@@ -20,7 +20,7 @@ function testFlat(dsClass) {
       assert(ds.flat().isEqual(expected));
     });
 
-    it('should check "flat" of list [1,2,3,4,5]', function () {
+    it('should check "flat" of list [1,2,3,4,5]', () => {
       const arrayIn = [1, 2, 3, 4, 5];
       const arrayDs = [1, 2, 3, 4, 5];
       const expected = arrayIn.flat();
@@ -29,7 +29,7 @@ function testFlat(dsClass) {
       assert(ds.flat().isEqual(expected));
     });
 
-    it('should check "flat" of list [1,2,DS([3,4]),5]', function () {
+    it('should check "flat" of list [1,2,DS([3,4]),5]', () => {
       const arrayIn = [1, 2, [3, 4], 5];
       const arrayDs = [1, 2, new dsClass([3, 4]), 5];
       const expected = arrayIn.flat();
@@ -38,7 +38,7 @@ function testFlat(dsClass) {
       assert(ds.flat().isEqual(expected));
     });
 
-    it('should check "flat" of list [DS([1]),2,DS([3,4]),5]', function () {
+    it('should check "flat" of list [DS([1]),2,DS([3,4]),5]', () => {
       const arrayIn = [[1], 2, [3, 4], 5];
       const arrayDs = [new dsClass([1]), 2, new dsClass([3, 4]), 5];
       const expected = arrayIn.flat();
@@ -47,7 +47,7 @@ function testFlat(dsClass) {
       assert(ds.flat().isEqual(expected));
     });
 
-    it('should check "flat" of list [DS([DS([DS([1])])])]', function () {
+    it('should check "flat" of list [DS([DS([DS([1])])])]', () => {
       const arrayIn = [[[[1]]]];
       const arrayDs = [new dsClass([new dsClass([new dsClass([1])])])];
       const expected = arrayIn.flat();
@@ -59,7 +59,7 @@ function testFlat(dsClass) {
       assert(ds.isEqual(arrayDs));
     });
 
-    it('should check "flat" of list [1,2,DS([3,DS([4,5])]),6,DS([7,8])]', function () {
+    it('should check "flat" of list [1,2,DS([3,DS([4,5])]),6,DS([7,8])]', () => {
       const arrayIn = [1, 2, [3, [4, 5]], 6, [7, 8]];
       const arrayDs = [1, 2, new dsClass([3, new dsClass([4, 5])]), 6, new dsClass([7, 8])];
       const expected = arrayIn.flat();
@@ -73,7 +73,7 @@ function testFlat(dsClass) {
       assert(ds.isEqual(arrayDs));
     });
 
-    it('should check "flat" of list [1,2,DS([3,DS([4,5])]),6,DS([7,8])] with depth=0', function () {
+    it('should check "flat" of list [1,2,DS([3,DS([4,5])]),6,DS([7,8])] with depth=0', () => {
       const arrayIn = [1, 2, [3, [4, 5]], 6, [7, 8]];
       const arrayDs = [1, 2, new dsClass([3, new dsClass([4, 5])]), 6, new dsClass([7, 8])];
       const depth = 0;
@@ -90,7 +90,7 @@ function testFlat(dsClass) {
       assert(ds.isEqual(arrayDs));
     });
 
-    it('should check "flat" of list [1,2,DS([3,DS([4,5])]),6,DS([7,8])] with depth=2', function () {
+    it('should check "flat" of list [1,2,DS([3,DS([4,5])]),6,DS([7,8])] with depth=2', () => {
       const arrayIn = [1, 2, [3, [4, 5]], 6, [7, 8]];
       const arrayDs = [1, 2, new dsClass([3, new dsClass([4, 5])]), 6, new dsClass([7, 8])];
       const depth = 2;
@@ -103,7 +103,7 @@ function testFlat(dsClass) {
       assert(ds.isEqual(arrayDs));
     });
 
-    it('should check "flat" of list [1,2,DS([3,DS([4,5])]),6,DS([7,8])] with depth=-2', function () {
+    it('should check "flat" of list [1,2,DS([3,DS([4,5])]),6,DS([7,8])] with depth=-2', () => {
       const arrayIn = [1, 2, [3, [4, 5]], 6, [7, 8]];
       const arrayDs = [1, 2, new dsClass([3, new dsClass([4, 5])]), 6, new dsClass([7, 8])];
       const depth = -2;
@@ -120,7 +120,7 @@ function testFlat(dsClass) {
       assert(ds.isEqual(arrayDs));
     });
 
-    it('should check "flat" of list [1,2,DS([3,DS([4,5])]),6,DS([7,8])] with depth=null', function () {
+    it('should check "flat" of list [1,2,DS([3,DS([4,5])]),6,DS([7,8])] with depth=null', () => {
       const arrayIn = [1, 2, [3, [4, 5]], 6, [7, 8]];
       const arrayDs = [1, 2, new dsClass([3, new dsClass([4, 5])]), 6, new dsClass([7, 8])];
       const depth = null;
@@ -137,7 +137,7 @@ function testFlat(dsClass) {
       assert(ds.isEqual(arrayDs));
     });
 
-    it('should check "flat" of list [1,2,DS([3,DS([4,5])]),6,DS([7,8])] with depth=undefined', function () {
+    it('should check "flat" of list [1,2,DS([3,DS([4,5])]),6,DS([7,8])] with depth=undefined', () => {
       const arrayIn = [1, 2, [3, [4, 5]], 6, [7, 8]];
       const arrayDs = [1, 2, new dsClass([3, new dsClass([4, 5])]), 6, new dsClass([7, 8])];
       const depth = undefined;
@@ -152,7 +152,7 @@ function testFlat(dsClass) {
       assert(ds.isEqual(arrayDs));
     });
 
-    it('should check "flat" of list [1,2,DS([3,DS([4,5])]),6,DS([7,8])] with depth=NaN', function () {
+    it('should check "flat" of list [1,2,DS([3,DS([4,5])]),6,DS([7,8])] with depth=NaN', () => {
       const arrayIn = [1, 2, [3, [4, 5]], 6, [7, 8]];
       const arrayDs = [1, 2, new dsClass([3, new dsClass([4, 5])]), 6, new dsClass([7, 8])];
       const depth = NaN;
@@ -169,7 +169,7 @@ function testFlat(dsClass) {
       assert(ds.isEqual(arrayDs));
     });
 
-    it('should check "flat" of list [1,2,DS([3,DS([4,5])]),6,DS([7,8])] with depth=Infinity', function () {
+    it('should check "flat" of list [1,2,DS([3,DS([4,5])]),6,DS([7,8])] with depth=Infinity', () => {
       const arrayIn = [1, 2, [3, [4, 5]], 6, [7, 8]];
       const arrayDs = [1, 2, new dsClass([3, new dsClass([4, 5])]), 6, new dsClass([7, 8])];
       const depth = 2;
@@ -182,7 +182,7 @@ function testFlat(dsClass) {
       assert(ds.isEqual(arrayDs));
     });
 
-    it('should check "flat" of list [1,2,DS([3,DS([4,5])]),6,DS([7,8])] with depth=-Infinity', function () {
+    it('should check "flat" of list [1,2,DS([3,DS([4,5])]),6,DS([7,8])] with depth=-Infinity', () => {
       const arrayIn = [1, 2, [3, [4, 5]], 6, [7, 8]];
       const arrayDs = [1, 2, new dsClass([3, new dsClass([4, 5])]), 6, new dsClass([7, 8])];
       const depth = -Infinity;
@@ -199,7 +199,7 @@ function testFlat(dsClass) {
       assert(ds.isEqual(arrayDs));
     });
 
-    it('should check "flat" of list [1,2,DS([3,DS([4,5])]),6,DS([7,8])] with depth=-0', function () {
+    it('should check "flat" of list [1,2,DS([3,DS([4,5])]),6,DS([7,8])] with depth=-0', () => {
       const arrayIn = [1, 2, [3, [4, 5]], 6, [7, 8]];
       const arrayDs = [1, 2, new dsClass([3, new dsClass([4, 5])]), 6, new dsClass([7, 8])];
       const depth = -0;
@@ -216,7 +216,7 @@ function testFlat(dsClass) {
       assert(ds.isEqual(arrayDs));
     });
 
-    it('should check "flat" of list [1,2,DS([3,DS([4,5])]),6,DS([7,8])] with depth={}', function () {
+    it('should check "flat" of list [1,2,DS([3,DS([4,5])]),6,DS([7,8])] with depth={}', () => {
       const arrayIn = [1, 2, [3, [4, 5]], 6, [7, 8]];
       const arrayDs = [1, 2, new dsClass([3, new dsClass([4, 5])]), 6, new dsClass([7, 8])];
       const depth = {};
@@ -233,7 +233,7 @@ function testFlat(dsClass) {
       assert(ds.isEqual(arrayDs));
     });
 
-    it('should check "flat" of list [1,2,DS([3,DS([4,5])]),6,DS([7,8])] with depth=true', function () {
+    it('should check "flat" of list [1,2,DS([3,DS([4,5])]),6,DS([7,8])] with depth=true', () => {
       const arrayIn = [1, 2, [3, [4, 5]], 6, [7, 8]];
       const arrayDs = [1, 2, new dsClass([3, new dsClass([4, 5])]), 6, new dsClass([7, 8])];
       const depth = true;
@@ -248,7 +248,7 @@ function testFlat(dsClass) {
       assert(ds.isEqual(arrayDs));
     });
 
-    it('should check "flat" of list [1,2,DS([3,DS([4,5])]),6,DS([7,8])] with depth=false', function () {
+    it('should check "flat" of list [1,2,DS([3,DS([4,5])]),6,DS([7,8])] with depth=false', () => {
       const arrayIn = [1, 2, [3, [4, 5]], 6, [7, 8]];
       const arrayDs = [1, 2, new dsClass([3, new dsClass([4, 5])]), 6, new dsClass([7, 8])];
       const depth = false;
@@ -265,7 +265,7 @@ function testFlat(dsClass) {
       assert(ds.isEqual(arrayDs));
     });
 
-    it('should check "flat" of list [1,2,DS([3,DS([4,5])]),6,DS([7,8])] with depth=2.5', function () {
+    it('should check "flat" of list [1,2,DS([3,DS([4,5])]),6,DS([7,8])] with depth=2.5', () => {
       const arrayIn = [1, 2, [3, [4, 5]], 6, [7, 8]];
       const arrayDs = [1, 2, new dsClass([3, new dsClass([4, 5])]), 6, new dsClass([7, 8])];
       const depth = 2.5;
@@ -278,7 +278,7 @@ function testFlat(dsClass) {
       assert(ds.isEqual(arrayDs));
     });
 
-    it('should check "flat" of list [DS([DS([DS([1])])])] with depth=2', function () {
+    it('should check "flat" of list [DS([DS([DS([1])])])] with depth=2', () => {
       const arrayIn = [[[[1]]]];
       const arrayDs = [new dsClass([new dsClass([new dsClass([1])])])];
       const depth = 2;
@@ -291,7 +291,7 @@ function testFlat(dsClass) {
       assert(ds.isEqual(arrayDs));
     });
 
-    it('should check "flat" of list [DS([DS([DS([1])])])] with depth=10', function () {
+    it('should check "flat" of list [DS([DS([DS([1])])])] with depth=10', () => {
       const arrayIn = [[[[1]]]];
       const arrayDs = [new dsClass([new dsClass([new dsClass([1])])])];
       const depth = 10;

@@ -1,8 +1,8 @@
-import { strict as assert } from "assert";
+import { strict as assert } from "node:assert";
 
 function testRemove(dsClass) {
-  describe(dsClass.name + ' Base: Test the "remove" method', function () {
-    it('should check "remove" on [] from index=0', function () {
+  describe(`${dsClass.name} Base: Test the "remove" method`, () => {
+    it('should check "remove" on [] from index=0', () => {
       const array = [];
       const expectedArray = [];
       const expectedValue = undefined;
@@ -14,7 +14,7 @@ function testRemove(dsClass) {
       assert(ds.isEqual(expectedArray));
     });
 
-    it('should check "remove" on [1] from index=0', function () {
+    it('should check "remove" on [1] from index=0', () => {
       const array = [1];
       const expectedArray = [];
       const expectedValue = 1;
@@ -26,7 +26,7 @@ function testRemove(dsClass) {
       assert(ds.isEqual(expectedArray));
     });
 
-    it('should check "remove" on [1,2,3] from index=1', function () {
+    it('should check "remove" on [1,2,3] from index=1', () => {
       const array = [1, 2, 3];
       const expectedArray = [1, 3];
       const expectedValue = 2;
@@ -38,7 +38,7 @@ function testRemove(dsClass) {
       assert(ds.isEqual(expectedArray));
     });
 
-    it('should check "remove" on [null] from index=0', function () {
+    it('should check "remove" on [null] from index=0', () => {
       const array = [null];
       const expectedArray = [];
       const expectedValue = null;
@@ -50,7 +50,7 @@ function testRemove(dsClass) {
       assert(ds.isEqual(expectedArray));
     });
 
-    it('should check "remove" on [undefined] from index=0', function () {
+    it('should check "remove" on [undefined] from index=0', () => {
       const array = [undefined];
       const expectedArray = [];
       const expectedValue = undefined;
@@ -62,7 +62,7 @@ function testRemove(dsClass) {
       assert(ds.isEqual(expectedArray));
     });
 
-    it('should check "remove" on [NaN] from index=0', function () {
+    it('should check "remove" on [NaN] from index=0', () => {
       const array = [NaN];
       const expectedArray = [];
       const expectedValue = NaN;
@@ -74,7 +74,7 @@ function testRemove(dsClass) {
       assert(ds.isEqual(expectedArray));
     });
 
-    it('should check "remove" on [1,2,3,4,5] from index=3', function () {
+    it('should check "remove" on [1,2,3,4,5] from index=3', () => {
       const array = [1, 2, 3, 4, 5];
       const expectedArray = [1, 2, 3, 5];
       const expectedValue = 4;
@@ -86,7 +86,7 @@ function testRemove(dsClass) {
       assert(ds.isEqual(expectedArray));
     });
 
-    it('should check "remove" on [1,2,3,4,5] from index=-1', function () {
+    it('should check "remove" on [1,2,3,4,5] from index=-1', () => {
       const array = [1, 2, 3, 4, 5];
       const expectedArray = [1, 2, 3, 4];
       const expectedValue = 5;
@@ -98,7 +98,7 @@ function testRemove(dsClass) {
       assert(ds.isEqual(expectedArray));
     });
 
-    it('should check "remove" on [1,2,3,4,5] from index=-3', function () {
+    it('should check "remove" on [1,2,3,4,5] from index=-3', () => {
       const array = [1, 2, 3, 4, 5];
       const expectedArray = [1, 2, 4, 5];
       const expectedValue = 3;
@@ -110,7 +110,7 @@ function testRemove(dsClass) {
       assert(ds.isEqual(expectedArray));
     });
 
-    it('should check "remove" on [1,2,3,4,5] from index=1.5', function () {
+    it('should check "remove" on [1,2,3,4,5] from index=1.5', () => {
       const array = [1, 2, 3, 4, 5];
       const expectedArray = [1, 3, 4, 5];
       const expectedValue = 2;
@@ -122,7 +122,7 @@ function testRemove(dsClass) {
       assert(ds.isEqual(expectedArray));
     });
 
-    it('should check "remove" on [1,2,3,4,5] from index=-1.5', function () {
+    it('should check "remove" on [1,2,3,4,5] from index=-1.5', () => {
       const array = [1, 2, 3, 4, 5];
       const expectedArray = [1, 2, 3, 4];
       const expectedValue = 5;
@@ -134,7 +134,7 @@ function testRemove(dsClass) {
       assert(ds.isEqual(expectedArray));
     });
 
-    it('should check "remove" on [1,2,3,4,5] from index=10', function () {
+    it('should check "remove" on [1,2,3,4,5] from index=10', () => {
       const array = [1, 2, 3, 4, 5];
       const expectedArray = [1, 2, 3, 4, 5];
       const expectedValue = undefined;
@@ -146,7 +146,7 @@ function testRemove(dsClass) {
       assert(ds.isEqual(expectedArray));
     });
 
-    it('should check "remove" on [1,2,3,4,5] from index=-10', function () {
+    it('should check "remove" on [1,2,3,4,5] from index=-10', () => {
       const array = [1, 2, 3, 4, 5];
       const expectedArray = [2, 3, 4, 5];
       const expectedValue = 1;
@@ -158,7 +158,7 @@ function testRemove(dsClass) {
       assert(ds.isEqual(expectedArray));
     });
 
-    it('should check "remove" on [1,2,3,4,5] from index=null', function () {
+    it('should check "remove" on [1,2,3,4,5] from index=null', () => {
       const array = [1, 2, 3, 4, 5];
       const expectedArray = [2, 3, 4, 5];
       const expectedValue = 1;
@@ -170,7 +170,7 @@ function testRemove(dsClass) {
       assert(ds.isEqual(expectedArray));
     });
 
-    it('should check "remove" on [1,2,3,4,5] from index=undefined', function () {
+    it('should check "remove" on [1,2,3,4,5] from index=undefined', () => {
       const array = [1, 2, 3, 4, 5];
       const expectedArray = [1, 2, 3, 4, 5];
       const expectedValue = undefined;
@@ -182,7 +182,7 @@ function testRemove(dsClass) {
       assert(ds.isEqual(expectedArray));
     });
 
-    it('should check "remove" on [1,2,3,4,5] from index=NaN', function () {
+    it('should check "remove" on [1,2,3,4,5] from index=NaN', () => {
       const array = [1, 2, 3, 4, 5];
       const expectedArray = [2, 3, 4, 5];
       const expectedValue = 1;
@@ -194,7 +194,7 @@ function testRemove(dsClass) {
       assert(ds.isEqual(expectedArray));
     });
 
-    it('should check "remove" on [1,2,3,4,5] from index=Infinity', function () {
+    it('should check "remove" on [1,2,3,4,5] from index=Infinity', () => {
       const array = [1, 2, 3, 4, 5];
       const expectedArray = [1, 2, 3, 4, 5];
       const expectedValue = undefined;
@@ -206,7 +206,7 @@ function testRemove(dsClass) {
       assert(ds.isEqual(expectedArray));
     });
 
-    it('should check "remove" on [1,2,3,4,5] from index=-Infinity', function () {
+    it('should check "remove" on [1,2,3,4,5] from index=-Infinity', () => {
       const array = [1, 2, 3, 4, 5];
       const expectedArray = [2, 3, 4, 5];
       const expectedValue = 1;
@@ -218,7 +218,7 @@ function testRemove(dsClass) {
       assert(ds.isEqual(expectedArray));
     });
 
-    it('should check "remove" on [1,2,3,4,5] from index=-0', function () {
+    it('should check "remove" on [1,2,3,4,5] from index=-0', () => {
       const array = [1, 2, 3, 4, 5];
       const expectedArray = [2, 3, 4, 5];
       const expectedValue = 1;
@@ -230,7 +230,7 @@ function testRemove(dsClass) {
       assert(ds.isEqual(expectedArray));
     });
 
-    it('should check "remove" on [1,2,3,4,5] without index', function () {
+    it('should check "remove" on [1,2,3,4,5] without index', () => {
       const array = [1, 2, 3, 4, 5];
       const expectedArray = [1, 2, 3, 4, 5];
       const expectedValue = undefined;

@@ -1,8 +1,8 @@
-import { strict as assert } from "assert";
+import { strict as assert } from "node:assert";
 
 function testSome(dsClass) {
-  describe(dsClass.name + ' Base: Test the "some" method', function () {
-    it('should check "some" of negative value in list []', function () {
+  describe(`${dsClass.name} Base: Test the "some" method`, () => {
+    it('should check "some" of negative value in list []', () => {
       const array = [];
       const func = (v) => v < 0;
       const ds = new dsClass(array);
@@ -11,7 +11,7 @@ function testSome(dsClass) {
       assert.equal(ds.some(func), array.some(func));
     });
 
-    it('should check "some" of negative value in list [1,2,3]', function () {
+    it('should check "some" of negative value in list [1,2,3]', () => {
       const array = [1, 2, 3];
       const func = (v) => v < 0;
       const ds = new dsClass(array);
@@ -20,7 +20,7 @@ function testSome(dsClass) {
       assert.equal(ds.some(func), array.some(func));
     });
 
-    it('should check "some" of negative value in list [1,-2,3]', function () {
+    it('should check "some" of negative value in list [1,-2,3]', () => {
       const array = [1, -2, 3];
       const func = (v) => v < 0;
       const ds = new dsClass(array);
@@ -29,7 +29,7 @@ function testSome(dsClass) {
       assert.equal(ds.some(func), array.some(func));
     });
 
-    it('should check "some" of negative value in list [0,-1,2,3,-4,5]', function () {
+    it('should check "some" of negative value in list [0,-1,2,3,-4,5]', () => {
       const array = [0, -1, 2, 3, -4, 5];
       const func = (v) => v < 0;
       const ds = new dsClass(array);
@@ -38,7 +38,7 @@ function testSome(dsClass) {
       assert.equal(ds.some(func), array.some(func));
     });
 
-    it('should check "some" of negative value in list [0,-4,2,3,-4,5]', function () {
+    it('should check "some" of negative value in list [0,-4,2,3,-4,5]', () => {
       const array = [0, -4, 2, 3, -4, 5];
       const func = (v) => v < 0;
       const ds = new dsClass(array);
@@ -47,7 +47,7 @@ function testSome(dsClass) {
       assert.equal(ds.some(func), array.some(func));
     });
 
-    it('should check "some" of value "null" in list [1,2,null]', function () {
+    it('should check "some" of value "null" in list [1,2,null]', () => {
       const array = [1, 2, null];
       const func = (v) => v === null;
       const ds = new dsClass(array);
@@ -56,7 +56,7 @@ function testSome(dsClass) {
       assert.equal(ds.some(func), array.some(func));
     });
 
-    it('should check "some" of value "undefined" in list [1,2,undefined]', function () {
+    it('should check "some" of value "undefined" in list [1,2,undefined]', () => {
       const array = [1, 2, undefined];
       const func = (v) => v === undefined;
       const ds = new dsClass(array);
@@ -65,16 +65,16 @@ function testSome(dsClass) {
       assert.equal(ds.some(func), array.some(func));
     });
 
-    it('should check "some" of value "NaN" in list [1,2,NaN]', function () {
+    it('should check "some" of value "NaN" in list [1,2,NaN]', () => {
       const array = [1, 2, NaN];
-      const func = (v) => isNaN(v);
+      const func = (v) => Number.isNaN(v);
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
       assert.equal(ds.some(func), array.some(func));
     });
 
-    it('should check "some" of value "object" in list [1,2,{value:3}]', function () {
+    it('should check "some" of value "object" in list [1,2,{value:3}]', () => {
       const array = [1, 2, { value: 3 }];
       const func = (v) => typeof v === "object" && v !== null;
       const ds = new dsClass(array);
@@ -83,7 +83,7 @@ function testSome(dsClass) {
       assert.equal(ds.some(func), array.some(func));
     });
 
-    it('should check "some" with "null" function', function () {
+    it('should check "some" with "null" function', () => {
       const array = [0, 1, 2, 3, 4, 5];
       const func = null;
       const funcType = typeof func;
@@ -100,7 +100,7 @@ function testSome(dsClass) {
       );
     });
 
-    it('should check "some" with "undefined" function', function () {
+    it('should check "some" with "undefined" function', () => {
       const array = [0, 1, 2, 3, 4, 5];
       const func = undefined;
       const ds = new dsClass(array);
@@ -110,7 +110,7 @@ function testSome(dsClass) {
       assert.throws(() => ds.some(func), TypeError("undefined is not a function"));
     });
 
-    it('should check "some" of negative value and index bigger than 2 in list [0,1,-2,3,-4,-5]', function () {
+    it('should check "some" of negative value and index bigger than 2 in list [0,1,-2,3,-4,-5]', () => {
       const array = [0, 1, -2, 3, -4, -5];
       const func = (v, i) => v < 0 && i > 2;
       const ds = new dsClass(array);
@@ -119,7 +119,7 @@ function testSome(dsClass) {
       assert.equal(ds.some(func), array.some(func));
     });
 
-    it('should check "some" of negative value and index bigger than 4 in list [0,1,-2,3,-4,-5]', function () {
+    it('should check "some" of negative value and index bigger than 4 in list [0,1,-2,3,-4,-5]', () => {
       const array = [0, 1, -2, 3, -4, -5];
       const func = (v, i) => v < 0 && i > 4;
       const ds = new dsClass(array);
@@ -128,7 +128,7 @@ function testSome(dsClass) {
       assert.equal(ds.some(func), array.some(func));
     });
 
-    it('should check "some" of negative value and index bigger than 2 and list length equal 2 in list [0,1,-2,3,-4,-5]', function () {
+    it('should check "some" of negative value and index bigger than 2 and list length equal 2 in list [0,1,-2,3,-4,-5]', () => {
       const array = [0, 1, -2, 3, -4, -5];
       const func = (v, i, l) => v < 0 && i > 2 && l.length === 2;
       const ds = new dsClass(array);
@@ -137,12 +137,12 @@ function testSome(dsClass) {
       assert.equal(ds.some(func), array.some(func));
     });
 
-    it('should check "some" with updating a variable by appending (value,index)', function () {
+    it('should check "some" with updating a variable by appending (value,index)', () => {
       const array = [0, 1, -2, 3, -4, -5];
       let result1 = "";
       let result2 = "";
-      const func1 = (v, i) => (result1 += "(" + v + "," + i + ")");
-      const func2 = (v, i) => (result2 += "(" + v + "," + i + ")");
+      const func1 = (v, i) => (result1 += `(${v},${i})`);
+      const func2 = (v, i) => (result2 += `(${v},${i})`);
       const ds = new dsClass(array);
       assert.equal(ds.length, array.length);
       assert(ds.isEqual(array));
@@ -150,7 +150,7 @@ function testSome(dsClass) {
       assert.equal(result1, result2);
     });
 
-    it('should check "some" with assertion inside the function', function () {
+    it('should check "some" with assertion inside the function', () => {
       const array = [1];
       const ds = new dsClass(array);
       const func = function (value, index, that) {
@@ -164,7 +164,7 @@ function testSome(dsClass) {
       assert.equal(ds.some(func), array.some(func));
     });
 
-    it('should check "some" with thisArg', function () {
+    it('should check "some" with thisArg', () => {
       const array = [1, 2, 3, 4];
       const thisArg = { min: 3 };
       const func = function (v) {
@@ -176,7 +176,7 @@ function testSome(dsClass) {
       assert.equal(ds.some(func, thisArg), array.some(func, thisArg));
     });
 
-    it('should check "some" with thisArg as undefined', function () {
+    it('should check "some" with thisArg as undefined', () => {
       const array = [1, 2, 3];
       const func = function () {
         return this === undefined;
@@ -185,7 +185,7 @@ function testSome(dsClass) {
       assert.equal(ds.some(func, undefined), array.some(func, undefined));
     });
 
-    it('should check "some" with thisArg as null', function () {
+    it('should check "some" with thisArg as null', () => {
       const array = [1, 2, 3];
       const func = function () {
         return this === null;
@@ -194,7 +194,7 @@ function testSome(dsClass) {
       assert.equal(ds.some(func, null), array.some(func, null));
     });
 
-    it('should check "some" with thisArg modifying accumulator', function () {
+    it('should check "some" with thisArg modifying accumulator', () => {
       const array = [1, 2, 3];
       const thisArg = { count: 0 };
       const func = function () {
