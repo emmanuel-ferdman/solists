@@ -2,8 +2,28 @@
   "name": "solists",
   "version": "1.0.1",
   "description": "Self-organizing lists with native Array methods",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "keywords": [
+    "array",
+    "data-structure",
+    "linked-list",
+    "list",
+    "self-organizing-list"
+  ],
+  "homepage": "https://github.com/emmanuel-ferdman/solists#readme",
+  "bugs": {
+    "url": "https://github.com/emmanuel-ferdman/solists/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emmanuel-ferdman/solists.git"
+  },
+  "license": "MIT",
+  "author": "Emmanuel Ferdman",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "npm run clean && tsc",
     "clean": "rimraf ./dist",
@@ -14,37 +34,15 @@
     "lint:fix": "eslint --fix .",
     "test": "ts-mocha tests/test.ts"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/emmanuel-ferdman/solists.git"
-  },
-  "keywords": [
-    "array",
-    "data-structure",
-    "linked-list",
-    "list",
-    "self-organizing-list"
-  ],
-  "author": "Emmanuel Ferdman",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/emmanuel-ferdman/solists/issues"
-  },
-  "homepage": "https://github.com/emmanuel-ferdman/solists#readme",
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@typescript-eslint/eslint-plugin": "^8.58.0",
-    "@typescript-eslint/parser": "^8.58.0",
-    "eslint": "^10.0.2",
-    "mocha": "^11.7.6",
+    "eslint": "^10.9.1",
+    "mocha": "^11.8.0",
     "nyc": "^18.0.0",
-    "prettier": "^3.6.2",
+    "prettier": "^3.9.6",
     "ts-mocha": "^11.1.0",
     "ts-node": "^10.9.2",
-    "typescript": "^6.0.2",
-    "typescript-eslint": "^8.60.0"
-  },
-  "files": [
-    "dist"
-  ]
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.68.0"
+  }
 }
