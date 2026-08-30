@@ -1,7 +1,7 @@
 <p align="center">
   <a href="https://github.com/emmanuel-ferdman/solists">
     <picture>
-      <img src="https://raw.githubusercontent.com/emmanuel-ferdman/solists/main/img/logo.png" height="128">
+      <img src="https://raw.githubusercontent.com/emmanuel-ferdman/solists/main/img/logo.png" height="128" alt="SoLists logo">
     </picture>
   </a>
 </p>
@@ -33,7 +33,7 @@ npm install solists
 <th>Code</th>
 </tr>
 <tr>
-<td><img src="https://raw.githubusercontent.com/emmanuel-ferdman/solists/main/img/frequency-count.gif" width="300" /></td>
+<td><img src="https://raw.githubusercontent.com/emmanuel-ferdman/solists/main/img/frequency-count.gif" width="300" alt="Frequency Count heuristic animation" /></td>
 <td><details>
 <summary><strong>FrequencyCountSoList</strong></summary>
 
@@ -48,7 +48,7 @@ l.includes("B"); // B(2) overtakes D
 </details></td>
 </tr>
 <tr>
-<td><img src="https://raw.githubusercontent.com/emmanuel-ferdman/solists/main/img/k-in-a-row.gif" width="300" /></td>
+<td><img src="https://raw.githubusercontent.com/emmanuel-ferdman/solists/main/img/k-in-a-row.gif" width="300" alt="k-in-a-Row heuristic animation" /></td>
 <td><details>
 <summary><strong>KInARowSoList</strong></summary>
 
@@ -63,7 +63,7 @@ l.includes("B"); // B: 1st access, no move
 </details></td>
 </tr>
 <tr>
-<td><img src="https://raw.githubusercontent.com/emmanuel-ferdman/solists/main/img/move-ahead-k.gif" width="300" /></td>
+<td><img src="https://raw.githubusercontent.com/emmanuel-ferdman/solists/main/img/move-ahead-k.gif" width="300" alt="Move-Ahead-k heuristic animation" /></td>
 <td><details>
 <summary><strong>MoveAheadKSoList</strong></summary>
 
@@ -78,7 +78,7 @@ l.includes("B"); // B moves 2 ahead
 </details></td>
 </tr>
 <tr>
-<td><img src="https://raw.githubusercontent.com/emmanuel-ferdman/solists/main/img/move-to-front.gif" width="300" /></td>
+<td><img src="https://raw.githubusercontent.com/emmanuel-ferdman/solists/main/img/move-to-front.gif" width="300" alt="Move to Front heuristic animation" /></td>
 <td><details>
 <summary><strong>MoveToFrontSoList</strong></summary>
 
@@ -93,7 +93,7 @@ l.includes("C"); // C -> front
 </details></td>
 </tr>
 <tr>
-<td><img src="https://raw.githubusercontent.com/emmanuel-ferdman/solists/main/img/transpose.gif" width="300" /></td>
+<td><img src="https://raw.githubusercontent.com/emmanuel-ferdman/solists/main/img/transpose.gif" width="300" alt="Transpose heuristic animation" /></td>
 <td><details>
 <summary><strong>TransposeSoList</strong></summary>
 

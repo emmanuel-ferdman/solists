@@ -67,7 +67,7 @@ npm run coverage
 
 To help automate releases, please use a clear and consistent title for your pull requests. We loosely follow the [Conventional Commits](https://www.conventionalcommits.org) format:
 
-```
+```text
 <type>: <summary>
 ```
 
@@ -83,11 +83,11 @@ Where `<type>` describes the kind of change:
 - `style`: update code style only
 - `test`: changes to the test suite
 
-The `<summary>` should be a brief, present-tense description (not capitalized, no period).
+The `<summary>` should be a brief, present-tense description (not capitalized, no trailing dot).
 
 Example:
 
-```
+```text
 feat: add support for custom sort order
 ```
 
@@ -95,7 +95,7 @@ We do not currently use commit scopes (e.g. `<type>(<scope>): <summary>`), but y
 
 ### Breaking Changes
 
-If your pull request introduces a breaking change, please add a clearly marked section at the end of your description explaining what is breaking and why. This helps reviewers and maintainers avoid merging breaking changes unintentionally.
+If your pull request introduces a breaking change, please add a well-marked section at the end of your description explaining what is breaking and why. This helps reviewers and maintainers avoid merging breaking changes unintentionally.
 
 ## Need Help?
 
