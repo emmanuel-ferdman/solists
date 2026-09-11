@@ -22,8 +22,10 @@ updates:
         patterns:
           - "mocha"
           - "nyc"
-          - "ts-mocha"
       typescript:
         patterns:
           - "ts-node"
           - "typescript"
+    ignore:
+      - dependency-name: "typescript"
+        versions: [">=7.0.0"]

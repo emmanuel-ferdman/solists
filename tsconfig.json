@@ -1,4 +1,7 @@
 {
+  "ts-node": {
+    "transpileOnly": true
+  },
   "compilerOptions": {
     "lib": ["ES2022"],
     "module": "nodenext",
